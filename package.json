@@ -10,6 +10,7 @@
     "prop-types": "^15.6.0",
     "react": "16.0.0",
     "react-native": "0.51.0",
+    "react-native-accordion": "^1.0.1",
     "react-native-easy-grid": "^0.1.15",
     "react-native-router-flux": "^4.0.0-beta.24",
     "react-native-vector-icons": "^4.4.2"
@@ -24,4 +25,3 @@
     "preset": "react-native"
   }
 }
-

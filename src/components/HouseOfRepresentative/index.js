@@ -4,16 +4,16 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import style from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-class Wards extends Component {
+class HouseOfRepresentative extends Component {
   render() {
     return (
          <Grid>
             <Row size={80} style={style.districtsContainer}>
-               <Text>This is ward page</Text>   
+               <Text>This is house of representative page</Text>   
             </Row>
          </Grid>  
     );
   }
 }
 
-export default Wards;
+export default HouseOfRepresentative;

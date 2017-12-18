@@ -16,7 +16,7 @@ module.exports = {
     provinceTextContainer:{
         alignItems: 'center', 
         justifyContent: 'center',
-        backgroundColor: '#036cae'
+        backgroundColor: globalStyle.UI.neutralColor
     },
     provinceText: {  
         paddingTop: 5, 
@@ -38,7 +38,7 @@ module.exports = {
     },
     districtItem: {
         borderWidth: 1,
-        borderColor: '#036cae',
+        borderColor: globalStyle.UI.neutralColor,
         marginTop: 10,
         width: 150,
         paddingTop: 5,
@@ -47,7 +47,7 @@ module.exports = {
         alignItems: 'center', 
     },
     districtText: {
-        color: '#036cae',
+        color: globalStyle.UI.neutralColor,
         fontSize: 15
     }
    

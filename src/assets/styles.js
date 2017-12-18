@@ -5,7 +5,7 @@ module.exports = {
     UI: {
         backgroundColor: '#FFFFFF',
         primaryColor: '#FF1493',
-        neutralColor: '#00CED1',
+        neutralColor: '#036cae',
         dangerColor: '#FF0000',
         textColor: '#FFFFFF',
         iconColor:'#ababab',

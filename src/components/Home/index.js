@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {View, Text, Image, TouchableOpacity, FlatList} from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Actions} from 'react-native-router-flux';
-import Header from '../UI/header';
-import Footer from '../UI/footer';
+import {Header, Footer} from '../UI';
+
 import style from './style';
 let provinces = [
   {

@@ -7,7 +7,7 @@ class Footer extends Component {
   render() {
     return (
         <Row size={7} style={style.footerContainer}>
-        <TouchableOpacity onPress={() => Actions.aboutus()}>
+        <TouchableOpacity onPress={() => Actions.aboutUs()}>
             <View style={style.footerContainer}>
                     <Text style={style.footerText}>About Us</Text>
             </View>

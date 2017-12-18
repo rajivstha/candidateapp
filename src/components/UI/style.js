@@ -3,7 +3,7 @@ import globalStyle from '../../assets/styles';
 module.exports = {
     headerContainer:{
         flexDirection: 'column',
-        backgroundColor: '#036cae'
+        backgroundColor: globalStyle.UI.neutralColor
     },
     logoContainer: {
         marginTop: 10,
@@ -30,13 +30,13 @@ module.exports = {
         marginRight: 5
     },
     language:{
-        color: '#036cae',
+        color: globalStyle.UI.neutralColor,
         fontWeight: 'bold'
     },
     footerContainer:{
         alignItems: 'center', 
         justifyContent: 'center',
-        backgroundColor: '#036cae',
+        backgroundColor: globalStyle.UI.neutralColor,
         width: globalStyle.screenWidth
     },
     footerText:{
@@ -44,5 +44,57 @@ module.exports = {
         color: globalStyle.UI.textColor,
         paddingTop: 15,
         paddingBottom: 15
+    },
+    itemListContainer:{
+        marginTop: 10,
+        backgroundColor: '#ccc',
+        padding: 10
+    },
+    listTitleContainer: {
+        flexDirection: 'row',
+    },
+    itemIconContainer: {
+        marginRight: 10
+    },
+    itemIcon: {
+        color: globalStyle.UI.neutralColor
+    },
+    itemText: {
+        color: globalStyle.UI.neutralColor,
+        fontSize: 15
+    },
+    listContentContainer: {
+        flexDirection: 'column',
+        marginTop: 10,
+        backgroundColor: '#fff',
+        paddingLeft: 10,
+        paddingRight: 10 
+    },
+    listContent: {
+        flexDirection: 'row',
+        backgroundColor: globalStyle.UI.borderColor,
+        marginTop: 5,
+        marginBottom: 5,
+        paddingBottom: 5,
+        paddingTop: 5
+    },
+    partyIcon: {
+        marginRight: 10
+    },
+    name: {
+        color: globalStyle.UI.neutralColor,
+        marginTop: 7,
+        fontWeight: 'bold'
+    },
+    viewWardsContainer: {
+        backgroundColor: globalStyle.UI.neutralColor,
+        alignItems: 'center', 
+        justifyContent: 'center',
+        padding: 10,
+        marginTop: 5
+    },
+    wardText: {
+        color: globalStyle.UI.textColor,
+        fontSize: 16
     }
 }

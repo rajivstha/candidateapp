@@ -13,7 +13,7 @@ module.exports = {
         marginBottom: 5
     },
     title:{
-        color: '#036cae',
+        color: globalStyle.UI.neutralColor,
         fontSize: 22,
         fontWeight: 'bold',
         marginBottom: 5
