@@ -21,31 +21,33 @@ class MyList extends Component {
                         <Text style={style.itemText}>{this.props.localbody.name}</Text>
                     </View>
                 </View>
+                {this.state.showDetails == true && 
                 <View>
-                <View style={style.listContentContainer}>
-                    <TouchableOpacity onPress={() => Actions.candidate()}>
-                        <View style={style.listContent}>
-                            <View style={style.partyIcon}><Image source={require('../../assets/partiesImg/congress.png')}/></View>
-                            <View>
-                                <Text style={style.name}>Rajiv shrestha</Text>
-                                <Text style={style.designation}> Chairperson</Text>
+                    <View style={style.listContentContainer}>
+                        <TouchableOpacity onPress={() => Actions.candidate()}>
+                            <View style={style.listContent}>
+                                <View style={style.partyIcon}><Image source={require('../../assets/partiesImg/congress.png')}/></View>
+                                <View>
+                                    <Text style={style.name}>Rajiv shrestha</Text>
+                                    <Text style={style.designation}> Chairperson</Text>
+                                </View>
                             </View>
-                        </View>
-                    </TouchableOpacity>        
-                    <TouchableOpacity onPress={() => Actions.candidate()}>
-                        <View style={style.listContent}>
-                            <View style={style.partyIcon}><Image source={require('../../assets/partiesImg/congress.png')}/></View>
-                            <View>
-                                <Text style={style.name}>Rajiv shrestha</Text>
-                                <Text style={style.designation}>Vice Chairperson</Text>
+                        </TouchableOpacity>        
+                        <TouchableOpacity onPress={() => Actions.candidate()}>
+                            <View style={style.listContent}>
+                                <View style={style.partyIcon}><Image source={require('../../assets/partiesImg/congress.png')}/></View>
+                                <View>
+                                    <Text style={style.name}>Rajiv shrestha</Text>
+                                    <Text style={style.designation}>Vice Chairperson</Text>
+                                </View>
                             </View>
-                        </View>
+                        </TouchableOpacity>  
+                    </View>
+                    <TouchableOpacity onPress={() => Actions.wards()}>
+                        <View style={style.viewWardsContainer}><Text style={style.wardText}>View All Wards</Text></View>
                     </TouchableOpacity>  
-                </View>
-                <TouchableOpacity onPress={() => Actions.wards()}>
-                    <View style={style.viewWardsContainer}><Text style={style.wardText}>View All Wards</Text></View>
-                </TouchableOpacity>  
                 </View>  
+                }
             </View>
         );
     }

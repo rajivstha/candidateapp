@@ -46,8 +46,8 @@ let districts = [{
 ];
 class Districts extends Component {
 state = {
-        province : province,
-        districts: districts
+    province : province,
+    districts: districts
 };
   render() {
     return (
@@ -65,7 +65,7 @@ state = {
                 <View style={style.districtsListContainer}>
                 {console.log(this.state.districts)}
                 {this.state.districts.length > 0 &&
-                        <TouchableOpacity onPress={() => Actions.localBodies()}><View style={style.districtItem}><Text style={style.districtText}>Taplejung</Text></View></TouchableOpacity>
+                    <TouchableOpacity onPress={() => Actions.localBodies()}><View style={style.districtItem}><Text style={style.districtText}>Taplejung</Text></View></TouchableOpacity>
                     
                     // this.state.districts.map((district,index)=>{ 
                     //     <TouchableOpacity><View style={style.districtItem}><Text style={style.districtText}>Taplejung</Text></View></TouchableOpacity>
