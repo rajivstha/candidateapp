@@ -68,7 +68,8 @@ module.exports = {
         marginTop: 10,
         backgroundColor: '#fff',
         paddingLeft: 10,
-        paddingRight: 10 
+        paddingRight: 10,
+        height: 140 
     },
     listContent: {
         flexDirection: 'row',

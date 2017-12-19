@@ -4,6 +4,7 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import style from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {HeaderAbout} from '../UI'
+import { Actions } from 'react-native-router-flux';
 let candidate = {
   id: '001',
   firstName: 'Rajiv',
@@ -13,6 +14,7 @@ let candidate = {
   phoneNo: '980000000',
   email: 'stha.rajiv@gmail.com',
   image: require('../../assets/img/user.jpg'),
+  partyImage: require('../../assets/partiesImg/congress.png'),
   bio: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s'
 }
 class Candidate extends Component {
@@ -27,10 +29,13 @@ class Candidate extends Component {
                 <View style={style.singleImageContainer}>
                     <View style={style.singleImageInnerContainer}>
                         <Image source={this.state.candidate.image} style={style.singleImage} />
-                          <View style={style.singleImageText}>
-                              <Text style={style.candidateName}>{this.state.candidate.firstName} {this.state.candidate.lastName}, {this.state.candidate.age}</Text>
-                              <Text style={style.address}>{this.state.candidate.post}</Text>      
-                          </View>
+                        <View style={style.singleImageText}>
+                            <Text style={style.candidateName}>{this.state.candidate.firstName} {this.state.candidate.lastName}, {this.state.candidate.age}</Text>
+                            <Text style={style.address}>{this.state.candidate.post}</Text>      
+                        </View>
+                        <View style={style.partyImageContainer}>
+                            <Image source={this.state.candidate.partyImage} style={style.partySingleImage} />
+                        </View>
                     </View>    
                 </View>
             </Row>
@@ -56,7 +61,7 @@ class Candidate extends Component {
                         <View style={style.iconContainer}><Text style={style.icon}><Icon name="twitter" size={12}/></Text></View>
                         <View style={style.textContainer}><Text style={style.text}>Follow Me On Twitter</Text></View>
                     </View>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=> Actions.addDetails()}>
                       <View style={style.addDetailsContainer}><Text style={style.addDetailsText}><Icon name="pencil-square-o" size={17}/> Add More Details</Text></View>
                     </TouchableOpacity>
                 </View>

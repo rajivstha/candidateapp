@@ -14,6 +14,7 @@ import Wards from './components/Wards';
 import ProvincialAssembly from './components/ProvincialAssembly';
 import HouseOfRepresentative from './components/HouseOfRepresentative';
 import Candidate from './components/Candidate';
+import AddDetails from './components/Candidate/AddDetails';
 class App extends Component {
   render() {
     return (
@@ -56,6 +57,7 @@ class App extends Component {
               </Stack>
           </Tabs>
           <Scene key="candidate"   component={Candidate} />
+          <Scene key="addDetails"   component={AddDetails} />
         </Stack>
       </Router>
     )
