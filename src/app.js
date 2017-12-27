@@ -15,10 +15,14 @@ import ProvincialAssembly from './components/ProvincialAssembly';
 import HouseOfRepresentative from './components/HouseOfRepresentative';
 import Candidate from './components/Candidate';
 import AddDetails from './components/Candidate/AddDetails';
+import { BackHandler } from 'react-native';
 class App extends Component {
   render() {
+    const onBackAndroid = () => {
+      return Actions.pop();
+    };
     return (
-      <Router>
+      <Router backAndroidHandler={onBackAndroid}>
         <Stack key="root" hideNavBar>
           <Scene key="home" initial={true}  component={Home} />
           <Scene key="aboutUs"   component={Aboutus} />
