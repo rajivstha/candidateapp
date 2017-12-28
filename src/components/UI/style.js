@@ -23,15 +23,19 @@ module.exports = {
     },
     languageItem: {
         backgroundColor: globalStyle.UI.textColor,
+        marginRight: 5
+    },
+    language:{
         paddingTop: 5,
         paddingBottom: 5,
         paddingLeft: 10,
         paddingRight: 10,
-        marginRight: 5
-    },
-    language:{
         color: globalStyle.UI.neutralColor,
         fontWeight: 'bold'
+    },
+    activeLocaleChooserStyle: {
+        backgroundColor: '#DA1A40',
+        color: globalStyle.UI.textColor
     },
     footerContainer:{
         alignItems: 'center', 

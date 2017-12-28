@@ -67,7 +67,7 @@ state = {
                 {this.state.districts.length > 0 &&
                     this.state.districts.map((district,index)=>{ 
                         return(
-                            <TouchableOpacity onPress={() => Actions.localBodies()}>
+                            <TouchableOpacity  key={index} onPress={() => Actions.localBodies()}>
                                 <View style={style.districtItem}>
                                     <Text style={style.districtText}>{district.name}</Text>
                                 </View>

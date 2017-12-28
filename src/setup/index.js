@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { ApolloProvider } from 'react-apollo';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
+import apolloClient from './apolloClient';
 import configureStore from './configureStore';
 import App from '../App';
 
@@ -30,6 +32,7 @@ class Setup extends Component {
     }
     render() {
       return (
+      <ApolloProvider client={ apolloClient }>  
         <Provider store={ store }>
           <PersistGate 
           onBeforeLift={ this.onBeforeLift } 
@@ -37,6 +40,7 @@ class Setup extends Component {
               <App />
           </PersistGate>
         </Provider>
+      </ApolloProvider>  
       );
     }
 }
