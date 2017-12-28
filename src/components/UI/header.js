@@ -10,14 +10,14 @@ import { changeLocale } from '../../locale/localeActions';
 class Header extends Component {
   render() {
     return (
-            <Row size={15} style={style.headerContainer}>
-                <View style={style.logoContainer}>
-                    <TouchableOpacity onPress={() => Actions.home()}>
-                        <Text style={style.logo}>{I18n.t('about_us', {locale: this.props.locale})}</Text>
-                    </TouchableOpacity>   
-                </View>
-                <LocaleChooser activeLocale={this.props.locale} onChange={this.props.changeLocale} />
-            </Row>
+        <Row size={15} style={style.headerContainer}>
+            <View style={style.logoContainer}>
+                <TouchableOpacity onPress={() => Actions.home()}>
+                    <Text style={style.logo}>Candidates OnNepal</Text>
+                </TouchableOpacity>   
+            </View>
+            <LocaleChooser activeLocale={this.props.locale} onChange={this.props.changeLocale} />
+        </Row>
     );
   }
 }
