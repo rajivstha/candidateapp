@@ -2,85 +2,91 @@ import React, { Component } from 'react';
 import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Actions} from 'react-native-router-flux';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import Header from '../UI/header';
 import Footer from '../UI/footer';
 import style from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
-let province = {
-    id: '00001',
-    name: 'Province 1',
-    image: require('../../assets/img/00001.png')
-};
-let districts = [{
-    id: '01',
-    name: 'Taplejung',
-},
-{
-    id: '02',
-    name: 'Panchthar',
-},
-{
-    id: '03',
-    name: 'Illam',
-},
-{
-    id: '04',
-    name: 'Jhapa',
-},
-{
-    id: '05',
-    name: 'Sankhuwasabha',
-},
-{
-    id: '06',
-    name: 'Terhathum',
-},
-{
-    id: '07',
-    name: 'Bhojpur',
-},
-{
-    id: '08',
-    name: 'Dhankuta',
-},
-];
 class Districts extends Component {
-state = {
-    province : province,
-    districts: districts
-};
-  render() {
-    return (
-         <Grid>
-            <Header/>
-            <Row size={80} style={style.districtsContainer}>
-                <View style={style.provinceContainer}>
-                    <View style={style.provinceImageContainer}><Image source={this.state.province.image}/></View>
-                    <View style={style.provinceTextContainer}>
-                        <Text style={style.provinceText}>{this.state.province.name}</Text>
-                        <Text style={style.provinceSubText}>Districts Under {this.state.province.name} State</Text>
+    render() {
+        let province = {
+            id : this.props.data._id,
+            label : this.props.data.label,
+            enLabel : this.props.data.enLabel
+        };
+        let districts = this.props.data.districts;
+        let provinceTitle = province.enLabel;
+        if(this.props.locale === 'np' && province.label){
+            provinceTitle = province.label? province.label : province.enLabel
+        }
+        let image = '';
+        if(province.id === '85298c28-e9d4-4292-81d5-7f8ed98a4efd') {
+            image = <Image source={require('../../assets/provinceImg/85298c28-e9d4-4292-81d5-7f8ed98a4efd.png')}/>
+        }
+        if(province.id === '957547b4-e0d7-4a8a-bb9d-489e57e6ec82') {
+            image = <Image source={require('../../assets/provinceImg/957547b4-e0d7-4a8a-bb9d-489e57e6ec82.png')}/>
+        }
+        if(province.id === '6325baea-4746-4d50-83c9-b445f5c476b8') { 
+            image = <Image source={require('../../assets/provinceImg/6325baea-4746-4d50-83c9-b445f5c476b8.png')}/>
+        }
+        if(province.id === 'eea0c852-7749-49bc-afaf-ee4d4b0779d6') {
+            image = <Image source={require('../../assets/provinceImg/eea0c852-7749-49bc-afaf-ee4d4b0779d6.png')}/>
+        }
+        if(province.id === '90805f28-3ee9-4177-bd72-d5de1b234926') {
+            image = <Image source={require('../../assets/provinceImg/90805f28-3ee9-4177-bd72-d5de1b234926.png')}/>
+        }
+        if(province.id === '2e932057-8990-4abf-a38b-ad5456e62363') {
+            image = <Image source={require('../../assets/provinceImg/2e932057-8990-4abf-a38b-ad5456e62363.png')}/>
+        }
+        if(province.id === '3ad0d718-3a53-4fb6-97c4-d4bbbfe289bc') {
+            image = <Image source={require('../../assets/provinceImg/3ad0d718-3a53-4fb6-97c4-d4bbbfe289bc.png')}/>
+        }
+        return (
+            <Grid>
+                <Header/>
+                <Row size={80} style={style.districtsContainer}>
+                    <View style={style.provinceContainer}>
+                        <View style={style.provinceImageContainer}>
+                            {image}
+                        </View>
+                        <View style={style.provinceTextContainer}>
+                            <Text style={style.provinceText}>{provinceTitle}</Text>
+                            <Text style={style.provinceSubText}>Districts Under {provinceTitle} </Text>
+                        </View>
                     </View>
-                </View>
-                <ScrollView>
-                <View style={style.districtsListContainer}>
-                {console.log(this.state.districts)}
-                {this.state.districts.length > 0 &&
-                    this.state.districts.map((district,index)=>{ 
-                        return(
-                            <TouchableOpacity  key={index} onPress={() => Actions.localBodies()}>
-                                <View style={style.districtItem}>
-                                    <Text style={style.districtText}>{district.name}</Text>
-                                </View>
-                            </TouchableOpacity>
-                        )
-                    }) 
-                }    
-                </View>
-                </ScrollView>        
-            </Row>
-         </Grid>  
-    );
-  }
+                    <ScrollView>
+                    <View style={style.districtsListContainer}>
+                    {districts.length > 0 && districts.map((district,index)=>{ 
+                        let districtTitle = district.enLabel;
+                        if(this.props.locale === 'np' && district.label){
+                            districtTitle = district.label? district.label : district.enLabel
+                        }
+                            return(
+                                <TouchableOpacity  key={index} onPress={() => Actions.localBodies()}>
+                                    <View style={style.districtItem}>
+                                        <Text style={style.districtText}>{districtTitle}</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            )
+                        }) 
+                    }    
+                    </View>
+                    </ScrollView>        
+                </Row>
+            </Grid>  
+        );
+    }
 }
 
-export default Districts;
+Districts.propTypes = {
+    data: PropTypes.object
+};
+
+const mapStateToProps = (state) => {
+	return {
+		locale: state.locale
+	}
+};
+
+export default connect(mapStateToProps)(Districts);
