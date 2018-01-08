@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
-const candidateFieldsFragment = gql`
-  fragment candidateFieldsFragment on Candidate {
+const wardCandidateFieldsFragment = gql`
+  fragment wardCandidateFieldsFragment on Candidate {
         _id
         label
         enLabel
@@ -22,7 +22,7 @@ const candidateFieldsFragment = gql`
 export const wardCandidates = gql`
   query (
     $skip:Int = 0
-    $limit:Int = 20
+    $limit:Int = 50
     $wardID: String
   ){
     candidates(
@@ -31,13 +31,13 @@ export const wardCandidates = gql`
       wardID: $wardID,
       returnPagedData: true
     ) {
-     
-        ...candidateFieldsFragment
-    
-      
+      total
+      items {
+        ...wardCandidateFieldsFragment
+      }
     }
   }
-  ${candidateFieldsFragment}
+  ${wardCandidateFieldsFragment}
 `;
 
 

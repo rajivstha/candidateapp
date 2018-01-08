@@ -11,7 +11,7 @@ import {connect} from 'react-redux';
 
   
 class Wards extends Component {
-	_wardsKeyExtractor(item, index) {
+	_localBodiesKeyExtractor(item, index) {
 		return item._id; 
 	}
 	render() {
@@ -20,7 +20,7 @@ class Wards extends Component {
 				<Row size={80}>
 					<FlatList
 						data={this.props.data.wards}
-						keyExtractor={this._wardsKeyExtractor}
+						keyExtractor={this._localBodiesKeyExtractor}
 						renderItem={({item}) => {
 						return (
 							<WardList locale={this.props.locale} item={item}/>
@@ -43,7 +43,7 @@ export default graphql(wards, {
     options: (props) => ({ 
 		variables: {
             skip: 0,
-            limit: 100,
+            limit: 20,
             localBodyID: props.localBodyId
 		}
     })
