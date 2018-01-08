@@ -7,6 +7,7 @@ export default {
     provincial_assembly: 'Provincial Assembly',
     hor: 'House of Representative',
     votes: 'Votes',
-    ward_no: 'Ward No'
+    ward_no: 'Ward No',
+    total_votes: 'Total Votes'
     
 };

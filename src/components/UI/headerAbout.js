@@ -6,15 +6,14 @@ import style from './style';
 class HeaderAbout extends Component {
   render() {
     return (
-            <Row size={15} style={style.headerContainer}>
-                <View style={style.logoContainer}>
-                    <TouchableOpacity onPress={() => Actions.home()}>
-                        <Text style={style.logo}>Candidates.Onnepal</Text>
-                    </TouchableOpacity>   
-                </View>
-                
-            </Row>
-        
+        <Row size={15} style={style.headerContainer}>
+            <View style={style.logoContainer}>
+                <TouchableOpacity onPress={() => Actions.home()}>
+                    <Text style={style.logo}>Candidates.Onnepal</Text>
+                </TouchableOpacity>   
+            </View>
+            
+        </Row>
     );
   }
 }

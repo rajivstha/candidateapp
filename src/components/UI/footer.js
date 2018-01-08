@@ -8,19 +8,19 @@ import style from './style';
 class Footer extends Component {
   render() {
 	return (
-	  <Row size={7} style={style.footerContainer}>
-	  <TouchableOpacity onPress={() => Actions.aboutUs()}>
-		  <View style={style.footerContainer}>
-				  <Text style={style.footerText}>{I18n.t('about_us', {locale: this.props.locale})}</Text>
-		  </View>
-	  </TouchableOpacity>   
-	  </Row>
+		<Row size={7} style={style.footerContainer}>
+			<TouchableOpacity onPress={() => Actions.aboutUs()}>
+				<View style={style.footerContainer}>
+					<Text style={style.footerText}>{I18n.t('about_us', {locale: this.props.locale})}</Text>
+				</View>
+			</TouchableOpacity>   
+		</Row>
 	);
   }
 }
 const mapStateToProps = (state) => {
   return {
-	  locale: state.locale
+	locale: state.locale
   }
 };
 export default connect(mapStateToProps)(Footer);

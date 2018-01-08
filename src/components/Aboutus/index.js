@@ -6,6 +6,7 @@ import style from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {connect} from 'react-redux';
 import I18n from '../../locale';
+import aboutUs from '../../setup/aboutUs';
 class Aboutus extends Component {
   render() {
     return (
@@ -17,7 +18,7 @@ class Aboutus extends Component {
 				</View>
 				<View style={style.aboutUsRow}>
 						<View style={style.iconContainer}><Text style={style.icon}><Icon name="group" size={23}/></Text></View>
-						<View style={style.textContainer}><Text style={style.text}>Developed by Mundhum ITS</Text></View>
+						<View style={style.textContainer}><Text style={style.text}>Developed by {aboutUs.name}</Text></View>
 				</View>
 				<View style={style.aboutUsRow}>
 						<View style={style.iconContainer}><Text style={style.icon}><Icon name="twitter" size={23}/></Text></View>

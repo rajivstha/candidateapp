@@ -81,7 +81,6 @@ class Districts extends Component {
                             }) 
                         }    
                     </View>
-                    
                     </ScrollView>        
                 </Row>
             </Grid>  

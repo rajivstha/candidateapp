@@ -16,9 +16,6 @@ class WardList extends Component {
         this.setState({ showDetails: !this.state.showDetails });
     };
     render() {
-        // if(this.props.data.candidates){
-        //     console.log(this.props.data.candidates.items)
-        // }
         let item = this.props.item ? this.props.item : '';
         let title = item.label;
         if(this.props.locale === 'np' && item.label){
@@ -47,7 +44,7 @@ class WardList extends Component {
                                     candidateName = candidate.label? candidate.label : candidate.enLabel
                                 }
                                 return(
-                                <TouchableOpacity key={index} onPress={() => Actions.candidate()}>
+                                <TouchableOpacity key={index} onPress={() => Actions.candidate({candidateID: candidate._id})}>
                                     <View style={style.listContent}>
                                         <View style={style.partyIcon}><Image source={require('../../assets/partiesImg/congress.png')}/></View>
                                         <View>

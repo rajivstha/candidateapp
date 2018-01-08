@@ -31,10 +31,9 @@ export const wardCandidates = gql`
       wardID: $wardID,
       returnPagedData: true
     ) {
-      total
-      items {
+     
         ...candidateFieldsFragment
-      }
+    
       
     }
   }

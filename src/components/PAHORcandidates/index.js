@@ -10,43 +10,40 @@ import apolloClient from '../../setup/apolloClient';
 import {constituencies}  from '../GQL';
 
 class PAHORcandidates extends Component {
-  state = {
-    items: [],
-  };
-  _localBodiesKeyExtractor(item, index) {
-    return item._id; 
-  }
-  componentDidMount(){
-    apolloClient.query({
-		query: constituencies,
-		variables: {
-			id: this.props.activeDistrict
-		}
-    }).then((data) => {
-		//console.log(data.data.district.constituencies);
-		this.setState({
-			items : data.data.district.constituencies
+	state = {
+		items: [],
+	};
+	_PAHORcandidatesKeyExtractor(item, index) {
+		return item._id; 
+	}
+	componentDidMount(){
+		apolloClient.query({
+			query: constituencies,
+			variables: {
+				id: this.props.activeDistrict
+			}
+		}).then((data) => {
+			this.setState({
+				items : data.data.district.constituencies
+			})
+		}).catch((err) => {
+			console.log(err);
 		})
-    }).catch((err) => {
-      	console.log(err);
-    })
-  }
+	}
 
   render() {
-	 // console.log(this.props.candidateType);
 	return (
          <Grid>
             <Row size={80}>
 				 <FlatList
 					data={this.state.items}
-					keyExtractor={this._localBodiesKeyExtractor}
+					keyExtractor={this._PAHORcandidatesKeyExtractor}
 					renderItem={({item}) => {
 						return (
 							<MyList candidateType ={this.props.candidateType} locale={this.props.locale} item={item}/>
 						)
 					}}
 				/> 
-			
             </Row>
          </Grid>  
     );

@@ -7,5 +7,6 @@ export default {
     provincial_assembly: 'प्रदेशसभा',
     hor: 'प्रतिनिधिसभाको',
     votes: 'Votes',
-    ward_no: 'वार्ड न.'
+    ward_no: 'वार्ड न.',
+    total_votes: 'Total Votes'
 };
