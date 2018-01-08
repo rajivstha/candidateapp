@@ -22,6 +22,7 @@ class Candidate extends Component {
     candidate : candidate
   };
   render() {
+      console.log(this.props.candidateId)
     return (
          <Grid>
            <HeaderAbout/>
@@ -61,9 +62,9 @@ class Candidate extends Component {
                         <View style={style.iconContainer}><Text style={style.icon}><Icon name="twitter" size={12}/></Text></View>
                         <View style={style.textContainer}><Text style={style.text}>Follow Me On Twitter</Text></View>
                     </View>
-                    <TouchableOpacity onPress={()=> Actions.addDetails()}>
+                    {/* <TouchableOpacity onPress={()=> Actions.addDetails()}>
                       <View style={style.addDetailsContainer}><Text style={style.addDetailsText}><Icon name="pencil-square-o" size={17}/> Add More Details</Text></View>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
             </Row>
          </Grid>  

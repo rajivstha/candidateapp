@@ -72,9 +72,16 @@ module.exports = {
         marginTop: 10,
         backgroundColor: '#fff',
         paddingLeft: 10,
-        paddingRight: 10,
-        height: 140 
+        paddingRight: 10
     },
+    wardListContentContainer: {
+        flexDirection: 'column',
+        marginTop: 10,
+        backgroundColor: '#fff',
+        paddingLeft: 10,
+        paddingRight: 10
+    },
+   
     listContent: {
         flexDirection: 'row',
         backgroundColor: globalStyle.UI.borderColor,

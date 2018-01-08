@@ -8,7 +8,15 @@ import Header from '../UI/header';
 import Footer from '../UI/footer';
 import style from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {activeDistrict} from './districtActions';
+import I18n from '../../locale';
 class Districts extends Component {
+    handleActiveDistrict(districtId) {
+        return () => {
+            this.props.activeDistrict(districtId);
+            Actions.localBodies();
+        }
+    }
     render() {
         let province = {
             id : this.props.data._id,
@@ -42,6 +50,7 @@ class Districts extends Component {
         if(province.id === '3ad0d718-3a53-4fb6-97c4-d4bbbfe289bc') {
             image = <Image source={require('../../assets/provinceImg/3ad0d718-3a53-4fb6-97c4-d4bbbfe289bc.png')}/>
         }
+    
         return (
             <Grid>
                 <Header/>
@@ -51,27 +60,28 @@ class Districts extends Component {
                             {image}
                         </View>
                         <View style={style.provinceTextContainer}>
-                            <Text style={style.provinceText}>{provinceTitle}</Text>
-                            <Text style={style.provinceSubText}>Districts Under {provinceTitle} </Text>
+                            <Text style={style.provinceText}>{I18n.t('district_under', {locale: this.props.locale})} {provinceTitle}</Text>
+                           
                         </View>
                     </View>
                     <ScrollView>
                     <View style={style.districtsListContainer}>
-                    {districts.length > 0 && districts.map((district,index)=>{ 
-                        let districtTitle = district.enLabel;
-                        if(this.props.locale === 'np' && district.label){
-                            districtTitle = district.label? district.label : district.enLabel
-                        }
-                            return(
-                                <TouchableOpacity  key={index} onPress={() => Actions.localBodies()}>
-                                    <View style={style.districtItem}>
-                                        <Text style={style.districtText}>{districtTitle}</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            )
-                        }) 
-                    }    
+                        {districts.length > 0 && districts.map((district,index)=>{ 
+                            let districtTitle = district.enLabel;
+                            if(this.props.locale === 'np' && district.label){
+                                districtTitle = district.label? district.label : district.enLabel
+                            }
+                                return(
+                                    <TouchableOpacity  key={index} onPress={this.handleActiveDistrict(district._id)}>
+                                        <View style={style.districtItem}>
+                                            <Text style={style.districtText}>{districtTitle}</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                )
+                            }) 
+                        }    
                     </View>
+                    
                     </ScrollView>        
                 </Row>
             </Grid>  
@@ -83,10 +93,16 @@ Districts.propTypes = {
     data: PropTypes.object
 };
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        activeDistrict: (districtId) => dispatch(activeDistrict(districtId)),
+    }
+};
+
 const mapStateToProps = (state) => {
 	return {
 		locale: state.locale
 	}
 };
 
-export default connect(mapStateToProps)(Districts);
+export default connect(mapStateToProps,mapDispatchToProps)(Districts);

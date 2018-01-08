@@ -7,7 +7,7 @@ import style from './style';
 
 class ProvinceItem extends Component {
     render(){
-        let item = this.props.item;
+        let item = this.props.item ? this.props.item : '';
         let title = item.enLabel;
         if(this.props.locale === 'np' && item.label){
             title = item.label? item.label : item.enLabel
@@ -47,7 +47,8 @@ class ProvinceItem extends Component {
     }
 }
 ProvinceItem.propTypes = {
-    locale: PropTypes.string
+    locale: PropTypes.string,
+    item: PropTypes.object
 };
 
 export default ProvinceItem;

@@ -3,40 +3,65 @@ import {View, Text, Image, TouchableOpacity, FlatList} from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import style from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {MyList}  from '../UI';
+import {connect} from 'react-redux';
+import {LocalBodyList}  from '../UI';
+import {localBodies}  from '../GQL';
+import { graphql, compose } from 'react-apollo';
+import apolloClient from '../../setup/apolloClient';
 
-let localbodies = [
-  {
-    id: '00001',
-    name: 'Aathrai Tribeni Rural Municipality',
-  }
-  
-]
 class LocalBodies extends Component {
-  state = {
-    localbodies: localbodies,
-  };
-  _localBodiesKeyExtractor(item, index) {
-    return item.id; 
-  }
-  _renderLocalBody({item}) {
-    return (
-        <MyList localbody={item}/>
-    )
-  }
-  render() {
-    return (
-         <Grid>
-            <Row size={80}>
-                <FlatList
-                  data={this.state.localbodies}
-                  keyExtractor={this._localBodiesKeyExtractor}
-                  renderItem={this._renderLocalBody}
-                />
-            </Row>
-         </Grid>  
-    );
-  }
+	state = {
+		items: [],
+	};
+	_localBodiesKeyExtractor(item, index) {
+		return item._id; 
+	}
+
+	componentDidMount() {
+		apolloClient.query({
+			query: localBodies,
+			variables: {
+				skip: 0,
+				limit: 100,
+				returnPagedData: true,
+				districtID: this.props.activeDistrict
+			}
+		}).then((data) => {
+			this.setState({
+				items : data.data.localBodies.items
+			})
+		}).catch((err) => {
+			console.log(err);
+		})
+	}
+	render() {
+		return (
+			<Grid>
+				<Row size={80}>
+					<FlatList
+					data={this.state.items}
+					keyExtractor={this._localBodiesKeyExtractor}
+					renderItem={({item}) => {
+						return (
+							<LocalBodyList activeDistrict={this.props.activeDistrict} locale={this.props.locale} 
+							item={item}/>
+						)
+					}}
+					/>
+				</Row>
+			</Grid>  
+		);
+	}
 }
 
-export default LocalBodies;
+
+const mapStateToProps = (state) => {
+	return {
+		locale: state.locale,
+		activeDistrict: state.activeDistrict
+	}
+};
+
+
+export default connect(mapStateToProps)(LocalBodies);
+

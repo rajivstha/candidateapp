@@ -17,7 +17,6 @@ export const provinces = gql`
   query{
     provinces(skip:0, limit:7) {
       ...provinceFieldsFragment
-      
     }
   }
   ${provinceFieldsFragment}

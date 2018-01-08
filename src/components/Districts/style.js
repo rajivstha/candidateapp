@@ -20,15 +20,13 @@ module.exports = {
     },
     provinceText: {  
         paddingTop: 5, 
+        paddingBottom: 5,
         color: '#fff',
-        fontSize: 22,
+        fontSize: 18,
         fontWeight: 'bold'
         
     },
-    provinceSubText: {
-        color: '#fff',
-        paddingBottom: 5
-    },
+
     districtsListContainer:{
         flexDirection: 'row',
         flexWrap: 'wrap',

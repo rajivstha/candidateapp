@@ -3,63 +3,45 @@ import {View, Text, Image, TouchableOpacity, FlatList} from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import style from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {MyList}  from '../UI';
+import {WardList}  from '../UI';
+import {wards}  from '../GQL';
+import { graphql, compose } from 'react-apollo';
+import {connect} from 'react-redux';
 
-let localbodies = [
-  {
-    id: '00001',
-    name: 'Ward No 1',
-  },
-  {
-    id: '00001',
-    name: 'Ward No 2',
-  },
-  {
-    id: '00001',
-    name: 'Ward No 3',
-  },
-  {
-    id: '00001',
-    name: 'Ward No 4',
-  },
-  {
-    id: '00001',
-    name: 'Ward No 5',
-  },
-  {
-    id: '00001',
-    name: 'Ward No 6',
-  },
-  {
-    id: '00001',
-    name: 'Ward No 7',
-  },
-  {
-    id: '00001',
-    name: 'Ward No 8',
-  }
+// let localbodies = [
+//   {
+//     id: '00009',
+//     name: 'Ward No 1',
+//   },
   
-]
+  
+// ]
 class Wards extends Component {
-  state = {
-    localbodies: localbodies,
-  };
+//   state = {
+//     localbodies: localbodies,
+//   };
   _localBodiesKeyExtractor(item, index) {
-    return item.id; 
+    return item._id; 
   }
-  _renderLocalBody({item}) {
-    return (
-        <MyList localbody={item}/>
-    )
-  }
+
+//   _renderLocalBody({item}) {
+//     return (
+//         <MyList localbody={item}/>
+//     )
+//   }
   render() {
+    console.log(this.props.data.wards)
     return (
          <Grid>
             <Row size={80}>
                 <FlatList
-                  data={this.state.localbodies}
+                  data={this.props.data.wards}
                   keyExtractor={this._localBodiesKeyExtractor}
-                  renderItem={this._renderLocalBody}
+                  renderItem={({item}) => {
+					return (
+						<WardList locale={this.props.locale} item={item}/>
+					)
+				}}
                 />
             </Row>
          </Grid>  
@@ -67,4 +49,22 @@ class Wards extends Component {
   }
 }
 
-export default Wards;
+//export default Wards;
+
+
+
+const mapStateToProps = (state) => {
+	return {
+		locale: state.locale
+	}
+};
+
+export default graphql(wards, {
+    options: (props) => ({ 
+		variables: {
+            skip: 0,
+            limit: 100,
+            localBodyID: props.localBodyId
+		}
+    })
+})(connect(mapStateToProps)(Wards));
