@@ -40,16 +40,18 @@ class LocalBodyList extends Component {
                     {this.props.data.candidates && this.props.data.candidates.items.length > 0 &&
                         this.props.data.candidates.items.map((candidate,index)=>{
                             let candidateName = candidate.enLabel;
-                            if(this.props.locale === 'np' && candidate.label){
+                            let candidatePost = candidate.candidatePost.enLabel;
+                            if(this.props.locale === 'np'){
                                 candidateName = candidate.label? candidate.label : candidate.enLabel
+                                candidatePost = candidate.candidatePost.label? candidate.candidatePost.label: candidate.candidatePost.enLabel;
                             }
                             return(
-                            <TouchableOpacity key={index} onPress={() => Actions.candidate({candidateID: candidate._id})}>
+                            <TouchableOpacity key={index} onPress={() => Actions.candidate({candidate: candidate})}>
                                 <View style={style.listContent}>
                                     <View style={style.partyIcon}><Image source={require('../../assets/partiesImg/congress.png')}/></View>
                                     <View>
                                         <Text style={style.name}>{candidateName} - {candidate.totalVotes} {I18n.t('votes', {locale: this.props.locale})}  </Text>
-                                        <Text style={style.designation}> {candidate.post}</Text>
+                                        <Text style={style.designation}> {candidatePost}</Text>
                                     </View>
                                 </View>
                             </TouchableOpacity>  

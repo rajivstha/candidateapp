@@ -15,18 +15,45 @@ import PropTypes from 'prop-types';
 
 
 class Candidate extends Component {
-    state = { 
-        candidate: []
-    }
-    componentWillReceiveProps(nextProps){
-        this.setState({
-            candidate: nextProps.data.candidate
-        })
-    }  
+    
     render() {
-        if(this.state.candidate.length > 0){
-            let candidateDetails = this.state.candidate
+        let candidate = this.props.candidate;
+        // let candidateName = candidate.enLabel;
+        let candidateName, candidatePost, candidateParty, candidateSex;
+        if(this.props.locale === 'np' &&  candidate.label){
+            candidateName = candidate.label;
+        }else if(this.props.locale === 'en' &&  candidate.enLabel){
+            candidateName = candidate.enLabel;
+        }else{
+            candidateName = '';
         }
+
+        if(this.props.locale === 'np' &&  candidate.candidatePost){
+            candidatePost = candidate.candidatePost.label;
+        }else if(this.props.locale === 'en' &&  candidate.candidatePost){
+            candidatePost = candidate.candidatePost.enLabel;
+        }else{
+            candidatePost = '';
+        }
+
+        if(this.props.locale === 'np' &&  candidate.politicalParty){
+            candidateParty = candidate.politicalParty.label;
+        }else if(this.props.locale === 'en' &&  candidate.politicalParty){
+            candidateParty = candidate.politicalParty.enLabel;
+        }else{
+            candidateParty = '';
+        }
+
+        if(this.props.locale === 'np' &&  candidate.gender.label){
+            candidateSex = candidate.gender.label;
+        }else if(this.props.locale === 'en' &&  candidate.gender.enLabel){
+            candidateSex = candidate.gender.enLabel;
+        }else{
+            candidateSex = '';
+        }
+
+ 
+        
         return (
                 <Grid>
                 <Header/>
@@ -35,8 +62,8 @@ class Candidate extends Component {
                         <View style={style.singleImageInnerContainer}>
                             <Image source={require('../../assets/img/user.jpg')} style={style.singleImage} />
                             <View style={style.singleImageText}>
-                                <Text style={style.candidateName}>{this.state.candidate && this.state.candidate.enLabel}</Text>
-                                <Text style={style.address}>{this.state.candidate && this.state.candidate.post}</Text>      
+                                <Text style={style.candidateName}>{candidateName}</Text>
+                                <Text style={style.address}>{candidatePost}</Text>      
                             </View>
                             <View style={style.partyImageContainer}>
                                 <Image source={require('../../assets/partiesImg/congress.png')} style={style.partySingleImage} />
@@ -46,15 +73,32 @@ class Candidate extends Component {
                 </Row>
                 <Row size={45}>
                     <View style={style.candidateDetailsContainer}>
-                        <View style={style.bioContainer}>
+                        {/* <View style={style.bioContainer}>
                             <View><Text style={style.bioTitle}>About Me</Text></View>
                             <View><Text style={style.bio}>this is my boitext</Text></View>
-                        </View>
+                        </View> */}
                         <View style={style.candidateDetailsRow}>
-                            <View style={style.iconContainer}><Text style={style.icon}><Icon name="envelope" size={12}/></Text></View>
-                            <View style={style.textContainer}><Text style={style.text}>email</Text></View>
+                            <View style={style.iconContainer}><Text style={style.icon}><Icon name="circle" size={12}/></Text></View>
+                            <View style={style.textContainer}><Text style={style.text}><Text style={style.label}>{I18n.t('total_votes', {locale: this.props.locale})}:</Text> {candidate.totalVotes}</Text></View>
                         </View>
+                        {candidateParty != '' &&  
                         <View style={style.candidateDetailsRow}>
+                            <View style={style.iconContainer}><Text style={style.icon}><Icon name="circle" size={12}/></Text></View>
+                            <View style={style.textContainer}><Text style={style.text}><Text style={style.label}>{I18n.t('political_party', {locale: this.props.locale})}:</Text>  {candidateParty}</Text></View>
+                        </View>
+                        }
+                        <View style={style.candidateDetailsRow}>
+                            <View style={style.iconContainer}><Text style={style.icon}><Icon name="circle" size={12}/></Text></View>
+                            <View style={style.textContainer}><Text style={style.text}><Text style={style.label}>{I18n.t('age', {locale: this.props.locale})}:</Text>  {candidate.age}</Text></View>
+                        </View>
+                        {candidateSex != '' &&
+                        <View style={style.candidateDetailsRow}>
+                            <View style={style.iconContainer}><Text style={style.icon}><Icon name="circle" size={12}/></Text></View>
+                            <View style={style.textContainer}><Text style={style.text}><Text style={style.label}>{I18n.t('sex', {locale: this.props.locale})}:</Text> {candidateSex}</Text></View>
+                        </View>
+                        }
+
+                        {/* <View style={style.candidateDetailsRow}>
                             <View style={style.iconContainer}><Text style={style.icon}><Icon name="phone" size={12}/></Text></View>
                             <View style={style.textContainer}><Text style={style.text}>9099999</Text></View>
                         </View>
@@ -65,7 +109,7 @@ class Candidate extends Component {
                         <View style={style.candidateDetailsRow}>
                             <View style={style.iconContainer}><Text style={style.icon}><Icon name="twitter" size={12}/></Text></View>
                             <View style={style.textContainer}><Text style={style.text}>Follow Me On Twitter</Text></View>
-                        </View>
+                        </View> */}
                         
                     </View>
                 </Row>
@@ -77,7 +121,7 @@ class Candidate extends Component {
 //export default Candidate;
 
 Candidate.propTypes = {
-    candidateID: PropTypes.string,
+    candidate: PropTypes.object,
 };
 
 const mapStateToProps = (state) => {
@@ -86,10 +130,4 @@ const mapStateToProps = (state) => {
 	}
 };
 
-export default graphql(candidate, { 
-    options: (props) => ({ 
-        variables: { 
-            _id: props.candidateID
-        }
-    })
-})(connect(mapStateToProps)(Candidate));  
+export default connect(mapStateToProps)(Candidate);  

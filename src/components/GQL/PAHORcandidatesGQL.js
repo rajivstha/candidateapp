@@ -14,7 +14,6 @@ export const PAHORcandidates = gql`
         enLabel
         electedStatus
         age
-        politicalPartyID
         constitutionalArea
         candidateType
         symbolID
@@ -22,6 +21,24 @@ export const PAHORcandidates = gql`
         totalVotes
         totalValidVote
         candidateID
+        gender {
+          _id
+          label
+          enLabel
+        }
+        politicalParty {
+          _id
+          label
+          enLabel
+          establishedYear
+        }
+        candidatePost {
+          _id
+          label
+          enLabel
+          candidateCountLimit
+          locationLabel
+        }
       }
       houseOfRepresentativeCandidates {
         _id
@@ -29,7 +46,6 @@ export const PAHORcandidates = gql`
         enLabel
         electedStatus
         age
-        politicalPartyID
         constitutionalArea
         candidateType
         symbolID
@@ -37,6 +53,24 @@ export const PAHORcandidates = gql`
         totalVotes
         totalValidVote
         candidateID
+        gender {
+          _id
+          label
+          enLabel
+        }
+        politicalParty {
+          _id
+          label
+          enLabel
+          establishedYear
+        }
+        candidatePost {
+          _id
+          label
+          enLabel
+          candidateCountLimit
+          locationLabel
+        }
       }
     }
   }

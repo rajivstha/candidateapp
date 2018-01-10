@@ -13,12 +13,26 @@ module.exports = {
         bgImage: {
             flex:1
         },
+        text: {
+            fontFamily: 'serif'
+        },
+        navBar: {
+            backgroundColor: '#036cae'
+        },
+        sceneBackground: {
+            backgroundColor: '#FFFFFF'
+        },
+        tabBarStyle: {
+            backgroundColor: '#036cae', 
+            borderBottomColor:'#036cae', 
+            borderBottomWidth: 1
+        },
+        navTitle: {
+            color: '#FFFFFF'
+        },
         sceneLoading: {
             text: {color: '#FFFFFF', fontWeight: 'bold', alignSelf: 'center'},
             bgImage: {justifyContent: 'center'}
-        },
-        text: {
-            fontFamily: 'serif'
         }
     }
 }

@@ -8,6 +8,11 @@ export default {
     hor: 'House of Representative',
     votes: 'Votes',
     ward_no: 'Ward No',
-    total_votes: 'Total Votes'
+    total_votes: 'Total Votes',
+    political_party: 'Political Party',
+    age: 'Age',
+    sex: 'Sex'
+
+    
     
 };

@@ -1,20 +1,33 @@
 import gql from 'graphql-tag';
 const candidateFieldsFragment = gql`
   fragment candidateFieldsFragment on Candidate {
+      _id
+      label
+      enLabel
+      electedStatus
+      age
+      constitutionalArea
+      candidateType
+      symbolID
+      ucStatus
+      totalVotes
+      totalValidVote
+      candidateID
+      gender {
         _id
         label
         enLabel
-        electedStatus
-        age
-        politicalPartyID
-        constitutionalArea
-        candidateType
-        symbolID
-        ucStatus
-        totalVotes
-        totalValidVote
-        candidateID
-        post
+      }
+      politicalParty {
+        _id
+        label
+        enLabel
+      }
+      candidatePost {
+        _id
+        label
+        enLabel
+      }
   }
 `;
 

@@ -129,6 +129,9 @@ module.exports = {
         borderWidth: 1,
         borderColor: globalStyle.UI.neutralColor,
         height: 30
+    },
+    label: {
+        fontWeight: 'bold'
     }
     
 }
