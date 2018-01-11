@@ -47,7 +47,8 @@ module.exports = {
     districtText: {
         color: globalStyle.UI.neutralColor,
         fontSize: 15
-    }
+    },
+    loading: globalStyle.UI.loading
    
    
 }

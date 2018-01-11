@@ -132,6 +132,7 @@ module.exports = {
     },
     label: {
         fontWeight: 'bold'
-    }
+    },
+    loading: globalStyle.UI.loading
     
 }

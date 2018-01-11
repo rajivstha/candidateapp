@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, Image, TouchableOpacity, FlatList} from 'react-native';
+import {View, Text, Image, TouchableOpacity, FlatList, ActivityIndicator} from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import style from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -11,13 +11,28 @@ import {connect} from 'react-redux';
 
   
 class Wards extends Component {
+	state = {
+		loading: true
+	}    
 	_localBodiesKeyExtractor(item, index) {
 		return item._id; 
+	}
+	componentWillReceiveProps(nextProps){
+		if(nextProps.data.wards){
+			this.setState({
+				loading: false
+			})
+		}
 	}
 	render() {
 		return (
 			<Grid>
 				<Row size={80}>
+					{this.state.loading && 
+					<View style={style.loading}>
+						<ActivityIndicator size="large" color="#036cae" />
+					</View>	
+					}
 					<FlatList
 						data={this.props.data.wards}
 						keyExtractor={this._localBodiesKeyExtractor}

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
+import {View, Text, Image, TouchableOpacity, ScrollView, ActivityIndicator} from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Actions} from 'react-native-router-flux';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import Header from '../UI/header';
 import Footer from '../UI/footer';
 import style from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -32,13 +31,22 @@ class Districts extends Component {
     //         <Text style={style.userTitleText}>{name}</Text>
     //     )
     // }
-            
+    state = {
+		loading: true
+	}    
     handleActiveDistrict(districtId) {
         return () => {
             this.props.activeDistrict(districtId);
             Actions.localBodies();
         }
     }
+    componentDidMount(){
+		if(this.props.data.districts){
+			this.setState({
+				loading: false
+			})
+		}
+	}
     render() {
         let province = {
             id : this.props.data._id,
@@ -75,7 +83,11 @@ class Districts extends Component {
     
         return (
             <Grid>
-                {/* <Header/> */}
+                {this.state.loading && 
+				<View style={style.loading}>
+					<ActivityIndicator size="large" color="#036cae" />
+				</View>	
+				}
                 <Row size={80} style={style.districtsContainer}>
                     <View style={style.provinceContainer}>
                         <View style={style.provinceImageContainer}>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
+import {View, Text, Image, TouchableOpacity, ScrollView, ActivityIndicator} from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import style from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {Header} from '../UI'
+
 import { Actions } from 'react-native-router-flux';
 
 import {connect} from 'react-redux';
@@ -15,7 +15,16 @@ import PropTypes from 'prop-types';
 
 
 class Candidate extends Component {
-    
+    state = {
+		loading: true
+    }  
+    componentDidMount(){
+		if(this.props.candidate){
+			this.setState({
+				loading: false
+			})
+		}
+	}
     render() {
         let candidate = this.props.candidate;
         // let candidateName = candidate.enLabel;
@@ -56,6 +65,11 @@ class Candidate extends Component {
         
         return (
                 <Grid>
+                {this.state.loading && 
+				<View style={style.loading}>
+					<ActivityIndicator size="large" color="#036cae" />
+				</View>	
+				}
                 <Row size={35}>
                     <View style={style.singleImageContainer}>
                         <View style={style.singleImageInnerContainer}>

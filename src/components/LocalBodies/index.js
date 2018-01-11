@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, Image, TouchableOpacity, FlatList} from 'react-native';
+import {View, Text, Image, TouchableOpacity, FlatList, ActivityIndicator} from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import style from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -12,6 +12,7 @@ import apolloClient from '../../setup/apolloClient';
 class LocalBodies extends Component {
 	state = {
 		items: [],
+		loading: true
 	};
 	_localBodiesKeyExtractor(item, index) {
 		return item._id; 
@@ -28,7 +29,8 @@ class LocalBodies extends Component {
 			}
 		}).then((data) => {
 			this.setState({
-				items : data.data.localBodies.items
+				items : data.data.localBodies.items,
+				loading: false
 			})
 		}).catch((err) => {
 			console.log(err);
@@ -38,6 +40,11 @@ class LocalBodies extends Component {
 		return (
 			<Grid>
 				<Row size={80}>
+					{this.state.loading && 
+					<View style={style.loading}>
+						<ActivityIndicator size="large" color="#036cae" />
+					</View>	
+					}
 					<FlatList
 					data={this.state.items}
 					keyExtractor={this._localBodiesKeyExtractor}

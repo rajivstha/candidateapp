@@ -30,5 +30,6 @@ module.exports = {
         fontSize: 22,
         fontWeight: 'bold'
         
-    }
+    },
+    loading: globalStyle.UI.loading
 }
