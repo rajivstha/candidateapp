@@ -12,22 +12,24 @@ const propTypes = {
 const TabIcon = (props) => {
     let iconName, 
         iconColor = props.focused ? '#DA1A40' : '#FFFFFF',
-        iconSize = props.focused ? 18 : 16;
-    // switch(props.title) {
-    //     case 'Local Election':
-    //         iconName = props.focused ? 'heart' : 'heart-o';
-    //         break;
-    //     case 'Provincial Assembly':
-    //         iconName = props.focused ? 'comments' : 'comments-o';
-    //         break;
-    //     case 'House of Representative':
-    //         iconName = props.focused ? 'user' : 'user-o';
-    //         break;
-    // }
-    // if(iconName) {
-    //     return <Icon name={iconName} size={iconSize} color={iconColor} />;
-    // }
-    return <Text style={{color: iconColor, fontSize: iconSize}}>{props.title}</Text>
+        iconSize = props.focused ? 40 : 36;
+    switch(props.navigation.state.key) {
+        case 'bodies':
+            iconName = props.focused ? 'home' : 'home';
+            break;
+        case 'assembly':
+            iconName = props.focused ? 'product-hunt' : 'product-hunt';
+            break;
+        case 'representative':
+            iconName = props.focused ? 'institution' : 'institution';
+            break;
+    }
+    if(iconName) {
+        return <Icon name={iconName} size={iconSize} color={iconColor} />;
+    }else{
+        return <Text style={{color: iconColor, fontSize: iconSize}}>{props.title}</Text>
+    }
+    
 };
 
 TabIcon.propTypes = propTypes;

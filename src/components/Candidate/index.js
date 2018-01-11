@@ -56,7 +56,6 @@ class Candidate extends Component {
         
         return (
                 <Grid>
-                <Header/>
                 <Row size={35}>
                     <View style={style.singleImageContainer}>
                         <View style={style.singleImageInnerContainer}>

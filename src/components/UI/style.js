@@ -6,7 +6,7 @@ module.exports = {
         backgroundColor: globalStyle.UI.neutralColor
     },
     logoContainer: {
-        marginTop: 10,
+        marginTop: 14,
         alignItems: 'center', 
         justifyContent: 'center',
         flex: 1

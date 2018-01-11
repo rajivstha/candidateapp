@@ -11,7 +11,6 @@ class Aboutus extends Component {
   render() {
     return (
          <Grid>
-			<HeaderAbout/>
 			<Row size={50} style={style.aboutUsContainer}>
 				<View style={style.aboutUsRow}>
 					<Text style={style.title}>{I18n.t('about_us', {locale: this.props.locale})}</Text>

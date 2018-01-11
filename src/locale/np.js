@@ -8,7 +8,7 @@ export default {
     hor: 'प्रतिनिधिसभाको',
     votes: 'Votes',
     ward_no: 'वार्ड न.',
-    total_votes: 'जम्मा मता ',
+    total_votes: 'जम्मा मत  ',
     political_party: 'राजनीतिक दल',
     age: 'उमेर',
     sex: 'लिङ'
