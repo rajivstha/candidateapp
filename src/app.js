@@ -29,7 +29,7 @@ class App extends Component {
       <Router backAndroidHandler={onBackAndroid} navigationBarStyle={globalStyle.UI.navBar} titleStyle={globalStyle.UI.navTitle} >
 			<Stack key="root">
 				<Scene key="home" initial={true} hideNavBar  component={Home} />
-				<Scene key="aboutUs" navBar={CustomNavBar}  hideNavBar={true} component={Aboutus} />
+				<Scene key="aboutUs" navBar={CustomNavBar}  hideNavBar={false} component={Aboutus} />
 				<Scene key="districts" navBar={CustomNavBar} component={Districts} />
 				<Scene key="candidate"  navBar={CustomNavBar} component={Candidate} />
 				<Scene key="addDetails"   component={AddDetails} />

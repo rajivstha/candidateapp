@@ -16,27 +16,27 @@ class Aboutus extends Component {
 					<Text style={style.title}>{I18n.t('about_us', {locale: this.props.locale})}</Text>
 				</View>
 				<View style={style.aboutUsRow}>
-						<View style={style.iconContainer}><Text style={style.icon}><Icon name="group" size={23}/></Text></View>
+						<View style={style.iconContainer}><Text style={style.icon}><Icon name="group" size={16}/></Text></View>
 						<View style={style.textContainer}><Text style={style.text}>Developed by {aboutUs.name}</Text></View>
 				</View>
 				<View style={style.aboutUsRow}>
-						<View style={style.iconContainer}><Text style={style.icon}><Icon name="twitter" size={23}/></Text></View>
+						<View style={style.iconContainer}><Text style={style.icon}><Icon name="twitter" size={16}/></Text></View>
 						<View style={style.textContainer}><Text style={style.text}>Follow on Twitter</Text></View>
 				</View>
 				<View style={style.aboutUsRow}>
-						<View style={style.iconContainer}><Text style={style.icon}><Icon name="facebook" size={23}/></Text></View>
+						<View style={style.iconContainer}><Text style={style.icon}><Icon name="facebook" size={16}/></Text></View>
 						<View style={style.textContainer}><Text style={style.text}>Like us on Facebook</Text></View>
 				</View>
 				<View style={style.aboutUsRow}>
-						<View style={style.iconContainer}><Text style={style.icon}><Icon name="globe" size={23}/></Text></View>
+						<View style={style.iconContainer}><Text style={style.icon}><Icon name="globe" size={16}/></Text></View>
 						<View style={style.textContainer}><Text style={style.text}>Visit Website</Text></View>
 				</View>
 				<View style={style.aboutUsRow}>
-						<View style={style.iconContainer}><Text style={style.icon}><Icon name="envelope" size={23}/></Text></View>
+						<View style={style.iconContainer}><Text style={style.icon}><Icon name="envelope" size={16}/></Text></View>
 						<View style={style.textContainer}><Text style={style.text}>Give Us Feedback</Text></View>
 				</View>
 			</Row>
-			<Row size={50}></Row>
+			
             
          </Grid>  
     );
