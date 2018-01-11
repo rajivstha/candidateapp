@@ -20,8 +20,8 @@ class Setup extends Component {
     async wrapGlobalHandler(error, isFatal) {
       try {
         //logError('wrapGlobalHandler', { error, isFatal });
-      } catch (err) { 
-        console.log(err); 
+      } catch (err) {
+        console.log(err);
       }
       //  After you're finished, call the defaultHandler so that
       //  react-native also gets the error.
@@ -32,15 +32,15 @@ class Setup extends Component {
     }
     render() {
       return (
-      <ApolloProvider client={ apolloClient }>  
+      <ApolloProvider client={ apolloClient }>
         <Provider store={ store }>
-          <PersistGate 
-          onBeforeLift={ this.onBeforeLift } 
+          <PersistGate
+          onBeforeLift={ this.onBeforeLift }
           persistor={ persistor }>
               <App />
           </PersistGate>
         </Provider>
-      </ApolloProvider>  
+      </ApolloProvider>
       );
     }
 }
