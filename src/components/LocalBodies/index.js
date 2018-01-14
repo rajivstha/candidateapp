@@ -8,6 +8,7 @@ import {LocalBodyList}  from '../UI';
 import {localBodies}  from '../GQL';
 import { graphql, compose } from 'react-apollo';
 import apolloClient from '../../setup/apolloClient';
+import I18n from '../../locale';
 
 class LocalBodies extends Component {
 	state = {
@@ -39,12 +40,17 @@ class LocalBodies extends Component {
 	render() {
 		return (
 			<Grid>
-				<Row size={80}>
-					{this.state.loading && 
+				{this.state.loading && 
 					<View style={style.loading}>
 						<ActivityIndicator size="large" color="#036cae" />
 					</View>	
-					}
+				}
+				<Row size={6}>
+					<View>
+						<Text style={style.title}>{I18n.t('local_election', {locale: this.props.locale})}</Text>
+					</View>
+				</Row>
+				<Row size={74}>
 					<FlatList
 					data={this.state.items}
 					keyExtractor={this._localBodiesKeyExtractor}

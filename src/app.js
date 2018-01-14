@@ -33,7 +33,7 @@ class App extends Component {
 				<Scene key="districts" navBar={CustomNavBar} component={Districts} />
 				<Scene key="candidate"  navBar={CustomNavBar} component={Candidate} />
 				<Scene key="addDetails"   component={AddDetails} />
-				<Scene key="wards" hideNavBar={false}  component={Wards} />
+				<Scene key="wards" hideNavBar={false} navBar={CustomNavBar} component={Wards} />
 				<Tabs
 					key="tabbar"
 					swipeEnabled

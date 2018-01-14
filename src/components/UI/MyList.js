@@ -42,16 +42,16 @@ class MyList extends Component {
         }
         return (
             <View style={style.itemListContainer}>
-            <TouchableOpacity onPress={() => this.toggleClass()}>
-                <View onclick={this.toggleClass.bind(this)} style={style.listTitleContainer}>
-                    <View style={style.itemIconContainer}>
-                        <Text style={style.itemIcon}><Icon name="navicon" size={22}/></Text>
+                <TouchableOpacity onPress={() => this.toggleClass()}>
+                    <View onclick={this.toggleClass.bind(this)} style={style.listTitleContainer}>
+                        <View style={style.itemIconContainer}>
+                            <Text style={style.itemIcon}><Icon name="navicon" size={22}/></Text>
+                        </View>
+                        <View style={style.itemTextContainer}>  
+                            <Text style={style.itemText}>{I18n.t('election_area', {locale: this.props.locale})} {title}</Text>
+                        </View>
                     </View>
-                    <View style={style.itemTextContainer}>  
-                        <Text style={style.itemText}>{I18n.t('election_area', {locale: this.props.locale})} {title}</Text>
-                    </View>
-                </View>
-            </TouchableOpacity>    
+                </TouchableOpacity>    
                 {this.state.showDetails == true && 
                 <View>
                     <View style={style.listContentContainer}>

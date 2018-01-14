@@ -33,19 +33,15 @@ class PAHORcandidates extends Component {
 
   render() {
 	return (
-         <Grid>
-            <Row size={80}>
-				 <FlatList
-					data={this.state.items}
-					keyExtractor={this._PAHORcandidatesKeyExtractor}
-					renderItem={({item}) => {
-						return (
-							<MyList candidateType ={this.props.candidateType} locale={this.props.locale} item={item}/>
-						)
-					}}
-				/> 
-            </Row>
-         </Grid>  
+		<FlatList
+				data={this.state.items}
+				keyExtractor={this._PAHORcandidatesKeyExtractor}
+				renderItem={({item}) => {
+					return (
+						<MyList candidateType ={this.props.candidateType} locale={this.props.locale} item={item}/>
+					)
+				}}
+			/> 
     );
   }
 }

@@ -50,9 +50,9 @@ module.exports = {
         paddingBottom: 15
     },
     itemListContainer:{
-        marginTop: 10,
         backgroundColor: '#ccc',
-        padding: 10
+        padding: 10,
+        marginBottom: 1
     },
     listTitleContainer: {
         flexDirection: 'row',

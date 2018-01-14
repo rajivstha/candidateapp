@@ -5,16 +5,21 @@ module.exports = {
         flexDirection: 'column'
     },
     singleImageContainer: {
-        flex:1, 
-        backgroundColor: '#FFF', 
-        padding: 15, 
-        marginLeft:45, 
-        marginRight:45, 
-        borderRadius: 20, 
-        marginTop: 20
+       flex: 1,
+       alignItems: 'center', 
+       justifyContent: 'center'
+    },
+    singleImage: {
+        width: 270,
+        height: 220,
     },
     singleImageInnerContainer: { 
-        flex:1
+        borderWidth: 15,
+        borderColor: globalStyle.UI.backgroundColor,
+        borderRadius: 20, 
+        marginTop: 10,
+        width: 300,
+        height: 250,
     },
     singleImageText: {
         backgroundColor: 'rgba(0, 0, 0, 0.5)', 

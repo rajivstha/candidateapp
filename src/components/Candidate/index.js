@@ -70,7 +70,7 @@ class Candidate extends Component {
 					<ActivityIndicator size="large" color="#036cae" />
 				</View>	
 				}
-                <Row size={35}>
+                <Row size={40}>
                     <View style={style.singleImageContainer}>
                         <View style={style.singleImageInnerContainer}>
                             <Image source={require('../../assets/img/user.jpg')} style={style.singleImage} />
@@ -84,7 +84,7 @@ class Candidate extends Component {
                         </View>    
                     </View>
                 </Row>
-                <Row size={45}>
+                <Row size={40}>
                     <View style={style.candidateDetailsContainer}>
                         {/* <View style={style.bioContainer}>
                             <View><Text style={style.bioTitle}>About Me</Text></View>
