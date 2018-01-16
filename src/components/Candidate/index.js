@@ -37,26 +37,26 @@ class Candidate extends Component {
             candidateName = '';
         }
 
-        if(this.props.locale === 'np' &&  candidate.candidatePost){
-            candidatePost = candidate.candidatePost.label;
-        }else if(this.props.locale === 'en' &&  candidate.candidatePost){
-            candidatePost = candidate.candidatePost.enLabel;
+        if(this.props.locale === 'np' &&  candidate.y_postNp){
+            candidatePost = candidate.y_postNp;
+        }else if(this.props.locale === 'en' &&  candidate.y_postEn){
+            candidatePost = candidate.y_postEn;
         }else{
             candidatePost = '';
         }
 
-        if(this.props.locale === 'np' &&  candidate.politicalParty){
-            candidateParty = candidate.politicalParty.label;
-        }else if(this.props.locale === 'en' &&  candidate.politicalParty){
-            candidateParty = candidate.politicalParty.enLabel;
+        if(this.props.locale === 'np' &&  candidate.x_politicalPartyName){
+            candidateParty = candidate.x_politicalPartyName;
+        }else if(this.props.locale === 'en' &&  candidate.x_politicalPartyNameEng){
+            candidateParty = candidate.x_politicalPartyNameEng;
         }else{
             candidateParty = '';
         }
 
-        if(this.props.locale === 'np' &&  candidate.gender.label){
-            candidateSex = candidate.gender.label;
-        }else if(this.props.locale === 'en' &&  candidate.gender.enLabel){
-            candidateSex = candidate.gender.enLabel;
+        if(this.props.locale === 'np' &&  candidate.y_genderNp){
+            candidateSex = candidate.y_genderNp;
+        }else if(this.props.locale === 'en' &&  candidate.y_genderEn){
+            candidateSex = candidate.y_genderEn;
         }else{
             candidateSex = '';
         }
@@ -97,7 +97,7 @@ class Candidate extends Component {
                         {candidateParty != '' &&  
                         <View style={style.candidateDetailsRow}>
                             <View style={style.iconContainer}><Text style={style.icon}><Icon name="circle" size={12}/></Text></View>
-                            <View style={style.textContainer}><Text style={style.text}><Text style={style.label}>{I18n.t('political_party', {locale: this.props.locale})}:</Text>  {candidateParty}</Text></View>
+                            <View style={style.textContainer}><Text style={style.text}><Text style={style.label}>{I18n.t('political_party', {locale: this.props.locale})}:</Text>  {candidateParty} </Text></View>
                         </View>
                         }
                         <View style={style.candidateDetailsRow}>

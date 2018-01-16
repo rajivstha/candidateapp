@@ -5,29 +5,17 @@ const candidateFieldsFragment = gql`
       label
       enLabel
       electedStatus
-      age
-      constitutionalArea
+			age
       candidateType
-      symbolID
-      ucStatus
-      totalVotes
+     	y_postNp
+      y_postEn
+      y_genderNp
+      y_genderEn
+      y_politicalPartyID
+      x_politicalPartyName
+      x_politicalPartyNameEng
+			totalVotes
       totalValidVote
-      candidateID
-      gender {
-        _id
-        label
-        enLabel
-      }
-      politicalParty {
-        _id
-        label
-        enLabel
-      }
-      candidatePost {
-        _id
-        label
-        enLabel
-      }
   }
 `;
 

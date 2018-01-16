@@ -71,7 +71,12 @@ class MyList extends Component {
                                                 {candidateName} - {candidate.totalVotes} {I18n.t('votes', {locale: this.props.locale})}  
                                             </Text>
                                             <Text style={style.designation}> 
-                                                {I18n.t('election_area', {locale: this.props.locale})}  {candidate.constitutionalArea}
+                                                {candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaNp !== null && I18n.t('election_area', {locale: this.props.locale})}
+                                               
+                                                {candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaNp !== null && " ("}
+                                                    {this.props.locale === 'en' && candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaEn}
+                                                    {this.props.locale === 'np' && candidate.constitutionalAreaNp !== null && candidate.constitutionalAreaNp}
+                                                {candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaNp !== null && ")"}
                                             </Text>
                                         </View>
                                     </View>

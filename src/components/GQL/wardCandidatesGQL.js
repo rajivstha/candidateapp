@@ -1,33 +1,21 @@
 import gql from 'graphql-tag';
 const wardCandidateFieldsFragment = gql`
   fragment wardCandidateFieldsFragment on Candidate {
-      _id
-      label
-      enLabel
-      electedStatus
-      age
-      constitutionalArea
-      candidateType
-      symbolID
-      ucStatus
-      totalVotes
-      totalValidVote
-      candidateID
-      gender {
-        _id
-        label
-        enLabel
-      }
-      politicalParty {
-        _id
-        label
-        enLabel
-      }
-      candidatePost {
-        _id
-        label
-        enLabel
-      }
+    _id
+    label
+    enLabel
+    electedStatus
+    age
+    candidateType
+    y_postNp
+    y_postEn
+    y_genderNp
+    y_genderEn
+    y_politicalPartyID
+    x_politicalPartyName
+    x_politicalPartyNameEng
+    totalVotes
+    totalValidVote
   }
 `;
 

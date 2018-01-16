@@ -40,10 +40,10 @@ class WardList extends Component {
                         {this.props.data.candidates && this.props.data.candidates.items.length > 0 &&
                             this.props.data.candidates.items.map((candidate,index)=>{
                                 let candidateName = candidate.enLabel;
-                                let candidatePost = candidate.candidatePost.enLabel;
+                                let candidatePost = candidate.y_postEn;
                                 if(this.props.locale === 'np'){
                                     candidateName = candidate.label? candidate.label : candidate.enLabel
-                                    candidatePost = candidate.candidatePost.label? candidate.candidatePost.label: candidate.candidatePost.enLabel;
+                                    candidatePost = candidate.y_postNp? candidate.y_postNp: candidate.y_postEn;
                                 }
                                 return(
                                 <TouchableOpacity key={index} onPress={() => Actions.candidate({candidate: candidate})}>

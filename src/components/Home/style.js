@@ -6,7 +6,9 @@ module.exports = {
         paddingRight: 15,
         marginTop: 15
     },
-    provinceItem: { marginBottom: 30 },
+    provinceItem: { 
+        marginBottom: 30 
+    },
     provinceImageContainer: {
         alignItems: 'center', 
         justifyContent: 'center',
@@ -15,7 +17,6 @@ module.exports = {
         paddingBottom: 10,
         borderRadius: 10
     },
-    provinceImage: {},
     provinceTextContainer:{
         alignItems: 'center', 
         justifyContent: 'center',

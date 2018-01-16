@@ -5,7 +5,6 @@ import {wards} from './wardsGQL';
 import {PAHORcandidates} from './PAHORcandidatesGQL';
 import {localBodyCandidates} from './localBodyCandidatesGQL';
 import {wardCandidates} from './wardCandidatesGQL';
-import {candidate} from './candidateQGL';
 
 export {
     provinces,
@@ -14,6 +13,5 @@ export {
     constituencies,
     PAHORcandidates,
     localBodyCandidates,
-    wardCandidates,
-    candidate
+    wardCandidates
 }

@@ -10,27 +10,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {activeDistrict} from './districtActions';
 import I18n from '../../locale';
 class Districts extends Component {
-    // componentWillMount() {
-    //     Actions.refresh({
-    //         renderTitle: this.renderTitle(),
-    //     });
-    // }
-
-    // renderTitle() {
-    //     let name = '';
-    //     if(this.props.locale === 'np' && this.props.data.label){
-    //         name = this.props.data.label;
-    //     }else if(this.props.locale === 'en' && this.props.data.enLabel){
-    //         name =  this.props.data.enLabel;
-    //     }else{
-    //         name = 'Province';
-    //     }
-        
-    //     console.log(this.props)
-    //     return (
-    //         <Text style={style.userTitleText}>{name}</Text>
-    //     )
-    // }
     state = {
 		loading: true
 	}    
@@ -80,7 +59,13 @@ class Districts extends Component {
         if(province.id === '3ad0d718-3a53-4fb6-97c4-d4bbbfe289bc') {
             image = <Image source={require('../../assets/provinceImg/3ad0d718-3a53-4fb6-97c4-d4bbbfe289bc.png')}/>
         }
-    
+        let heading = '';
+        if(this.props.locale === 'en'){
+            heading = I18n.t('district_under', {locale: this.props.locale}) + ' ' + provinceTitle;
+        }
+        if(this.props.locale === 'np'){
+            heading = provinceTitle + ' ' + I18n.t('district_under', {locale: this.props.locale});
+        }
         return (
             <Grid>
                 {this.state.loading && 
@@ -94,8 +79,9 @@ class Districts extends Component {
                             {image}
                         </View>
                         <View style={style.provinceTextContainer}>
-                            <Text style={style.provinceText}>{I18n.t('district_under', {locale: this.props.locale})} {provinceTitle}</Text>
-                           
+                            <Text style={style.provinceText}>
+                                {heading}
+                            </Text>
                         </View>
                     </View>
                     <ScrollView>

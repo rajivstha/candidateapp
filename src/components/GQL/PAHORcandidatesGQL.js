@@ -9,68 +9,42 @@ export const PAHORcandidates = gql`
       _id: $id
     ){
       provinceAssemblyCandidates {
-        _id
-        label
-        enLabel
-        electedStatus
-        age
-        constitutionalArea
-        candidateType
-        symbolID
-        ucStatus
-        totalVotes
-        totalValidVote
-        candidateID
-        gender {
-          _id
-          label
-          enLabel
-        }
-        politicalParty {
-          _id
-          label
-          enLabel
-          establishedYear
-        }
-        candidatePost {
-          _id
-          label
-          enLabel
-          candidateCountLimit
-          locationLabel
-        }
+		_id
+		label
+		enLabel
+		electedStatus
+		age
+		candidateType
+		totalVotes
+		totalValidVote
+		y_postNp
+		y_postEn
+		y_genderNp
+		y_genderEn
+		y_politicalPartyID
+		x_politicalPartyName
+		x_politicalPartyNameEng
+		constitutionalAreaEn
+		constitutionalAreaNp
       }
       houseOfRepresentativeCandidates {
-        _id
-        label
-        enLabel
-        electedStatus
-        age
-        constitutionalArea
-        candidateType
-        symbolID
-        ucStatus
-        totalVotes
-        totalValidVote
-        candidateID
-        gender {
-          _id
-          label
-          enLabel
-        }
-        politicalParty {
-          _id
-          label
-          enLabel
-          establishedYear
-        }
-        candidatePost {
-          _id
-          label
-          enLabel
-          candidateCountLimit
-          locationLabel
-        }
+		_id
+		label
+		enLabel
+		electedStatus
+		age
+		candidateType
+		totalVotes
+		totalValidVote
+		y_postNp
+		y_postEn
+		y_genderNp
+		y_genderEn
+		y_politicalPartyID
+		x_politicalPartyName
+		x_politicalPartyNameEng
+		constitutionalAreaEn
+		constitutionalAreaNp
       }
     }
   }
