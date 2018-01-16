@@ -9,6 +9,7 @@ import { graphql } from 'react-apollo';
 import apolloClient from '../../setup/apolloClient';
 import {PAHORcandidates}  from '../GQL';
 import {PoliticalPartyImage} from '../UI';
+
 class MyList extends Component {
     state = {
         showDetails: false,

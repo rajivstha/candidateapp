@@ -9,6 +9,7 @@ import {wardCandidates}  from '../GQL';
 import { graphql, compose } from 'react-apollo';
 import I18n from '../../locale';
 import {PoliticalPartyImage} from '../UI';
+
 class WardList extends Component {
     state = {
         showDetails: false

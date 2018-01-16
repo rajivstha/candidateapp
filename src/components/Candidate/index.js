@@ -3,9 +3,7 @@ import {View, Text, Image, TouchableOpacity, ScrollView, ActivityIndicator} from
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import style from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
 import { Actions } from 'react-native-router-flux';
-
 import {connect} from 'react-redux';
 import {candidate}  from '../GQL';
 import { graphql } from 'react-apollo';

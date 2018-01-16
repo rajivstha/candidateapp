@@ -9,6 +9,7 @@ import {localBodyCandidates}  from '../GQL';
 import { graphql, compose } from 'react-apollo';
 import I18n from '../../locale';
 import {PoliticalPartyImage} from '../UI';
+
 class LocalBodyList extends Component {
     state = {
         showDetails: false
