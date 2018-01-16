@@ -94,9 +94,9 @@ module.exports = {
         marginRight: 10,
         marginLeft: 7
     },
-    partyIconSingle: {
-        width: 50,
-        height: 50
+    partySingleImage: {
+        width: 60,
+        height: 60
     },
     name: {
         color: globalStyle.UI.neutralColor,
