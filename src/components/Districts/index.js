@@ -16,7 +16,7 @@ class Districts extends Component {
     handleActiveDistrict(districtId) {
         return () => {
             this.props.activeDistrict(districtId);
-            Actions.localBodies();
+            Actions.tabbar();
         }
     }
     componentDidMount(){

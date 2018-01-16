@@ -27,18 +27,19 @@ class App extends Component {
     };
     return (
       <Router backAndroidHandler={onBackAndroid} navigationBarStyle={globalStyle.UI.navBar} titleStyle={globalStyle.UI.navTitle} >
-			<Stack key="root">
-				<Scene key="home" initial={true} hideNavBar  component={Home} />
-				<Scene key="aboutUs" navBar={CustomNavBar}  hideNavBar={false} component={Aboutus} />
-				<Scene key="districts" navBar={CustomNavBar} component={Districts} />
-				<Scene key="candidate"  navBar={CustomNavBar} component={Candidate} />
-				<Scene key="addDetails"   component={AddDetails} />
-				<Scene key="wards" hideNavBar={false} navBar={CustomNavBar} component={Wards} />
+			<Stack key="root"
+						 hideNavBar={true}
+             navBar={CustomNavBar}>
+				<Scene key="home" initial={true} component={Home} />
+				<Scene key="aboutUs" hideNavBar={false} component={Aboutus} />
+				<Scene key="districts" hideNavBar={false} component={Districts} />
+				<Scene key="candidate" hideNavBar={false} component={Candidate} />
+				<Scene key="addDetails" hideNavBar={false} component={AddDetails} />
+				<Scene key="wards" hideNavBar={false} component={Wards} />
 				<Tabs
 					key="tabbar"
 					swipeEnabled
 					showLabel={false}
-          hideNavBar={true}
           tabBarPosition="bottom"
           tabBarStyle={globalStyle.UI.tabBarStyle}
 				>
@@ -47,21 +48,21 @@ class App extends Component {
 					title={I18n.t('local_election', {locale: this.props.locale})}
 					icon={TabIcon}
 					>
-						<Scene navBar={CustomNavBar} key="localBodies" component={LocalBodies} />
+						<Scene hideNavBar={false} key="localBodies" component={LocalBodies} />
 					</Stack>
 					<Stack
 					key="assembly"
 					title={I18n.t('provincial_assembly', {locale: this.props.locale})}
 					icon={TabIcon}
 					>
-						<Scene  navBar={CustomNavBar} key="provincialAssembly"   component={ProvincialAssembly} />
+						<Scene hideNavBar={false}  key="provincialAssembly" component={ProvincialAssembly} />
 					</Stack>
 					<Stack
 					key="representative"
 					title={I18n.t('hor', {locale: this.props.locale})}
 					icon={TabIcon}
 					>
-						<Scene navBar={CustomNavBar} key="houseOfRepresentative"   component={HouseOfRepresentative} />
+						<Scene hideNavBar={false}  key="houseOfRepresentative" component={HouseOfRepresentative} />
 					</Stack>
 				</Tabs>
 				
