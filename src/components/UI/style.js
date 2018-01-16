@@ -94,6 +94,10 @@ module.exports = {
         marginRight: 10,
         marginLeft: 7
     },
+    partyIconWrapper: {
+        width: 60,
+        height: 60
+    },
     partySingleImage: {
         width: 60,
         height: 60

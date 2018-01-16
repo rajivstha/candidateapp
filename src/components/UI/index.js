@@ -5,11 +5,14 @@ import WardList from './WardList';
 import LocalBodyList from './LocalBodyList';
 import Header from './header';
 import Footer from './footer';
+import PoliticalPartyImage from './PoliticalPartyImage';
+
 export {
     TabIcon,
     MyList,
     Header,
     WardList,
     LocalBodyList,
-    Footer
+    Footer,
+    PoliticalPartyImage
 }

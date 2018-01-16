@@ -61,10 +61,6 @@ module.exports = {
         justifyContent: 'center'
 
     },
-    partySingleImage: {
-        width: 60,
-        height: 60,
-    },
     bioContainer:{
         paddingBottom: 10
     },
