@@ -15,6 +15,7 @@ class LocalBodies extends Component {
 		items: [],
 		loading: true
 	};
+
 	_localBodiesKeyExtractor(item, index) {
 		return item._id; 
 	}
@@ -37,6 +38,7 @@ class LocalBodies extends Component {
 			console.log(err);
 		})
 	}
+
 	render() {
 		return (
 			<Grid>

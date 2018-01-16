@@ -38,19 +38,19 @@ class App extends Component {
 					key="tabbar"
 					swipeEnabled
 					showLabel={false}
-					tabBarStyle={globalStyle.UI.tabBarStyle}
+          hideNavBar={true}
+          tabBarPosition="bottom"
+          tabBarStyle={globalStyle.UI.tabBarStyle}
 				>
 					<Stack
 					key="bodies"
-					hideNavBar={false}
 					title={I18n.t('local_election', {locale: this.props.locale})}
 					icon={TabIcon}
 					>
-						<Scene navBar={CustomNavBar} key="localBodies"   component={LocalBodies} />
+						<Scene navBar={CustomNavBar} key="localBodies" component={LocalBodies} />
 					</Stack>
 					<Stack
 					key="assembly"
-					hideNavBar={false}
 					title={I18n.t('provincial_assembly', {locale: this.props.locale})}
 					icon={TabIcon}
 					>
@@ -58,7 +58,6 @@ class App extends Component {
 					</Stack>
 					<Stack
 					key="representative"
-					hideNavBar={false}
 					title={I18n.t('hor', {locale: this.props.locale})}
 					icon={TabIcon}
 					>
