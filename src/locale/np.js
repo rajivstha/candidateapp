@@ -1,6 +1,6 @@
 export default {  
     view_wards: 'सबै वार्ड हेर्नुहोस',
-    district_under: 'अन्तर्गत जिल्ल हरु',
+    district_under: 'अन्तर्गत जिल्ला हरु',
     about_us : 'हाम्रो बारेमा',
     election_area: 'निर्वाचन छेत्र',
     local_election: 'स्थानीय निर्वाचन',

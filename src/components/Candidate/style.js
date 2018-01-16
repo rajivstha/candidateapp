@@ -54,12 +54,16 @@ module.exports = {
         position: 'absolute', 
         top: -10,
         right: -10,
-        width: 60,
-        height: 60,
+        width: 65,
+        height: 65,
         backgroundColor: globalStyle.UI.backgroundColor,
         alignItems: 'center', 
         justifyContent: 'center'
 
+    },
+    partySingleImage: {
+        width: 60,
+        height: 60,
     },
     bioContainer:{
         paddingBottom: 10
