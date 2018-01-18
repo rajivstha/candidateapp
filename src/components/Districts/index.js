@@ -13,9 +13,9 @@ class Districts extends Component {
     state = {
 		loading: true
 	}    
-    handleActiveDistrict(districtId) {
+    handleActiveDistrict(district) {
         return () => {
-            this.props.activeDistrict(districtId);
+            this.props.activeDistrict(district);
             Actions.tabbar();
         }
     }
@@ -92,7 +92,7 @@ class Districts extends Component {
                                 districtTitle = district.label? district.label : district.enLabel
                             }
                                 return(
-                                    <TouchableOpacity  key={index} onPress={this.handleActiveDistrict(district._id)}>
+                                    <TouchableOpacity  key={index} onPress={this.handleActiveDistrict(district)}>
                                         <View style={style.districtItem}>
                                             <Text style={style.districtText}>{districtTitle}</Text>
                                         </View>
@@ -114,7 +114,7 @@ Districts.propTypes = {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        activeDistrict: (districtId) => dispatch(activeDistrict(districtId)),
+        activeDistrict: (district) => dispatch(activeDistrict(district)),
     }
 };
 

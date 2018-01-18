@@ -15,9 +15,26 @@ export const localBodies = gql`
     ){
         total
         items {
-          _id
-          label
-          enLabel
+            _id
+            label
+            enLabel
+            candidates {
+                _id
+                label
+                enLabel
+                electedStatus
+                age
+                candidateType
+                y_postNp
+                y_postEn
+                y_genderNp
+                y_genderEn
+                y_politicalPartyID
+                x_politicalPartyName
+                x_politicalPartyNameEng
+                totalVotes
+                totalValidVote
+            }
         }
     }
   }

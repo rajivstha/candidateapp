@@ -13,10 +13,14 @@ import {PoliticalPartyImage} from '../UI';
 class MyList extends Component {
     state = {
         showDetails: false,
-        candidates: []
+        candidates: [],
+        iconName: false
     }  
     toggleClass() {
-        this.setState({ showDetails: !this.state.showDetails });
+        this.setState({ 
+            showDetails: !this.state.showDetails,
+            iconName: !this.state.iconName 
+        });
     };
     componentDidMount(){
         if(this.props.item){
@@ -46,7 +50,7 @@ class MyList extends Component {
                 <TouchableOpacity onPress={() => this.toggleClass()}>
                     <View onclick={this.toggleClass.bind(this)} style={style.listTitleContainer}>
                         <View style={style.itemIconContainer}>
-                            <Text style={style.itemIcon}><Icon name="navicon" size={22}/></Text>
+                            <Text style={style.itemIcon}><Icon name={this.state.iconName === false ? 'expand': 'compress'} size={16}/></Text>
                         </View>
                         <View style={style.itemTextContainer}>  
                             <Text style={style.itemText}>{I18n.t('election_area', {locale: this.props.locale})} {title}</Text>
@@ -71,15 +75,18 @@ class MyList extends Component {
                                         </View>
                                         <View>
                                             <Text style={style.name}>
-                                                {candidateName} - {candidate.totalVotes} {I18n.t('votes', {locale: this.props.locale})}  
+                                                {candidateName} 
                                             </Text>
                                             <Text style={style.designation}> 
-                                                {candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaNp !== null && I18n.t('election_area', {locale: this.props.locale})}
-                                               
-                                                {candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaNp !== null && " ("}
-                                                    {this.props.locale === 'en' && candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaEn}
-                                                    {this.props.locale === 'np' && candidate.constitutionalAreaNp !== null && candidate.constitutionalAreaNp}
-                                                {candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaNp !== null && ")"}
+                                            {candidate.totalVotes} {I18n.t('votes', {locale: this.props.locale})} 
+                                            </Text>
+                                            <Text style={style.designation}> 
+                                            {candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaNp !== null && I18n.t('election_area', {locale: this.props.locale})}
+                                            
+                                            {candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaNp !== null && " ("}
+                                                {this.props.locale === 'en' && candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaEn}
+                                                {this.props.locale === 'np' && candidate.constitutionalAreaNp !== null && candidate.constitutionalAreaNp}
+                                            {candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaNp !== null && ")"}
                                             </Text>
                                         </View>
                                     </View>

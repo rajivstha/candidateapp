@@ -27,7 +27,7 @@ class LocalBodies extends Component {
 				skip: 0,
 				limit: 100,
 				returnPagedData: true,
-				districtID: this.props.activeDistrict
+				districtID: this.props.activeDistrict._id
 			}
 		}).then((data) => {
 			this.setState({
@@ -40,6 +40,10 @@ class LocalBodies extends Component {
 	}
 
 	render() {
+		let title = this.props.activeDistrict.enLabel;
+		if(this.props.locale === 'np' && this.props.activeDistrict.label){
+			title = this.props.activeDistrict.label? this.props.activeDistrict.label : this.props.activeDistrict.enLabel
+		}
 		return (
 			<Grid>
 				{this.state.loading && 
@@ -47,18 +51,18 @@ class LocalBodies extends Component {
 						<ActivityIndicator size="large" color="#036cae" />
 					</View>	
 				}
-				<Row size={6}>
+				<Row size={7}>
 					<View>
-						<Text style={style.title}>{I18n.t('local_election', {locale: this.props.locale})}</Text>
+						<Text style={style.title}>{title} - {I18n.t('local_election', {locale: this.props.locale})}</Text>
 					</View>
 				</Row>
-				<Row size={74}>
+				<Row size={73}>
 					<FlatList
 					data={this.state.items}
 					keyExtractor={this._localBodiesKeyExtractor}
 					renderItem={({item}) => {
 						return (
-							<LocalBodyList activeDistrict={this.props.activeDistrict} locale={this.props.locale} 
+							<LocalBodyList activeDistrict={this.props.activeDistrict._id} locale={this.props.locale} 
 							item={item}/>
 						)
 					}}

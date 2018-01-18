@@ -10,7 +10,7 @@ module.exports = {
         marginLeft: 10,
         backgroundColor: '#ccc',
         paddingTop: 5,
-        paddingBottom: 5,
+        paddingBottom: 20,
         paddingLeft: 15,
         paddingRight: 15
     }

@@ -5,17 +5,19 @@ import { Actions} from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import style from './style';
 import {connect} from 'react-redux';
-import {wardCandidates}  from '../GQL';
-import { graphql, compose } from 'react-apollo';
 import I18n from '../../locale';
 import {PoliticalPartyImage} from '../UI';
 
 class WardList extends Component {
     state = {
-        showDetails: false
+        showDetails: false,
+        iconName: false
     }  
     toggleClass() {
-        this.setState({ showDetails: !this.state.showDetails });
+        this.setState({ 
+            showDetails: !this.state.showDetails,
+            iconName: !this.state.iconName 
+         });
     };
     render() {
         let item = this.props.item ? this.props.item : '';
@@ -28,7 +30,7 @@ class WardList extends Component {
             <TouchableOpacity onPress={() => this.toggleClass()}>
                 <View onclick={this.toggleClass.bind(this)} style={style.listTitleContainer}>
                     <View style={style.itemIconContainer}>
-                        <Text style={style.itemIcon}><Icon name="navicon" size={22}/></Text>
+                        <Text style={style.itemIcon}><Icon name={this.state.iconName === false ? 'expand': 'compress'} size={16}/></Text>
                     </View>
                     <View style={style.itemTextContainer}>  
                         <Text style={style.itemText}>{I18n.t('ward_no', {locale: this.props.locale})} {title}</Text>
@@ -39,8 +41,8 @@ class WardList extends Component {
                 <View>
                     <View style={style.wardListContentContainer}>
                     <ScrollView>
-                        {this.props.data.candidates && this.props.data.candidates.items.length > 0 &&
-                            this.props.data.candidates.items.map((candidate,index)=>{
+                        {this.props.item.candidates && this.props.item.candidates.length > 0 &&
+                            this.props.item.candidates.map((candidate,index)=>{
                                 let candidateName = candidate.enLabel;
                                 let candidatePost = candidate.y_postEn;
                                 if(this.props.locale === 'np'){
@@ -54,8 +56,9 @@ class WardList extends Component {
                                             <PoliticalPartyImage politicalPartyId={candidate.y_politicalPartyID} />
                                         </View>
                                         <View>
-                                            <Text style={style.name}>{candidateName} - {candidate.totalVotes} {I18n.t('votes', {locale: this.props.locale})}  </Text>
-                                            <Text style={style.designation}> {candidatePost}</Text>
+                                            <Text style={style.name}>{candidateName} </Text>
+                                            <Text style={style.designation}>{candidate.totalVotes} {I18n.t('votes', {locale: this.props.locale})}</Text>
+                                            <Text style={style.designation}>{candidatePost}</Text>
                                         </View>
                                     </View>
                                 </TouchableOpacity>  
@@ -85,10 +88,4 @@ const mapStateToProps = (state) => {
 	}
 };
 
-export default graphql(wardCandidates, { 
-    options: (props) => ({ 
-        variables: { 
-            wardID: props.item._id
-        }
-    })
-})(connect(mapStateToProps)(WardList));  
+export default connect(mapStateToProps)(WardList);  

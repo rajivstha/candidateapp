@@ -58,7 +58,8 @@ module.exports = {
         flexDirection: 'row',
     },
     itemIconContainer: {
-        marginRight: 10
+        marginRight: 10,
+        marginTop: 3,
     },
     itemIcon: {
         color: globalStyle.UI.neutralColor
@@ -106,6 +107,12 @@ module.exports = {
         color: globalStyle.UI.neutralColor,
         marginTop: 7,
         fontWeight: 'bold'
+    },
+    designation: {
+        color: globalStyle.UI.neutralColor,
+        marginTop: 2,
+       
+        fontSize: 12
     },
     viewWardsContainer: {
         backgroundColor: globalStyle.UI.neutralColor,

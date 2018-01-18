@@ -11,7 +11,7 @@ import {constituencies}  from '../GQL';
 
 class PAHORcandidates extends Component {
 	state = {
-		items: [],
+		items: []
 	};
 	_PAHORcandidatesKeyExtractor(item, index) {
 		return item._id; 
@@ -20,7 +20,7 @@ class PAHORcandidates extends Component {
 		apolloClient.query({
 			query: constituencies,
 			variables: {
-				id: this.props.activeDistrict
+				id: this.props.activeDistrict._id
 			}
 		}).then((data) => {
 			this.setState({
@@ -33,7 +33,7 @@ class PAHORcandidates extends Component {
 
   render() {
 	return (
-		<FlatList
+        <FlatList
 				data={this.state.items}
 				keyExtractor={this._PAHORcandidatesKeyExtractor}
 				renderItem={({item}) => {
@@ -41,7 +41,7 @@ class PAHORcandidates extends Component {
 						<MyList candidateType ={this.props.candidateType} locale={this.props.locale} item={item}/>
 					)
 				}}
-			/> 
+		/> 
     );
   }
 }

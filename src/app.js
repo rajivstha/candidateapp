@@ -28,8 +28,8 @@ class App extends Component {
     return (
       <Router backAndroidHandler={onBackAndroid} navigationBarStyle={globalStyle.UI.navBar} titleStyle={globalStyle.UI.navTitle} >
 			<Stack key="root"
-						 hideNavBar={true}
-             navBar={CustomNavBar}>
+				hideNavBar={true}
+             	navBar={CustomNavBar}>
 				<Scene key="home" initial={true} component={Home} />
 				<Scene key="aboutUs" hideNavBar={false} component={Aboutus} />
 				<Scene key="districts" hideNavBar={false} component={Districts} />
@@ -40,8 +40,8 @@ class App extends Component {
 					key="tabbar"
 					swipeEnabled
 					showLabel={false}
-          tabBarPosition="bottom"
-          tabBarStyle={globalStyle.UI.tabBarStyle}
+          			tabBarPosition="bottom"
+          			tabBarStyle={globalStyle.UI.tabBarStyle}
 				>
 					<Stack
 					key="bodies"
@@ -65,7 +65,6 @@ class App extends Component {
 						<Scene hideNavBar={false}  key="houseOfRepresentative" component={HouseOfRepresentative} />
 					</Stack>
 				</Tabs>
-				
 			</Stack>
       </Router>
     )

@@ -25,9 +25,16 @@ class Wards extends Component {
 		}
 	}
 	render() {
+		let title = this.props.localBody.enLabel;
+        if(this.props.locale === 'np' && this.props.localBody.label){
+            title = this.props.localBody.label? this.props.localBody.label : this.props.localBody.enLabel
+        }
 		return (
 			<Grid>
-				<Row size={80}>
+				<Row size={7}>
+					<Text style={style.title}>{title}</Text>
+				</Row>
+				<Row size={73}>
 					{this.state.loading && 
 					<View style={style.loading}>
 						<ActivityIndicator size="large" color="#036cae" />
@@ -59,7 +66,7 @@ export default graphql(wards, {
 		variables: {
             skip: 0,
             limit: 20,
-            localBodyID: props.localBodyId
+            localBodyID: props.localBody._id
 		}
     })
 })(connect(mapStateToProps)(Wards));

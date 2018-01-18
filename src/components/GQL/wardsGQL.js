@@ -15,6 +15,23 @@ export const wards = gql`
         _id
         label
         enLabel
+        candidates {
+            _id
+            label
+            enLabel
+            electedStatus
+            age
+            candidateType
+            y_postNp
+            y_postEn
+            y_genderNp
+            y_genderEn
+            y_politicalPartyID
+            x_politicalPartyName
+            x_politicalPartyNameEng
+            totalVotes
+            totalValidVote
+      }
     }
   }
 `;

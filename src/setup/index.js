@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import apolloClient from './apolloClient';
 import configureStore from './configureStore';
+import {StatusBar} from 'react-native';
 import App from '../App';
 
 export const { persistor, store } = configureStore();
@@ -38,6 +39,9 @@ class Setup extends Component {
           onBeforeLift={ this.onBeforeLift }
           persistor={ persistor }>
               <App />
+              <StatusBar
+                barStyle="light-content"
+              />
           </PersistGate>
         </Provider>
       </ApolloProvider>
