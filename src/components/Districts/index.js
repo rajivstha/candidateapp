@@ -39,25 +39,25 @@ class Districts extends Component {
         }
         let image = '';
         if(province.id === '85298c28-e9d4-4292-81d5-7f8ed98a4efd') {
-            image = <Image source={require('../../assets/provinceImg/85298c28-e9d4-4292-81d5-7f8ed98a4efd.png')}/>
+            image = <Image style={style.singleProvinceImg} source={require('../../assets/provinceImg/85298c28-e9d4-4292-81d5-7f8ed98a4efd.png')}/>
         }
         if(province.id === '957547b4-e0d7-4a8a-bb9d-489e57e6ec82') {
-            image = <Image source={require('../../assets/provinceImg/957547b4-e0d7-4a8a-bb9d-489e57e6ec82.png')}/>
+            image = <Image style={style.singleProvinceImg} source={require('../../assets/provinceImg/957547b4-e0d7-4a8a-bb9d-489e57e6ec82.png')}/>
         }
         if(province.id === '6325baea-4746-4d50-83c9-b445f5c476b8') { 
-            image = <Image source={require('../../assets/provinceImg/6325baea-4746-4d50-83c9-b445f5c476b8.png')}/>
+            image = <Image style={style.singleProvinceImg} source={require('../../assets/provinceImg/6325baea-4746-4d50-83c9-b445f5c476b8.png')}/>
         }
         if(province.id === 'eea0c852-7749-49bc-afaf-ee4d4b0779d6') {
-            image = <Image source={require('../../assets/provinceImg/eea0c852-7749-49bc-afaf-ee4d4b0779d6.png')}/>
+            image = <Image style={style.singleProvinceImg} source={require('../../assets/provinceImg/eea0c852-7749-49bc-afaf-ee4d4b0779d6.png')}/>
         }
         if(province.id === '90805f28-3ee9-4177-bd72-d5de1b234926') {
-            image = <Image source={require('../../assets/provinceImg/90805f28-3ee9-4177-bd72-d5de1b234926.png')}/>
+            image = <Image style={style.singleProvinceImg} source={require('../../assets/provinceImg/90805f28-3ee9-4177-bd72-d5de1b234926.png')}/>
         }
         if(province.id === '2e932057-8990-4abf-a38b-ad5456e62363') {
-            image = <Image source={require('../../assets/provinceImg/2e932057-8990-4abf-a38b-ad5456e62363.png')}/>
+            image = <Image style={style.singleProvinceImg} source={require('../../assets/provinceImg/2e932057-8990-4abf-a38b-ad5456e62363.png')}/>
         }
         if(province.id === '3ad0d718-3a53-4fb6-97c4-d4bbbfe289bc') {
-            image = <Image source={require('../../assets/provinceImg/3ad0d718-3a53-4fb6-97c4-d4bbbfe289bc.png')}/>
+            image = <Image style={style.singleProvinceImg} source={require('../../assets/provinceImg/3ad0d718-3a53-4fb6-97c4-d4bbbfe289bc.png')}/>
         }
         let heading = '';
         if(this.props.locale === 'en'){

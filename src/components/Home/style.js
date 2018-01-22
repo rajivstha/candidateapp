@@ -17,6 +17,10 @@ module.exports = {
         paddingBottom: 10,
         borderRadius: 10
     },
+    singleProvinceImg: {
+        width: 250,
+        height: 220
+    },
     provinceTextContainer:{
         alignItems: 'center', 
         justifyContent: 'center',

@@ -11,7 +11,11 @@ module.exports = {
         alignItems: 'center', 
         justifyContent: 'center',
         backgroundColor: '#DA1A40',
-        height: 170
+        height: 220
+    },
+    singleProvinceImg: {
+        width: 250,
+        height: 220
     },
     provinceTextContainer:{
         alignItems: 'center', 
