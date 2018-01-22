@@ -8,16 +8,20 @@ import I18n from '../../locale';
 
 class HouseOfRepresentative extends Component {
 	render() {
+		let provinceTitle = this.props.activeProvince.enLabel;
+		if(this.props.locale === 'np' && this.props.activeProvince.label){
+			provinceTitle = this.props.activeDistrict.label? this.props.activeProvince.label : this.props.activeProvince.enLabel
+		}
 		let title = this.props.activeDistrict.enLabel;
 		if(this.props.locale === 'np' && this.props.activeDistrict.label){
 			title = this.props.activeDistrict.label? this.props.activeDistrict.label : this.props.activeDistrict.enLabel
 		}	
 		return (
 			<Grid>
-				<Row size={7}>
-					<Text style={style.title}>{title} - {I18n.t('hor', {locale: this.props.locale})}</Text>
+				<Row size={10}>
+					<Text style={style.title}>{provinceTitle} - {title} - {I18n.t('hor', {locale: this.props.locale})}</Text>
 				</Row>
-				<Row size={73}>
+				<Row size={70}>
 					<PAHORcandidates candidateType={'houseOfRepresentativeCandidates'}/> 
 				</Row>
 			</Grid>
@@ -28,7 +32,8 @@ class HouseOfRepresentative extends Component {
 const mapStateToProps = (state) => {
 	return {
 		locale: state.locale,
-		activeDistrict: state.activeDistrict
+		activeDistrict: state.activeDistrict,
+		activeProvince: state.activeProvince
 	}
 };
 

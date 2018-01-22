@@ -40,6 +40,10 @@ class LocalBodies extends Component {
 	}
 
 	render() {
+		let provinceTitle = this.props.activeProvince.enLabel;
+		if(this.props.locale === 'np' && this.props.activeProvince.label){
+			provinceTitle = this.props.activeDistrict.label? this.props.activeProvince.label : this.props.activeProvince.enLabel
+		}
 		let title = this.props.activeDistrict.enLabel;
 		if(this.props.locale === 'np' && this.props.activeDistrict.label){
 			title = this.props.activeDistrict.label? this.props.activeDistrict.label : this.props.activeDistrict.enLabel
@@ -51,12 +55,12 @@ class LocalBodies extends Component {
 						<ActivityIndicator size="large" color="#036cae" />
 					</View>	
 				}
-				<Row size={7}>
+				<Row size={10}>
 					<View>
-						<Text style={style.title}>{title} - {I18n.t('local_election', {locale: this.props.locale})}</Text>
+						<Text style={style.title}>{provinceTitle} - {title} - {I18n.t('local_election', {locale: this.props.locale})}</Text>
 					</View>
 				</Row>
-				<Row size={73}>
+				<Row size={70}>
 					<FlatList
 					data={this.state.items}
 					keyExtractor={this._localBodiesKeyExtractor}
@@ -77,7 +81,8 @@ class LocalBodies extends Component {
 const mapStateToProps = (state) => {
 	return {
 		locale: state.locale,
-		activeDistrict: state.activeDistrict
+		activeDistrict: state.activeDistrict,
+		activeProvince: state.activeProvince
 	}
 };
 

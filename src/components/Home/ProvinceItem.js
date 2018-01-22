@@ -2,10 +2,23 @@ import React, { Component } from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import { Actions} from 'react-native-router-flux';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {activeProvince} from './provinceActions';
 import style from './style';
   
 
 class ProvinceItem extends Component {
+    handleActiveProvince(item) {
+        let province = {
+            _id: item._id,
+            label: item.label,
+            enLabel: item.enLabel
+        }
+        return () => {
+            this.props.activeProvince(province);
+            Actions.districts({data: item})
+        }
+    }
     render(){
         let item = this.props.item ? this.props.item : '';
         let title = item.enLabel;
@@ -35,7 +48,7 @@ class ProvinceItem extends Component {
             image = <Image source={require('../../assets/provinceImg/3ad0d718-3a53-4fb6-97c4-d4bbbfe289bc.png')}/>
         } 
         return (
-            <TouchableOpacity onPress={() => Actions.districts({data: item})}>
+            <TouchableOpacity onPress={this.handleActiveProvince(item)}>
                 <View style={style.provinceItem}>
                     <View style={style.provinceImageContainer}>
                         {image}
@@ -46,9 +59,17 @@ class ProvinceItem extends Component {
         )
     }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        activeProvince: (province) => dispatch(activeProvince(province)),
+    }
+};
+
 ProvinceItem.propTypes = {
     locale: PropTypes.string,
     item: PropTypes.object
 };
 
-export default ProvinceItem;
+
+export default connect(null,mapDispatchToProps)(ProvinceItem);
