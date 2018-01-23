@@ -29,30 +29,46 @@ class Home extends Component {
 	}
 	
 	async requestLocationPermission (){
-		const granted = await PermissionsAndroid.request(
-			PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-			{
-			  'title': 'Access to Location.',
-			  'message': 'CandidateApp needs access to your Location ' +
-			  'to show candidates at your location.'
+		if(Platform.OS === 'android'){
+			const granted = await PermissionsAndroid.request(
+				PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+				{
+				  'title': 'Access to Location.',
+				  'message': 'CandidateApp needs access to your Location ' +
+				  'to show candidates at your location.'
+				}
+			)
+			if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+				navigator.geolocation.getCurrentPosition(
+				  (position) => {
+					this.setState({
+						location: {
+							lat: position.coords.latitude,
+							lng: position.coords.longitude
+						}
+					});
+				  },
+				  (error) => {
+					  console.log(error);
+				  }
+				);
 			}
-		)
-		
-		if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+		}else{
 			navigator.geolocation.getCurrentPosition(
-			  (position) => {
-				this.setState({
-					location: {
-						lat: position.coords.latitude,
-						lng: position.coords.longitude
-					}
-				});
-			  },
-			  (error) => {
-				  console.log(error);
-			  }
-			);
+				(position) => {
+				  this.setState({
+					  location: {
+						  lat: position.coords.latitude,
+						  lng: position.coords.longitude
+					  }
+				  });
+				},
+				(error) => {
+					console.log(error);
+				}
+			  );
 		}
+		
 		
 	}
 
