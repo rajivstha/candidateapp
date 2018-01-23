@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, Image, TouchableOpacity, FlatList, ActivityIndicator} from 'react-native';
+import {View, Text, Image, TouchableOpacity, FlatList, ActivityIndicator, PermissionsAndroid, Platform} from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Actions} from 'react-native-router-flux';
 import {Header, Footer} from '../UI';
@@ -11,7 +11,11 @@ import style from './style';
 
 class Home extends Component {
 	state = {
-		loading: true
+		loading: true,
+		location: {
+			lat: null,
+			lng: null
+		}
 	}
 	_provinceKeyExtractor(item, index) {
 		return item._id; 
@@ -23,7 +27,37 @@ class Home extends Component {
 			})
 		}
 	}
+	
+	async requestLocationPermission (){
+		const granted = await PermissionsAndroid.request(
+			PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+			{
+			  'title': 'Access to Location.',
+			  'message': 'CandidateApp needs access to your Location ' +
+			  'to show candidates at your location.'
+			}
+		)
+		
+		if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+			navigator.geolocation.getCurrentPosition(
+			  (position) => {
+				this.setState({
+					location: {
+						lat: position.coords.latitude,
+						lng: position.coords.longitude
+					}
+				});
+			  },
+			  (error) => {
+				  console.log(error);
+			  }
+			);
+		}
+		
+	}
+
 	render() {
+		console.log(this.state.location);
 		return (
 			<Grid>
 				{this.state.loading && 
@@ -32,7 +66,14 @@ class Home extends Component {
 				</View>	
 				}
 				<Header/>
-				<Row size={78} style={style.provinceContainer}>
+				<Row size={8}>
+					<View>
+						<TouchableOpacity onPress={this.requestLocationPermission.bind(this)}>
+							<Text>Find Candidates On My Location</Text>
+						</TouchableOpacity>
+					</View>
+				</Row>
+				<Row size={70} style={style.provinceContainer}>
 					<FlatList
 					data={this.props.provinces.provinces}
 					keyExtractor={this._provinceKeyExtractor}
