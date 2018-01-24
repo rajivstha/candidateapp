@@ -23,17 +23,24 @@ const httpLink = createHttpLink({ uri:  config.GRAPHQL_SERVER_URL });
 //   return forward(operation);
 // });
 
-// const errorLink = onError(({ networkError }) => {
-//   if (networkError.status === 401) {
-//     //check if unauthorized token error
-//     store.dispatch(logout());
-//   }
-// })
+const errorLink = onError(({ networkError, graphQLErrors }) => {
+  if (graphQLErrors)
+    graphQLErrors.map(({ message, locations, path }) =>
+      console.log(
+        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+      ),
+    );
 
-//const link = errorLink.concat(middlewareLink.concat(httpLink));
+  if (networkError) console.log(`[Network error]: ${networkError}`);
+})
+
+const link = ApolloLink.from([
+  errorLink,
+  httpLink,
+]);
 
 const client = new ApolloClient({
-  link: httpLink,
+  link: link,
   cache: new InMemoryCache({
     dataIdFromObject: o => o._id
   })
