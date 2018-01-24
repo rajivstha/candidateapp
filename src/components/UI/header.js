@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Row, Grid } from 'react-native-easy-grid';
-import {View, TouchableOpacity, Text} from 'react-native';
-import { Actions} from 'react-native-router-flux';
+import {View, Text} from 'react-native';
 import style from './style';
 import LocaleChooser from './localeChooser';
 import {connect} from 'react-redux';
@@ -10,18 +8,15 @@ import { changeLocale } from '../../locale/localeActions';
 class Header extends Component {
   render() {
     return (
-        <Row size={15} style={style.headerContainer}>
+        <View style={style.headerContainer}>
             <View style={style.logoContainer}>
-                <TouchableOpacity onPress={() => Actions.home()}>
-                    <Text style={style.logo}>Candidates OnNepal</Text>
-                </TouchableOpacity>   
+                <Text style={style.logo}>Candidates OnNepal</Text>
             </View>
             <LocaleChooser activeLocale={this.props.locale} onChange={this.props.changeLocale} />
-        </Row>
+        </View>
     );
   }
 }
-
 
 const mapDispatchToProps = (dispatch) => {
     return {

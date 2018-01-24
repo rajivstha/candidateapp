@@ -1,37 +1,29 @@
 import globalStyle from '../../assets/styles';
 
 module.exports = {
-    customNavbarContainer: {
-        height: 96,
-        flexDirection: 'column',
-        backgroundColor: globalStyle.UI.neutralColor
-    },
-    customTopNavbarContainer: {
-        flexDirection: 'row',
-       
-    },
-    backIconContainer: {
-        //flex: 3
-    },
-    logoContainer: {
-        marginTop: 19,
-        alignItems: 'center', 
-        justifyContent: 'center',
-        //flex: 10
-    },
-    logo: { 
-        color: globalStyle.UI.textColor,
-        fontSize: 30,
-        fontWeight: 'bold'
-    },
-    backIcon: {
-        color: globalStyle.UI.backgroundColor,
-        marginTop: 20,
-        paddingTop: 8,
-        paddingBottom: 8,
-        paddingLeft: 12,
-        paddingRight: 12,
-        marginRight: 7
-        
-    }
+  customNavbarContainer: {
+    height: 65,
+    flexDirection: 'row',
+    backgroundColor: globalStyle.UI.neutralColor
+  },
+  customTopNavbarContainer: {
+    flexDirection: 'row',
+    flex: 2,
+  },
+  backIconContainer: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  backIcon: {
+    padding: 20
+  },
+  logoContainer: {
+    flex:1,
+    justifyContent: 'center'
+  },
+  logo: {
+    color: globalStyle.UI.textColor,
+    fontSize: 20,
+    fontWeight: 'bold'
+  }
 }

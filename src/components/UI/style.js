@@ -6,14 +6,15 @@ module.exports = {
         backgroundColor: globalStyle.UI.neutralColor
     },
     logoContainer: {
-        marginTop: 14,
-        alignItems: 'center', 
+        marginTop: 30,
+        marginBottom: 20,
+        alignItems: 'center',
         justifyContent: 'center',
         flex: 1
     },
-    logo: { 
+    logo: {
         color: globalStyle.UI.textColor,
-        fontSize: 30,
+        fontSize: 28,
         fontWeight: 'bold'
     },
     languageContainer:{
@@ -38,7 +39,7 @@ module.exports = {
         color: globalStyle.UI.textColor
     },
     footerContainer:{
-        alignItems: 'center', 
+        alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: globalStyle.UI.neutralColor,
         width: globalStyle.screenWidth
@@ -82,7 +83,7 @@ module.exports = {
         paddingLeft: 10,
         paddingRight: 10
     },
-   
+
     listContent: {
         flexDirection: 'row',
         backgroundColor: globalStyle.UI.borderColor,
@@ -111,12 +112,12 @@ module.exports = {
     designation: {
         color: globalStyle.UI.neutralColor,
         marginTop: 2,
-       
+
         fontSize: 12
     },
     viewWardsContainer: {
         backgroundColor: globalStyle.UI.neutralColor,
-        alignItems: 'center', 
+        alignItems: 'center',
         justifyContent: 'center',
         padding: 10,
         marginTop: 5

@@ -3,14 +3,11 @@ import globalStyle from '../../assets/styles';
 module.exports = {
     aboutUsContainer:{
         marginTop: 5,
-        backgroundColor: globalStyle.UI.neutralColor,
         // paddingTop: 25,
         // paddingBottom: 25,
         paddingLeft: 15,
         paddingRight: 15,
-        flexDirection: 'column',
-        borderWidth: 1,
-        borderColor: globalStyle.UI.textColor
+        flexDirection: 'column'
     },
     aboutContainer: {
         backgroundColor: globalStyle.UI.backgroundColor,

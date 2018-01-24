@@ -9,15 +9,14 @@ import globalStyle from './assets/styles';
 import CustomNavBar from './components/CustomNavBar';
 //App components
 import Home from './components/Home';
-import Aboutus from './components/Aboutus';
-import Districts from './components/Districts';
+import AboutUs from './components/Aboutus';
+import Province from './components/Province';
 import LocalBodies from './components/LocalBodies';
 import Wards from './components/Wards';
 import ProvincialAssembly from './components/ProvincialAssembly';
 import HouseOfRepresentative from './components/HouseOfRepresentative';
 import Candidate from './components/Candidate';
 import AddDetails from './components/Candidate/AddDetails';
-import { BackHandler } from 'react-native';
 
 
 class App extends Component {
@@ -31,38 +30,38 @@ class App extends Component {
 				hideNavBar={true}
              	navBar={CustomNavBar}>
 				<Scene key="home" initial={true} component={Home} />
-				<Scene key="aboutUs" hideNavBar={false} component={Aboutus} />
-				<Scene key="districts" hideNavBar={false} component={Districts} />
+				<Scene key="aboutUs" title="About us" hideNavBar={false} component={AboutUs} />
+				<Scene key="province" title="Province" hideNavBar={false} component={Province} />
 				<Scene key="candidate" hideNavBar={false} component={Candidate} />
 				<Scene key="addDetails" hideNavBar={false} component={AddDetails} />
 				<Scene key="wards" hideNavBar={false} component={Wards} />
 				<Tabs
-					key="tabbar"
+					key="tabBar"
 					swipeEnabled
 					showLabel={false}
           			tabBarPosition="bottom"
           			tabBarStyle={globalStyle.UI.tabBarStyle}
 				>
 					<Stack
-					key="bodies"
+					key="localBodies"
 					title={I18n.t('local_election', {locale: this.props.locale})}
 					icon={TabIcon}
 					>
-						<Scene hideNavBar={false} key="localBodies" component={LocalBodies} />
+						<Scene hideNavBar={false} key="localBodies_Index" component={LocalBodies} />
 					</Stack>
 					<Stack
-					key="assembly"
+					key="provincialAssembly"
 					title={I18n.t('provincial_assembly', {locale: this.props.locale})}
 					icon={TabIcon}
 					>
-						<Scene hideNavBar={false}  key="provincialAssembly" component={ProvincialAssembly} />
+						<Scene hideNavBar={false}  key="provincialAssembly_index" component={ProvincialAssembly} />
 					</Stack>
 					<Stack
-					key="representative"
+					key="houseOfRepresentative"
 					title={I18n.t('hor', {locale: this.props.locale})}
 					icon={TabIcon}
 					>
-						<Scene hideNavBar={false}  key="houseOfRepresentative" component={HouseOfRepresentative} />
+						<Scene hideNavBar={false}  key="houseOfRepresentative_index" component={HouseOfRepresentative} />
 					</Stack>
 				</Tabs>
 			</Stack>

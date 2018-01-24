@@ -1,6 +1,6 @@
 import { 
     ACTIVE_DISTRICT
-} from './districtActions';
+} from './actions';
   
 const initialState = [];
 

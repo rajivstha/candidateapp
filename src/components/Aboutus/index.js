@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import {View, Text, Image, TouchableOpacity, FlatList, Linking} from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
-import {Footer} from '../UI';
 import style from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {connect} from 'react-redux';
-import I18n from '../../locale';
 import aboutUs from '../../setup/aboutUs';
 class Aboutus extends Component {
   render() {
     return (
-         <Grid>
-			<Row size={100} style={style.aboutUsContainer}>
+    	<View>
+			<View size={100} style={style.aboutUsContainer}>
 				<View style={style.aboutContainer}>
 					<View style={style.aboutUsRow}>
 						<Text style={style.title}>About Us</Text>
@@ -81,10 +79,8 @@ class Aboutus extends Component {
 							<View style={style.textContainer}><Text style={style.text}>Rajiv Shrestha</Text></View>
 					</View>
 				</View>	
-			</Row>
-			
-            
-         </Grid>  
+			</View>
+			</View>
     );
   }
 }

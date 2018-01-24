@@ -14,13 +14,13 @@ const TabIcon = (props) => {
         iconColor = props.focused ? '#DA1A40' : '#FFFFFF',
         iconSize = props.focused ? 40 : 36;
     switch(props.navigation.state.key) {
-        case 'bodies':
+        case 'localBodies':
             iconName = props.focused ? 'home' : 'home';
             break;
-        case 'assembly':
+        case 'provincialAssembly':
             iconName = props.focused ? 'product-hunt' : 'product-hunt';
             break;
-        case 'representative':
+        case 'houseOfRepresentative':
             iconName = props.focused ? 'institution' : 'institution';
             break;
     }
