@@ -2,15 +2,15 @@ import globalStyle from '../../assets/styles';
 
 module.exports = {
   aboutUsContainer: {
-    marginTop: 5,
-    paddingLeft: 15,
-    paddingRight: 15,
+    marginTop: 10,
+    paddingLeft: 20,
+    paddingRight: 20,
     flexDirection: 'column'
   },
   aboutContainer: {
     backgroundColor: globalStyle.UI.backgroundColor,
-    marginTop: 20,
-    padding: 20,
+    marginTop: 15,
+    padding: 15,
     borderRadius: 5
 
   },

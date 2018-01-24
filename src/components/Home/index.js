@@ -11,23 +11,16 @@ import style from './style';
 
 class Home extends Component {
 	state = {
-		loading: true,
 		location: {
 			lat: null,
 			lng: null
 		}
 	}
+
 	_provinceKeyExtractor(item, index) {
 		return item._id; 
 	}
-	componentWillReceiveProps(nextProps){
-		if(nextProps.provinces.provinces){
-			this.setState({
-				loading: false
-			})
-		}
-	}
-	
+
 	async requestLocationPermission (){
 		if(Platform.OS === 'android'){
 			const granted = await PermissionsAndroid.request(
@@ -76,12 +69,12 @@ class Home extends Component {
 		console.log(this.state.location);
 		return (
 			<Grid>
-				{this.state.loading && 
-				<View style={style.loading}>
-					<ActivityIndicator size="large" color="#036cae" />
-				</View>	
-				}
-				<Header/>
+        {this.props.data.loading &&
+          <View style={style.loading}>
+            <ActivityIndicator size="large" color="#036cae" />
+          </View>
+        }
+        <Header/>
 				<Row size={8}>
 					<View>
 						<TouchableOpacity onPress={this.requestLocationPermission.bind(this)}>
@@ -90,17 +83,22 @@ class Home extends Component {
 					</View>
 				</Row>
 				<Row size={70} style={style.provinceContainer}>
-					<FlatList
-					data={this.props.provinces.provinces}
-					keyExtractor={this._provinceKeyExtractor}
-					extraData = {this.props.locale}
-					renderItem={({item}) => {
-						return (
-							<ProvinceItem locale={this.props.locale} 
-							item={item}/>
-						)
-					}}
-					/>
+          {this.props.data.error &&
+            <Text>Something went wrong!</Text>
+          }
+          {this.props.data.provinces &&
+            <FlatList
+              data={this.props.data.provinces}
+              keyExtractor={this._provinceKeyExtractor}
+              extraData={this.props.locale}
+              renderItem={({item}) => {
+                return (
+                  <ProvinceItem locale={this.props.locale}
+                                item={item}/>
+                )
+              }}
+            />
+          }
 				</Row>
 				<Footer/>
 			</Grid>  
@@ -116,5 +114,5 @@ const mapStateToProps = (state) => {
 };
 
 export default compose(
-  graphql(provinces, {name : 'provinces'})
+  graphql(provinces)
 )(connect(mapStateToProps)(Home));
