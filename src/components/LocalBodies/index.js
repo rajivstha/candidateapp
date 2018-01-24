@@ -22,7 +22,7 @@ class LocalBodies extends Component {
 			<Grid>
 				<Row size={10}>
 					<View>
-						<Text style={style.title}>{provinceTitle} - {title} - {I18n.t('local_election', {locale: this.props.locale})}</Text>
+						<Text style={style.title}>{provinceTitle} - {title}</Text>
 					</View>
 				</Row>
 				<Row size={90}>

@@ -52,7 +52,7 @@ module.exports = {
     },
     itemListContainer:{
         backgroundColor: '#ccc',
-        padding: 10,
+        padding: 15,
         marginBottom: 1
     },
     listTitleContainer: {

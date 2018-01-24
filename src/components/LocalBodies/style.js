@@ -6,10 +6,10 @@ module.exports = {
         color: globalStyle.UI.neutralColor,
         fontSize: 18,
         fontWeight: 'bold',
-        marginTop: 5,
+        marginTop: 10,
         marginLeft: 10,
         backgroundColor: '#ccc',
-        paddingTop: 5,
+        paddingTop: 10,
         height: 65,
         paddingLeft: 15,
         paddingRight: 15

@@ -19,10 +19,10 @@ class HouseOfRepresentative extends Component {
 		return (
 			<Grid>
 				<Row size={10}>
-					<Text style={style.title}>{provinceTitle} - {title} - {I18n.t('hor', {locale: this.props.locale})}</Text>
+					<Text style={style.title}>{provinceTitle} - {title}</Text>
 				</Row>
-				<Row size={70}>
-          <PAHORcandidates activeDistrict={this.props.activeDistrict} activeProvince={this.props.activeProvince} candidateType={'houseOfRepresentativeCandidates'}/>
+				<Row size={90}>
+          <PAHORcandidates locale={this.props.locale}  activeDistrict={this.props.activeDistrict} activeProvince={this.props.activeProvince} candidateType={'houseOfRepresentativeCandidates'}/>
 				</Row>
 			</Grid>
 		);
