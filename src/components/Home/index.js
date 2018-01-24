@@ -2,31 +2,38 @@ import React, {Component} from 'react';
 import {
   View,
   Text,
-  Image,
   TouchableOpacity,
   FlatList,
   ActivityIndicator,
   PermissionsAndroid,
   Platform
 } from 'react-native';
-import {Col, Row, Grid} from 'react-native-easy-grid';
-import {Actions} from 'react-native-router-flux';
-import {Header, Footer} from '../UI';
-import {provinces} from '../GQL';
 import {graphql, compose} from 'react-apollo';
 import {connect} from 'react-redux';
-import ProvinceItem from './ProvinceItem';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {Col, Row, Grid} from 'react-native-easy-grid';
+import {Actions} from 'react-native-router-flux';
+import Geolocation from 'react-native-geolocation-service';
+import {Header, Footer} from '../UI';
+import {provinces} from '../GQL';
+import ProvinceItem from './ProvinceItem';
 import style from './style';
 import I18n from "../../locale";
 
 class Home extends Component {
-
+  state = {
+    locating: false,
+    locationError: null
+  }
   _provinceKeyExtractor(item, index) {
     return item._id;
   }
 
   async requestLocationPermission() {
+    this.setState({
+      locating: true,
+      locatingError: null
+    });
     if (Platform.OS === 'android') {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
@@ -37,22 +44,35 @@ class Home extends Component {
         }
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        navigator.geolocation.getCurrentPosition(
+        Geolocation.getCurrentPosition(
           (position) => {
+            this.setState({
+              locating: false,
+              locatingError: null
+            });
             let location = {
               latitude: position.coords.latitude,
               longitude: position.coords.longitude
-            }
+            };
             Actions.geoLocate({location: location});
           },
           (error) => {
             console.log(error);
-          }
+            this.setState({
+              locating: false,
+              locatingError: error
+            });
+          },
+          { enableHighAccuracy: true, timeout: 10000, maximumAge: 3000 },
         );
       }
     } else {
-      navigator.geolocation.getCurrentPosition(
+      Geolocation.getCurrentPosition(
         (position) => {
+          this.setState({
+            locating: false,
+            locatingError: null
+          });
           let location = {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
@@ -61,7 +81,12 @@ class Home extends Component {
         },
         (error) => {
           console.log(error);
-        }
+          this.setState({
+            locating: false,
+            locatingError: error
+          });
+        },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 3000 },
       );
     }
   }
@@ -79,28 +104,30 @@ class Home extends Component {
           <View style={{padding: 15, flex: 1}}>
             <TouchableOpacity style={style.candidatesByLocationButton}
                               onPress={this.requestLocationPermission.bind(this)}>
-              <Icon name="ios-pin" size={25} color="#FFF"/>
+              {!this.state.locating && <Icon name="ios-pin" size={25} color="#FFF"/>}
+              {this.state.locating && <ActivityIndicator color="#FFFFFF" />}
               <Text style={{fontSize: 16, paddingLeft: 15, color: '#FFF'}}>{I18n.t('geoLocateLabel', {locale: this.props.locale})}</Text>
             </TouchableOpacity>
+            {this.state.locatingError && <Text style={{alignSelf: 'center'}}>Unable to get location</Text>}
           </View>
         </Row>
         <Row size={70} style={style.provinceContainer}>
           <Text style={{alignSelf: 'center', fontSize: 20, fontWeight: 'bold', padding: 10}}>{I18n.t('provinces', {locale: this.props.locale})}</Text>
           {this.props.data.error &&
-          <Text>Something went wrong!</Text>
+            <Text>Something went wrong!</Text>
           }
           {this.props.data.provinces &&
-          <FlatList
-            data={this.props.data.provinces}
-            keyExtractor={this._provinceKeyExtractor}
-            extraData={this.props.locale}
-            renderItem={({item}) => {
-              return (
-                <ProvinceItem locale={this.props.locale}
-                              item={item}/>
-              )
-            }}
-          />
+            <FlatList
+              data={this.props.data.provinces}
+              keyExtractor={this._provinceKeyExtractor}
+              extraData={this.props.locale}
+              renderItem={({item}) => {
+                return (
+                  <ProvinceItem locale={this.props.locale}
+                                item={item}/>
+                )
+              }}
+            />
           }
         </Row>
         <Footer/>

@@ -1,73 +1,76 @@
 import globalStyle from '../../assets/styles';
 
 module.exports = {
-itemListContainer:{
-    backgroundColor: '#ccc',
-    padding: 10,
-    marginBottom: 1
-},
-listContentContainer: {
-    flexDirection: 'column',
+  candidateByLocationContainer: {
+    flex:1
+  },
+  itemListContainer: {
+    flex:1,
+    backgroundColor: '#FFFFFF',
+    marginBottom: 1,
+    borderRadius: 5,
+  },
+  listContentContainer: {
     marginTop: 10,
-    backgroundColor: '#fff',
     paddingLeft: 10,
     paddingRight: 10
-},
-listContent: {
+  },
+  listContent: {
     flexDirection: 'row',
     backgroundColor: globalStyle.UI.borderColor,
     marginTop: 5,
     marginBottom: 5,
     paddingBottom: 5,
     paddingTop: 5
-},
-partyIcon: {
+  },
+  partyIcon: {
     marginRight: 10,
     marginLeft: 7
-},
-name: {
+  },
+  name: {
     color: globalStyle.UI.neutralColor,
     marginTop: 7,
     fontWeight: 'bold'
-},
-designation: {
+  },
+  designation: {
     color: globalStyle.UI.neutralColor,
     marginTop: 2,
 
     fontSize: 12
-},
-wardListContentContainer: {
+  },
+  wardListContentContainer: {
     flexDirection: 'column',
     marginTop: 10,
     backgroundColor: '#fff',
     paddingLeft: 10,
     paddingRight: 10
-},
-listTitleContainer: {
+  },
+  listTitleContainer: {
     flexDirection: 'row',
-},
-itemIconContainer: {
+  },
+  itemIconContainer: {
     marginRight: 10,
     marginTop: 3,
-},
-itemIcon: {
+  },
+  itemIcon: {
     color: globalStyle.UI.neutralColor
-},
-itemText: {
+  },
+  itemText: {
     color: globalStyle.UI.neutralColor,
     fontSize: 15
-},
-title: {
+  },
+  title: {
     paddingTop: 10,
+    paddingLeft: 10,
     fontSize: 18,
     color: globalStyle.UI.neutralColor,
     fontWeight: 'bold'
-},
-breadCrumbTitle: {
+  },
+  breadCrumbTitle: {
     paddingBottom: 10,
     paddingTop: 10,
     fontSize: 18,
     color: globalStyle.UI.neutralColor,
     fontWeight: 'bold'
-}
+  }
 }
