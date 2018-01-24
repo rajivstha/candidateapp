@@ -65,7 +65,7 @@ class GEOLocate extends Component {
                                         </View>
                                     </TouchableOpacity>  
                         </View>
-                        <View>  
+                        <ScrollView>  
                             <View><Text>Wards</Text></View>
                             <View style={style.itemListContainer}>
                                         <TouchableOpacity onPress={() => this.toggleClass()}>
@@ -81,11 +81,10 @@ class GEOLocate extends Component {
                                             
                                         <View>
                                             <View style={style.wardListContentContainer}>
-                                                    <ScrollView>
-                                                        <TouchableOpacity>
+                                                    <TouchableOpacity>
                                                             <View style={style.listContent}>
                                                                 <View style={style.partyIcon}>
-                                                                    party image
+                                                                   <Text>party image</Text> 
                                                                 </View>
                                                                 <View>
                                                                     <Text style={style.name}>Rajiv shrstha </Text>
@@ -93,12 +92,11 @@ class GEOLocate extends Component {
                                                                     <Text style={style.designation}>Sadasya</Text>
                                                                 </View>
                                                             </View>
-                                                        </TouchableOpacity>  
-                                                    </ScrollView>    
+                                                    </TouchableOpacity>  
                                             </View>
                                         </View>  
                             </View>
-                        </View>
+                        </ScrollView>
                     </View>
                 </View>
             </View>   

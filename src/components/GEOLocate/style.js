@@ -38,6 +38,27 @@ module.exports = {
         marginTop: 2,
 
         fontSize: 12
-    }
+    },
+    wardListContentContainer: {
+        flexDirection: 'column',
+        marginTop: 10,
+        backgroundColor: '#fff',
+        paddingLeft: 10,
+        paddingRight: 10
+    },
+    listTitleContainer: {
+        flexDirection: 'row',
+    },
+    itemIconContainer: {
+        marginRight: 10,
+        marginTop: 3,
+    },
+    itemIcon: {
+        color: globalStyle.UI.neutralColor
+    },
+    itemText: {
+        color: globalStyle.UI.neutralColor,
+        fontSize: 15
+    },
 
 }
