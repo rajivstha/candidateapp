@@ -7,8 +7,7 @@ import {provinces, geoQuery}  from '../GQL';
 import { graphql, compose } from 'react-apollo';
 import {connect} from 'react-redux';
 import ProvinceItem from './ProvinceItem';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import apolloClient from '../../setup/apolloClient';
+import Icon from 'react-native-vector-icons/Ionicons';
 import style from './style';
 
 class Home extends Component {
@@ -91,17 +90,18 @@ class Home extends Component {
           </View>
         }
         <Header/>
-				<Row size={8}>
-					<TouchableOpacity onPress={this.requestLocationPermission.bind(this)}>
-						<View style={style.candidatesByLocationContainer}>
+				<Row size={10}>
+          <View style={{padding: 15, flex: 1}}>
+					<TouchableOpacity style={style.candidatesByLocationButton} onPress={this.requestLocationPermission.bind(this)}>
 							<Text>
-								<Icon name="location-arrow" size={24}/>
+								<Icon name="ios-pin" size={25} color="#FFF"/>
 							</Text>
-							<Text>Find Candidates On My Location</Text>
-						</View>
-					</TouchableOpacity>
+							<Text style={{fontSize: 16, paddingLeft: 15, color: '#FFF'}}>Geo Locate Elected Candidates</Text>
+          </TouchableOpacity>
+          </View>
 				</Row>
 				<Row size={70} style={style.provinceContainer}>
+          <Text style={{alignSelf: 'center', fontSize: 20, fontWeight: 'bold', padding: 10}}>Provinces</Text>
           {this.props.data.error &&
             <Text>Something went wrong!</Text>
           }
@@ -120,7 +120,7 @@ class Home extends Component {
           }
 				</Row>
 				<Footer/>
-			</Grid>  
+			</Grid>
 		);
 	}
 }

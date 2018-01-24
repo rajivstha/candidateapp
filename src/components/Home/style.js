@@ -1,15 +1,15 @@
 import globalStyle from '../../assets/styles';
 
 module.exports = {
-    candidatesByLocationContainer: {
-        flexDirection: 'column',
-        backgroundColor: '#DA1A40',
-        marginTop: 10,
-        marginLeft: 20,
-        marginRight: 20,
-        flex: 1
+    candidatesByLocationButton: {
+        flexDirection: 'row',
+        padding: 12,
+        justifyContent: 'center',
+        backgroundColor: globalStyle.UI.neutralColor,
+        borderRadius: 5,
     },
     provinceContainer: {
+        flexDirection: 'column',
         paddingLeft: 15,
         paddingRight: 15,
         marginTop: 15
