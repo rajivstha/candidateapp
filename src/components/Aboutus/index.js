@@ -16,8 +16,10 @@ class AboutUs extends Component {
             </View>
             <View style={{paddingBottom: 20}}>
               <Text style={style.text}>
-                Candidates OnNepal is an initiative of OnNepal.com. We developed this app to make information related to Elected Candidates of Nepal accessible to general public.
-                This is our Beta release. We are working on more updates to make this app more stable and useful.
+                Candidates OnNepal is an initiative of OnNepal.com. We have developed this app to make information related to Elected Candidates of Nepal accessible to the general public
+                and we believe that it will certainly leave an impression to you.
+
+                This is our Beta release. We are and will certainly be continuously working on more updates to make this app more stable and useful.
               </Text>
 
             </View>
@@ -65,25 +67,37 @@ class AboutUs extends Component {
           </View>
           <View style={style.aboutContainer}>
             <View style={style.aboutUsRow}>
-              <Text style={style.title}>Developers</Text>
+              <Text style={style.title}>Developer Credits</Text>
             </View>
 
             <View style={{paddingBottom: 15}}>
               <Text style={style.text}>
-                We are a small dedicated team working on various ideas to have some positive impact on our society and country.
+                We are, a small dedicated team working on various ideas trying to make some positive impact on our society and country.
               </Text>
             </View>
             <View style={style.aboutUsRow}>
               <View style={style.iconContainer}><Text style={style.icon}><Icon name="user" size={16}/></Text></View>
-              <View style={style.textContainer}><Text style={style.text}>Girish Chaudhary (Backend)</Text></View>
+              <View style={style.textContainer}><Text style={style.text}>Anil Subba</Text></View>
             </View>
             <View style={style.aboutUsRow}>
               <View style={style.iconContainer}><Text style={style.icon}><Icon name="user" size={16}/></Text></View>
-              <View style={style.textContainer}><Text style={style.text}>Rajiv Shrestha (Frontend)</Text></View>
+              <View style={style.textContainer}><Text style={style.text}>Girish Chaudhary</Text></View>
             </View>
             <View style={style.aboutUsRow}>
               <View style={style.iconContainer}><Text style={style.icon}><Icon name="user" size={16}/></Text></View>
-              <View style={style.textContainer}><Text style={style.text}>Yalamber Subba (FullStack)</Text></View>
+              <View style={style.textContainer}><Text style={style.text}>Nishum Subba</Text></View>
+            </View>
+            <View style={style.aboutUsRow}>
+              <View style={style.iconContainer}><Text style={style.icon}><Icon name="user" size={16}/></Text></View>
+              <View style={style.textContainer}><Text style={style.text}>Rajesh Kr. Das</Text></View>
+            </View>
+            <View style={style.aboutUsRow}>
+              <View style={style.iconContainer}><Text style={style.icon}><Icon name="user" size={16}/></Text></View>
+              <View style={style.textContainer}><Text style={style.text}>Rajiv Shrestha</Text></View>
+            </View>
+            <View style={style.aboutUsRow}>
+              <View style={style.iconContainer}><Text style={style.icon}><Icon name="user" size={16}/></Text></View>
+              <View style={style.textContainer}><Text style={style.text}>Yalamber Subba</Text></View>
             </View>
 
           </View>
