@@ -9,7 +9,7 @@ import globalStyle from './assets/styles';
 import CustomNavBar from './components/CustomNavBar';
 //App components
 import Home from './components/Home';
-import AboutUs from './components/Aboutus';
+import AboutUs from './components/AboutUs';
 import Province from './components/Province';
 import LocalBodies from './components/LocalBodies';
 import Wards from './components/Wards';
