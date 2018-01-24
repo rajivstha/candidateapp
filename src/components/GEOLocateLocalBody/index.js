@@ -10,6 +10,7 @@ import {localBody}  from '../GQL';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {PoliticalPartyImage} from '../UI';
 import I18n from '../../locale';
+import {WardList}  from '../UI';
 import style from './style';
 
 class GEOLocateLocalBody extends Component {
@@ -23,9 +24,11 @@ class GEOLocateLocalBody extends Component {
             iconName: !this.state.iconName 
          });
     };
+    _localBodiesKeyExtractor(item, index) {
+		return item._id; 
+	}
 	render() {
         let details = get(this.props.data, 'localBody', false);
-        console.log(details)
         
 		return (
 			<View style={style.candidateByLocationContainer}>
@@ -75,74 +78,23 @@ class GEOLocateLocalBody extends Component {
                                     
                                 })
                             }
-                                       
-                                  
-                            
                         </View>
                         <ScrollView>  
-                        {details && details.wards && 
-                            <View><Text style={style.title}>{I18n.t('wards', {locale: this.props.locale})}:</Text></View>
-                        }
+                            {details && details.wards && 
+                                <View><Text style={style.title}>{I18n.t('wards', {locale: this.props.locale})}:</Text></View>
+                            }
                             
                             {details && details.wards && 
-                                details.wards.map((ward, index)=>{
-                                    let title = ward.label;
-                                    if(this.props.locale === 'np' && ward.label){
-                                        title = ward.label? ward.label : ward.enLabel
-                                    }
-                                    return(
-                                    <View key={index} style={style.itemListContainer}>    
-                                        <TouchableOpacity onPress={() => this.toggleClass()}>
-                                            <View onclick={this.toggleClass.bind(this)} style={style.listTitleContainer}>
-                                                <View style={style.itemIconContainer}>
-                                                    <Text style={style.itemIcon}><Icon name={this.state.iconName === false ? 'expand': 'compress'} size={16}/></Text>
-                                                </View>
-                                                <View style={style.itemTextContainer}>  
-                                                    <Text style={style.itemText}>{I18n.t('ward_no', {locale: this.props.locale})} {title}</Text>
-                                                </View>
-                                            </View>
-                                        </TouchableOpacity>
-                                        {this.state.showDetails == true && 
-                                        <View>
-                                            <View>
-
-                                            {ward.candidates && ward.candidates.map((candidate,index)=>{
-                                                    let candidateName = candidate.enLabel;
-                                                    let candidatePost = candidate.y_postEn;
-                                                    if(this.props.locale === 'np'){
-                                                        candidateName = candidate.label? candidate.label : candidate.enLabel
-                                                        candidatePost = candidate.y_postNp? candidate.y_postNp: candidate.y_postEn;
-                                                    }
-                                                    return(
-                                                    <TouchableOpacity key={index} onPress={() => Actions.candidate({candidate: candidate})}>
-                                                        <View style={style.listContent}>
-                                                            <View style={style.partyIcon}>
-                                                                <PoliticalPartyImage politicalPartyId={candidate.y_politicalPartyID} />
-                                                            </View>
-                                                            <View>
-                                                                <Text style={style.name}>{candidateName} </Text>
-                                                                <Text style={style.designation}>{candidate.totalVotes} {I18n.t('votes', {locale: this.props.locale})}</Text>
-                                                                <Text style={style.designation}>{candidatePost}</Text>
-                                                            </View>
-                                                        </View>
-                                                    </TouchableOpacity>  
-                                                    )
-                                                })
-                                            }          
-
-                                            </View>
-                                        </View>  
-                                        }
-                                    </View>     
-                                    )
-                                                                        
-                                })
+                                <FlatList
+                                data={details.wards}
+                                keyExtractor={this._localBodiesKeyExtractor}
+                                renderItem={({item}) => {
+                                return (
+                                    <WardList locale={this.props.locale} item={item}/>
+                                )
+                                }}
+                                />
                             }                    
-                                            
-                                            
-                                       
-                                    
-                           
                         </ScrollView>
                     </View>
                 </View>

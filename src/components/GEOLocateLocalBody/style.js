@@ -69,5 +69,5 @@ breadCrumbTitle: {
     fontSize: 18,
     color: globalStyle.UI.neutralColor,
     fontWeight: 'bold'
-},
+}
 }

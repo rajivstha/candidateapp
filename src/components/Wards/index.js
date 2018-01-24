@@ -56,7 +56,7 @@ export default graphql(wards, {
   options: ({localBody}) => ({
     variables: {
       skip: 0,
-      limit: 20,
+      limit: 200,
       localBodyID: localBody._id
     }
   })
