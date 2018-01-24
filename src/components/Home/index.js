@@ -8,7 +8,7 @@ import { graphql, compose } from 'react-apollo';
 import {connect} from 'react-redux';
 import ProvinceItem from './ProvinceItem';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import apolloClient from '../../setup/apolloClient';
+import GEOLocate from '../GEOLocate';
 import style from './style';
 
 class Home extends Component {
@@ -50,10 +50,10 @@ class Home extends Component {
                         // 	}
                         // });
 
-                        // let location = {
-                        //         lat: position.coords.latitude,
-                        //         lng: position.coords.longitude
-                        //     }
+                        let latLng = {
+                                lat: position.coords.latitude,
+                                lng: position.coords.longitude
+                            }
                         // apolloClient.query({
                         //     query: geoQuery,
                         //     variables: {
@@ -62,6 +62,7 @@ class Home extends Component {
                         // }).then((data)=>{
                         //     console.log(data);
                         // })
+                        Actions.geoLocate({latLng: latLng});
                         
 				  },
 				  (error) => {
@@ -89,7 +90,6 @@ class Home extends Component {
 	}
 
 	render() {
-		console.log(this.state.location);
 		return (
 			<Grid>
 				{this.state.loading && 
