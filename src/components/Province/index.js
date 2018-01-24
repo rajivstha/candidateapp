@@ -12,22 +12,11 @@ import {activeDistrict} from './actions';
 import I18n from '../../locale';
 
 class Province extends Component {
-  state = {
-    loading: true
-  }
 
   handleActiveDistrict(district) {
     return () => {
       this.props.activeDistrict(district);
       Actions.tabBar();
-    }
-  }
-
-  componentDidMount() {
-    if (this.props.data.districts) {
-      this.setState({
-        loading: false
-      })
     }
   }
 
@@ -52,11 +41,6 @@ class Province extends Component {
     }
     return (
       <Grid>
-        {this.state.loading &&
-        <View style={style.loading}>
-          <ActivityIndicator size="large" color="#036cae"/>
-        </View>
-        }
         <Row style={style.districtsContainer}>
           <View style={style.provinceContainer}>
             <View style={style.provinceImageContainer}>

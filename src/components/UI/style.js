@@ -57,6 +57,7 @@ module.exports = {
     },
     listTitleContainer: {
         flexDirection: 'row',
+        alignItems: 'center'
     },
     itemIconContainer: {
         marginRight: 10,
@@ -67,7 +68,7 @@ module.exports = {
     },
     itemText: {
         color: globalStyle.UI.neutralColor,
-        fontSize: 15
+        fontSize: 20
     },
     listContentContainer: {
         flexDirection: 'column',
@@ -107,13 +108,13 @@ module.exports = {
     name: {
         color: globalStyle.UI.neutralColor,
         marginTop: 7,
+        fontSize: 20,
         fontWeight: 'bold'
     },
     designation: {
         color: globalStyle.UI.neutralColor,
         marginTop: 2,
-
-        fontSize: 12
+        fontSize: 14
     },
     viewWardsContainer: {
         backgroundColor: globalStyle.UI.neutralColor,
@@ -124,6 +125,7 @@ module.exports = {
     },
     wardText: {
         color: globalStyle.UI.textColor,
-        fontSize: 16
+        fontSize: 18,
+        fontWeight: 'bold'
     }
 }

@@ -33,12 +33,10 @@ class LocalBodyListItem extends Component {
         <TouchableOpacity onPress={() => this.toggleClass()}>
           <View onclick={this.toggleClass.bind(this)} style={style.listTitleContainer}>
             <View style={style.itemIconContainer}>
-              <Text style={style.itemIcon}><Icon name={this.state.iconName === false ? 'expand' : 'compress'}
-                                                 size={16}/></Text>
+              <Icon name={this.state.iconName === false ? 'expand' : 'compress'}
+                                                 size={16} color={style.itemIcon.color}/>
             </View>
-            <View style={style.itemTextContainer}>
-              <Text style={style.itemText}>{title}</Text>
-            </View>
+            <Text style={style.itemText}>{title}</Text>
           </View>
         </TouchableOpacity>
         {this.state.showDetails == true &&
@@ -53,7 +51,6 @@ class LocalBodyListItem extends Component {
                   candidateName = candidate.label ? candidate.label : candidate.enLabel
                   candidatePost = candidate.y_postNp ? candidate.y_postNp : candidate.y_postEn;
                 }
-
                 return (
                   <TouchableOpacity key={index} onPress={() => Actions.candidate({candidate: candidate})}>
                     <View style={style.listContent}>
