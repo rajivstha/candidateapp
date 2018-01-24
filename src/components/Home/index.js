@@ -8,7 +8,7 @@ import { graphql, compose } from 'react-apollo';
 import {connect} from 'react-redux';
 import ProvinceItem from './ProvinceItem';
 import Icon from 'react-native-vector-icons/Ionicons';
-import GEOLocate from '../GEOLocate';
+
 import style from './style';
 
 class Home extends Component {
