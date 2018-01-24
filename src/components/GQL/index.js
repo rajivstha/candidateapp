@@ -4,6 +4,7 @@ import {constituencies} from './constituenciesGQL';
 import {wards} from './wardsGQL';
 import {PAHORcandidates} from './PAHORcandidatesGQL';
 import {geoQuery} from './geoGQL';
+import {localBody} from './localBodyGQL';
 
 export {
     provinces,
@@ -11,5 +12,6 @@ export {
     wards,
     constituencies,
     PAHORcandidates,
-    geoQuery
+    geoQuery,
+    localBody
 }

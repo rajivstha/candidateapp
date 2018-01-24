@@ -50,19 +50,19 @@ class LocalBodyList extends Component {
                                 candidatePost = candidate.y_postNp? candidate.y_postNp: candidate.y_postEn;
                             }
                             
-                    return(
-                            <TouchableOpacity key={index} onPress={() => Actions.candidate({candidate: candidate})}>
-                                <View style={style.listContent}>
-                                    <View style={style.partyIcon}>
-                                        <PoliticalPartyImage politicalPartyId={candidate.y_politicalPartyID} />
+                            return(
+                                <TouchableOpacity key={index} onPress={() => Actions.candidate({candidate: candidate})}>
+                                    <View style={style.listContent}>
+                                        <View style={style.partyIcon}>
+                                            <PoliticalPartyImage politicalPartyId={candidate.y_politicalPartyID} />
+                                        </View>
+                                        <View>
+                                            <Text style={style.name}>{candidateName} </Text>
+                                            <Text style={style.designation}>{candidate.totalVotes} {I18n.t('votes', {locale: this.props.locale})}</Text>
+                                            <Text style={style.designation}>{candidatePost}</Text>
+                                        </View>
                                     </View>
-                                    <View>
-                                        <Text style={style.name}>{candidateName} </Text>
-                                        <Text style={style.designation}>{candidate.totalVotes} {I18n.t('votes', {locale: this.props.locale})}</Text>
-                                        <Text style={style.designation}>{candidatePost}</Text>
-                                    </View>
-                                </View>
-                            </TouchableOpacity>  
+                                </TouchableOpacity>  
                             )
                         })
                     }    
