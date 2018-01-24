@@ -6,23 +6,13 @@ import {Header, Footer} from '../UI';
 import { graphql, compose } from 'react-apollo';
 import {connect} from 'react-redux';
 import {geoQuery}  from '../GQL';
-import {GEOLocateLocalBody} from '../GEOLocateLocalBody';
+import GEOLocateLocalBody from '../GEOLocateLocalBody';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {get} from 'lodash';
 import I18n from '../../locale';
 import style from './style';
 
 class GEOLocate extends Component {
-    state = {
-        showDetails: false,
-        iconName: false
-    }  
-    toggleClass() {
-        this.setState({ 
-            showDetails: !this.state.showDetails,
-            iconName: !this.state.iconName 
-         });
-    };
 	render() {
         let localBodyId = get(this.props.data, 'geoLocate.localBody._id', false);
         return (
@@ -36,7 +26,7 @@ class GEOLocate extends Component {
                     <Text>Something went wrong!</Text>
                 }
                 {localBodyId &&
-                <GEOLocateLocalBody localBodyId={localBodyId}/>
+                    <GEOLocateLocalBody localBodyId={localBodyId}/>
                 }
             </View>   
         );
@@ -58,4 +48,4 @@ export default compose(
           variables: {location}
         })
       })
-  )(connect(mapStateToProps)(GEOLocate));
+)(connect(mapStateToProps)(GEOLocate));

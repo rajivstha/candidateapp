@@ -4,6 +4,7 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Actions} from 'react-native-router-flux';
 import {Header, Footer} from '../UI';
 import { graphql, compose } from 'react-apollo';
+import {get} from 'lodash';
 import {connect} from 'react-redux';
 import {localBody}  from '../GQL';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -14,8 +15,7 @@ import style from './style';
 class GEOLocateLocalBody extends Component {
     state = {
         showDetails: false,
-        iconName: false,
-        localbodyDetails: null
+        iconName: false
     }  
     toggleClass() {
         this.setState({ 
@@ -24,12 +24,8 @@ class GEOLocateLocalBody extends Component {
          });
     };
 	render() {
-        // if(this.props.data.geoLocate){
-        //     //let localbodyId = this.props.data.geoLocate.localBody._id;
-            
-            
-        // }
-        console.log(this.props.data)
+        let details = get(this.props.data, 'localBody', false);
+        console.log(details)
         
 		return (
 			<View style={style.candidateByLocationContainer}>
@@ -41,21 +37,29 @@ class GEOLocateLocalBody extends Component {
                 {this.props.data.error &&
                     <Text>Something went wrong!</Text>
                 }
+                {details && details.province && details.district && this.props.locale === 'en' &&
                 <View>
-                    <Text>Province 1 - Biratnagar - </Text>
+                    <Text style={style.breadCrumbTitle}> {details.province.enLabel} - {details.district.enLabel} - {details.enLabel} </Text>
                 </View>
-                {/* <View>
+                }
+                {details && details.province && details.district && this.props.locale === 'np' &&
+                <View>
+                    <Text style={style.breadCrumbTitle}>{details.province.label} - {details.district.label} - {details.label} </Text>
+                </View>
+                }
+                <View>
                     <View style={style.itemListContainer}>
                         <View style={style.listContentContainer}>
-                            {this.state.localbodyDetails.candidates &&   
-                                this.state.localbodyDetails.candidates.map((candidate,index)=>{
+                            {details && details.candidates && 
+                                details.candidates.map((candidate, index)=>{
                                     let candidateName = candidate.enLabel;
                                     let candidatePost = candidate.y_postEn;
                                     if(this.props.locale === 'np'){
                                         candidateName = candidate.label? candidate.label : candidate.enLabel
                                         candidatePost = candidate.y_postNp? candidate.y_postNp: candidate.y_postEn;
                                     }
-                                    <TouchableOpacity  onPress={() => Actions.candidate({candidate: candidate})}>
+                                    return(
+                                    <TouchableOpacity key={index} onPress={() => Actions.candidate({candidate: candidate})}>
                                         <View style={style.listContent}>
                                             <View style={style.partyIcon}>
                                                 <PoliticalPartyImage politicalPartyId={candidate.y_politicalPartyID} />
@@ -66,45 +70,82 @@ class GEOLocateLocalBody extends Component {
                                                 <Text style={style.designation}>{candidatePost}</Text>
                                             </View>
                                         </View>
-                                    </TouchableOpacity>    
-                                })  
-                            }        
+                                    </TouchableOpacity>   
+                                    )
+                                    
+                                })
+                            }
+                                       
+                                  
                             
                         </View>
                         <ScrollView>  
-                            <View><Text>Wards</Text></View>
-                            <View style={style.itemListContainer}>
+                        {details && details.wards && 
+                            <View><Text style={style.title}>{I18n.t('wards', {locale: this.props.locale})}:</Text></View>
+                        }
+                            
+                            {details && details.wards && 
+                                details.wards.map((ward, index)=>{
+                                    let title = ward.label;
+                                    if(this.props.locale === 'np' && ward.label){
+                                        title = ward.label? ward.label : ward.enLabel
+                                    }
+                                    return(
+                                    <View key={index} style={style.itemListContainer}>    
                                         <TouchableOpacity onPress={() => this.toggleClass()}>
                                             <View onclick={this.toggleClass.bind(this)} style={style.listTitleContainer}>
                                                 <View style={style.itemIconContainer}>
                                                     <Text style={style.itemIcon}><Icon name={this.state.iconName === false ? 'expand': 'compress'} size={16}/></Text>
                                                 </View>
                                                 <View style={style.itemTextContainer}>  
-                                                    <Text style={style.itemText}>Ward No. 1</Text>
+                                                    <Text style={style.itemText}>{I18n.t('ward_no', {locale: this.props.locale})} {title}</Text>
                                                 </View>
                                             </View>
-                                        </TouchableOpacity>    
-                                            
+                                        </TouchableOpacity>
+                                        {this.state.showDetails == true && 
                                         <View>
-                                            <View style={style.wardListContentContainer}>
-                                                    <TouchableOpacity>
-                                                            <View style={style.listContent}>
-                                                                <View style={style.partyIcon}>
-                                                                   <Text>party image</Text> 
-                                                                </View>
-                                                                <View>
-                                                                    <Text style={style.name}>Rajiv shrstha </Text>
-                                                                    <Text style={style.designation}>200 - Votes</Text>
-                                                                    <Text style={style.designation}>Sadasya</Text>
-                                                                </View>
+                                            <View>
+
+                                            {ward.candidates && ward.candidates.map((candidate,index)=>{
+                                                    let candidateName = candidate.enLabel;
+                                                    let candidatePost = candidate.y_postEn;
+                                                    if(this.props.locale === 'np'){
+                                                        candidateName = candidate.label? candidate.label : candidate.enLabel
+                                                        candidatePost = candidate.y_postNp? candidate.y_postNp: candidate.y_postEn;
+                                                    }
+                                                    return(
+                                                    <TouchableOpacity key={index} onPress={() => Actions.candidate({candidate: candidate})}>
+                                                        <View style={style.listContent}>
+                                                            <View style={style.partyIcon}>
+                                                                <PoliticalPartyImage politicalPartyId={candidate.y_politicalPartyID} />
                                                             </View>
+                                                            <View>
+                                                                <Text style={style.name}>{candidateName} </Text>
+                                                                <Text style={style.designation}>{candidate.totalVotes} {I18n.t('votes', {locale: this.props.locale})}</Text>
+                                                                <Text style={style.designation}>{candidatePost}</Text>
+                                                            </View>
+                                                        </View>
                                                     </TouchableOpacity>  
+                                                    )
+                                                })
+                                            }          
+
                                             </View>
                                         </View>  
-                            </View>
+                                        }
+                                    </View>     
+                                    )
+                                                                        
+                                })
+                            }                    
+                                            
+                                            
+                                       
+                                    
+                           
                         </ScrollView>
                     </View>
-                </View> */}
+                </View>
             </View>   
         );
 	}
@@ -124,5 +165,5 @@ export default compose(
         options: ({localBodyId}) => ({
           variables: {_id:localBodyId}
         })
-      })
-  )(connect(mapStateToProps)(GEOLocateLocalBody));
+    })
+)(connect(mapStateToProps)(GEOLocateLocalBody));

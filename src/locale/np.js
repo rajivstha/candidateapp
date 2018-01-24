@@ -11,5 +11,6 @@ export default {
     total_votes: 'जम्मा मत  ',
     political_party: 'राजनीतिक दल',
     age: 'उमेर',
-    sex: 'लिंग'
+    sex: 'लिंग',
+    wards: 'वार्डहरु'
 };

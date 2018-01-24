@@ -11,7 +11,8 @@ export default {
     total_votes: 'Total Votes',
     political_party: 'Political Party',
     age: 'Age',
-    sex: 'Sex'
+    sex: 'Sex',
+    wards: 'Wards'
 
     
     
