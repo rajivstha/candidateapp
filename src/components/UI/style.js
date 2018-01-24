@@ -24,13 +24,14 @@ module.exports = {
     },
     languageItem: {
         backgroundColor: globalStyle.UI.textColor,
-        marginRight: 5
+        marginRight: 15
     },
     language:{
         paddingTop: 5,
         paddingBottom: 5,
-        paddingLeft: 10,
-        paddingRight: 10,
+        paddingLeft: 12,
+        paddingRight: 12,
+        fontSize: 15,
         color: globalStyle.UI.neutralColor,
         fontWeight: 'bold'
     },

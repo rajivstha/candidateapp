@@ -25,7 +25,8 @@ module.exports = {
         tabBarStyle: {
             backgroundColor: '#036cae', 
             borderBottomColor:'#036cae', 
-            borderBottomWidth: 1
+            borderBottomWidth: 1,
+          height: 60,
         },
         navTitle: {
             color: '#FFFFFF'
