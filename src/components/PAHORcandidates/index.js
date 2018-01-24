@@ -1,56 +1,45 @@
-import React, { Component } from 'react';
-import {View, Text, Image, TouchableOpacity, FlatList} from 'react-native';
-import { Col, Row, Grid } from 'react-native-easy-grid';
-import style from './style';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {MyList}  from '../UI';
-import {connect} from 'react-redux';
-import { graphql } from 'react-apollo';
-import apolloClient from '../../setup/apolloClient';
-import {constituencies}  from '../GQL';
+import React, {Component} from 'react';
+import {View, FlatList, ActivityIndicator} from 'react-native';
+import {graphql} from 'react-apollo';
+import {get} from 'lodash';
+import {MyList} from '../UI';
+import {constituencies} from '../GQL';
+import style from "../LocalBodies/style";
 
 class PAHORcandidates extends Component {
-	state = {
-		items: []
-	};
-	_PAHORcandidatesKeyExtractor(item, index) {
-		return item._id; 
-	}
-	componentDidMount(){
-		apolloClient.query({
-			query: constituencies,
-			variables: {
-				id: this.props.activeDistrict._id
-			}
-		}).then((data) => {
-			this.setState({
-				items : data.data.district.constituencies
-			})
-		}).catch((err) => {
-			console.log(err);
-		})
-	}
+
+  _PAHORcandidatesKeyExtractor(item, index) {
+    return item._id;
+  }
 
   render() {
-	return (
-        <FlatList
-				data={this.state.items}
-				keyExtractor={this._PAHORcandidatesKeyExtractor}
-				renderItem={({item}) => {
-					return (
-						<MyList candidateType ={this.props.candidateType} locale={this.props.locale} item={item}/>
-					)
-				}}
-		/> 
+    if(this.props.data.loading) {
+      return (
+        <View>
+          <ActivityIndicator size="large" color="#036cae" />
+        </View>
+      )
+    }
+    return (
+      <FlatList
+        data={get(this.props, 'data.district.constituencies', [])}
+        keyExtractor={this._PAHORcandidatesKeyExtractor}
+        renderItem={({item}) => {
+          return (
+            <MyList candidateType={this.props.candidateType} locale={this.props.locale} item={item}/>
+          )
+        }}
+      />
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-	locale: state.locale,
-	activeDistrict: state.activeDistrict
-  }
-};
+const CandidatesListWithData = graphql(constituencies, {
+  options: ({activeDistrict}) => ({
+    variables: {
+      id: activeDistrict._id
+    }
+  })
+})(PAHORcandidates);
 
-export default connect(mapStateToProps)(PAHORcandidates);
+export default CandidatesListWithData;

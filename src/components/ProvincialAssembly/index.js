@@ -24,7 +24,7 @@ class ProvincialAssembly extends Component {
 			<Text style={style.title}>{provinceTitle} - {title} - {I18n.t('provincial_assembly', {locale: this.props.locale})}</Text>
 		</Row>
 		<Row size={70}>
-			<PAHORcandidates candidateType={'provinceAssemblyCandidates'}/> 
+			<PAHORcandidates activeDistrict={this.props.activeDistrict} activeProvince={this.props.activeProvince} candidateType={'provinceAssemblyCandidates'}/>
 		</Row>
 	</Grid>
     );

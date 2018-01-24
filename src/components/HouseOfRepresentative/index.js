@@ -22,7 +22,7 @@ class HouseOfRepresentative extends Component {
 					<Text style={style.title}>{provinceTitle} - {title} - {I18n.t('hor', {locale: this.props.locale})}</Text>
 				</Row>
 				<Row size={70}>
-					<PAHORcandidates candidateType={'houseOfRepresentativeCandidates'}/> 
+          <PAHORcandidates activeDistrict={this.props.activeDistrict} activeProvince={this.props.activeProvince} candidateType={'houseOfRepresentativeCandidates'}/>
 				</Row>
 			</Grid>
 		);

@@ -32,10 +32,10 @@ class App extends Component {
 				<Scene key="home" initial={true} component={Home} />
 				<Scene key="aboutUs" title="About us" hideNavBar={false} component={AboutUs} />
 				<Scene key="province" title="Province" hideNavBar={false} component={Province} />
-				<Scene key="candidate" hideNavBar={false} component={Candidate} />
+				<Scene key="candidate" title="Candidate" hideNavBar={false} component={Candidate} />
 				<Scene key="addDetails" hideNavBar={false} component={AddDetails} />
-				<Scene key="wards" hideNavBar={false} component={Wards} />
-				<Scene key="geoLocate" hideNavBar={false} component={GEOLocate} />
+				<Scene key="wards" title="Wards" hideNavBar={false} component={Wards} />
+				<Scene key="geoLocate" title="Geo Locate" hideNavBar={false} component={GEOLocate} />
 				<Tabs
 					key="tabBar"
 					swipeEnabled
