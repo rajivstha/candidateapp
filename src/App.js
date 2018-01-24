@@ -17,7 +17,7 @@ import ProvincialAssembly from './components/ProvincialAssembly';
 import HouseOfRepresentative from './components/HouseOfRepresentative';
 import Candidate from './components/Candidate';
 import AddDetails from './components/Candidate/AddDetails';
-
+import GEOLocate from './components/GEOLocate';
 
 class App extends Component {
   render() {
@@ -35,6 +35,7 @@ class App extends Component {
 				<Scene key="candidate" hideNavBar={false} component={Candidate} />
 				<Scene key="addDetails" hideNavBar={false} component={AddDetails} />
 				<Scene key="wards" hideNavBar={false} component={Wards} />
+				<Scene key="geoLocate" hideNavBar={false} component={GEOLocate} />
 				<Tabs
 					key="tabBar"
 					swipeEnabled
