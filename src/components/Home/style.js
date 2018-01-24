@@ -1,6 +1,14 @@
 import globalStyle from '../../assets/styles';
 
 module.exports = {
+    candidatesByLocationContainer: {
+        flexDirection: 'column',
+        backgroundColor: '#DA1A40',
+        marginTop: 10,
+        marginLeft: 20,
+        marginRight: 20,
+        flex: 1
+    },
     provinceContainer: {
         paddingLeft: 15,
         paddingRight: 15,
