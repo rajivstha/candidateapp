@@ -20,7 +20,9 @@ module.exports = {
     provinceTextContainer:{
         alignItems: 'center', 
         justifyContent: 'center',
-        backgroundColor: globalStyle.UI.neutralColor
+        backgroundColor: globalStyle.UI.neutralColor,
+      padding: 2
+
     },
     provinceText: {  
         paddingTop: 5, 

@@ -57,7 +57,7 @@ class Province extends Component {
           <ActivityIndicator size="large" color="#036cae"/>
         </View>
         }
-        <Row size={80} style={style.districtsContainer}>
+        <Row style={style.districtsContainer}>
           <View style={style.provinceContainer}>
             <View style={style.provinceImageContainer}>
               <ProvinceImage id={province.id} style={style.singleProvinceImg} />

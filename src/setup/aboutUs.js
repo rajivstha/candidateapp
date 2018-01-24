@@ -1,7 +1,6 @@
 export default {
-    name: 'Mundhum ITS',
-    twitterLink: 'https://twitter.com/',
-    facebookLink: 'https://www.facebook.com/?ref=logo',
+    twitterLink: 'https://twitter.com/onnepal',
+    facebookLink: 'https://www.facebook.com/onnepal',
     websiteUrl: 'http://onnepal.com/',
     email: 'info@onnepal.com'
 }
