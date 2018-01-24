@@ -20,7 +20,7 @@ class Footer extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-	locale: state.locale
+		locale: state.locale
   }
 };
 export default connect(mapStateToProps)(Footer);

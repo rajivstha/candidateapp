@@ -30,11 +30,11 @@ class App extends Component {
 				hideNavBar={true}
              	navBar={CustomNavBar}>
 				<Scene key="home" initial={true} component={Home} />
-				<Scene key="aboutUs" title="About us" hideNavBar={false} component={AboutUs} />
-				<Scene key="province" title="Province" hideNavBar={false} component={Province} />
-				<Scene key="candidate" title="Candidate" hideNavBar={false} component={Candidate} />
+				<Scene key="aboutUs" title={I18n.t('about_us', {locale: this.props.locale})} hideNavBar={false} component={AboutUs} />
+				<Scene key="province" title={I18n.t('province', {locale: this.props.locale})} hideNavBar={false} component={Province} />
+				<Scene key="candidate" title={I18n.t('candidate', {locale: this.props.locale})} hideNavBar={false} component={Candidate} />
 				<Scene key="addDetails" hideNavBar={false} component={AddDetails} />
-				<Scene key="wards" title="Wards" hideNavBar={false} component={Wards} />
+				<Scene key="wards" title={I18n.t('wards', {locale: this.props.locale})} hideNavBar={false} component={Wards} />
 				<Scene key="geoLocate" title="Geo Locate" hideNavBar={false} component={GEOLocate} />
 				<Tabs
 					key="tabBar"

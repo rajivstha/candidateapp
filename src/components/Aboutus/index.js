@@ -16,7 +16,7 @@ class AboutUs extends Component {
             </View>
             <View style={{paddingBottom: 20}}>
               <Text style={style.text}>
-                We developed this app to make information related to Elected Candidates of Nepal accessible to general public.
+                Candidates OnNepal is an initiative of OnNepal.com. We developed this app to make information related to Elected Candidates of Nepal accessible to general public.
                 This is our Beta release. We are working on more updates to make this app more stable and useful.
               </Text>
 
