@@ -5,7 +5,7 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 import apolloClient from './apolloClient';
 import configureStore from './configureStore';
 import {StatusBar} from 'react-native';
-import App from '../InitApp';
+import App from '../App';
 
 export const { persistor, store } = configureStore();
 

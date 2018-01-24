@@ -3,21 +3,15 @@ import {View, Text, Image, TouchableOpacity, FlatList, ActivityIndicator, Permis
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Actions} from 'react-native-router-flux';
 import {Header, Footer} from '../UI';
-import {provinces, geoQuery}  from '../GQL';
+import {provinces}  from '../GQL';
 import { graphql, compose } from 'react-apollo';
 import {connect} from 'react-redux';
 import ProvinceItem from './ProvinceItem';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import GEOLocate from '../GEOLocate';
 import style from './style';
 
 class Home extends Component {
-	state = {
-		location: {
-			lat: null,
-			lng: null
-		}
-	}
+	
 
 	_provinceKeyExtractor(item, index) {
 		return item._id; 
@@ -36,26 +30,12 @@ class Home extends Component {
 			if (granted === PermissionsAndroid.RESULTS.GRANTED) {
 				navigator.geolocation.getCurrentPosition(
 				  (position) => {
-                        // this.setState({
-                        // 	location: {
-                        // 		lat: position.coords.latitude,
-                        // 		lng: position.coords.longitude
-                        // 	}
-                        // });
-
-                        let latLng = {
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude
-                            }
-                        // apolloClient.query({
-                        //     query: geoQuery,
-                        //     variables: {
-                        //         location: location
-                        //     }
-                        // }).then((data)=>{
-                        //     console.log(data);
-                        // })
-                        Actions.geoLocate({latLng: latLng});
+                        
+                        let location = {
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude
+                        }
+                        Actions.geoLocate({location: location});
                         
 				  },
 				  (error) => {
