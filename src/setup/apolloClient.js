@@ -2,26 +2,13 @@ import { AsyncStorage } from 'react-native';
 import { Action } from 'react-native-router-flux';
 import { ApolloClient } from 'apollo-client';
 import { ApolloLink } from 'apollo-link';
-import { HttpLink, createHttpLink } from 'apollo-link-http';
+import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { persistCache } from 'apollo-cache-persist';
 import { onError } from 'apollo-link-error';
 import config from './config';
-import { store } from './index';
-
 
 const httpLink = createHttpLink({ uri:  config.GRAPHQL_SERVER_URL });
-
-// const middlewareLink = new ApolloLink((operation, forward) => {
-//   const token = store.getState().auth.token;
-//   if (token) {  
-//     operation.setContext({
-//       headers: {
-//         authorization: token || null
-//       }
-//     });
-//   }
-//   return forward(operation);
-// });
 
 const errorLink = onError(({ networkError, graphQLErrors }) => {
   if (graphQLErrors)
@@ -32,12 +19,21 @@ const errorLink = onError(({ networkError, graphQLErrors }) => {
     );
 
   if (networkError) console.log(`[Network error]: ${networkError}`);
-})
+});
 
 const link = ApolloLink.from([
   errorLink,
   httpLink,
 ]);
+
+const cache = new InMemoryCache({
+  dataIdFromObject: o => o._id
+});
+
+persistCache({
+  cache,
+  storage: AsyncStorage,
+});
 
 const client = new ApolloClient({
   link: link,
