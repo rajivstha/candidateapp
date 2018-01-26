@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import {View, Text, Image, TouchableOpacity, FlatList, ActivityIndicator} from 'react-native';
-import {connect} from 'react-redux';
+import {View, Text, FlatList, ActivityIndicator} from 'react-native';
 import {LocalBodyListItem}  from '../UI';
 import {localBodies}  from '../GQL';
-import { graphql, compose } from 'react-apollo';
-import I18n from '../../locale';
+import { graphql } from 'react-apollo';
 import style from './style';
 
 class LocalBodiesList extends Component {
@@ -21,6 +19,15 @@ class LocalBodiesList extends Component {
         </View>
       )
     }
+
+    if(this.props.data.error) {
+      return (
+        <View>
+          <Text>Something went wrong</Text>
+        </View>
+      )
+    }
+
     return (
          <FlatList
             data={this.props.data.localBodies.items}
