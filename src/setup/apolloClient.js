@@ -30,6 +30,7 @@ const cache = new InMemoryCache({
   dataIdFromObject: o => o._id
 });
 
+
 persistCache({
   cache,
   storage: AsyncStorage,
@@ -37,9 +38,7 @@ persistCache({
 
 const client = new ApolloClient({
   link: link,
-  cache: new InMemoryCache({
-    dataIdFromObject: o => o._id
-  })
+  cache: cache
 });
 
 export default client;
