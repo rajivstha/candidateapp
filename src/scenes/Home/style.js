@@ -45,7 +45,6 @@ export default StyleSheet.create({
     fontWeight: 'bold'
 
   },
-  loading: globalStyle.loading,
   footerContainer: {
     alignItems: 'center',
     justifyContent: 'center',

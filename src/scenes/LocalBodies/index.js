@@ -3,7 +3,7 @@ import {View, Text} from 'react-native';
 import { Row, Grid } from 'react-native-easy-grid';
 import {connect} from 'react-redux';
 import LocalBodiesList from './LocalBodiesList';
-import style from './style';
+import globalStyle from '../../assets/styles';
 
 class LocalBodies extends Component {
 
@@ -20,7 +20,7 @@ class LocalBodies extends Component {
 			<Grid>
 				<Row size={10}>
 					<View>
-						<Text style={style.title}>{provinceTitle} - {title}</Text>
+						<Text style={globalStyle.title}>{provinceTitle} - {title}</Text>
 					</View>
 				</Row>
 				<Row size={90}>

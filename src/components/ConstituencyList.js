@@ -3,7 +3,7 @@ import {View, FlatList, ActivityIndicator} from 'react-native';
 import {graphql} from 'react-apollo';
 import {get} from 'lodash';
 import ConstituencyCandidateList from './ConstituencyCandidateList';
-import {constituencies} from '../../GQL';
+import {constituencies} from '../GQL';
 import ErrorMsg from "./ErrorMsg";
 
 class ConstituencyList extends Component {
@@ -33,7 +33,10 @@ class ConstituencyList extends Component {
         keyExtractor={this._keyExtractor}
         renderItem={({item}) => {
           return (
-            <ConstituencyCandidateList candidateType={this.props.candidateType} locale={this.props.locale} item={item}/>
+            <ConstituencyCandidateList
+              candidateType={this.props.candidateType}
+              locale={this.props.locale}
+              constituency={item}/>
           )
         }}
       />

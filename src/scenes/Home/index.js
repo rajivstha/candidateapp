@@ -11,20 +11,24 @@ import {
 import {graphql, compose} from 'react-apollo';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Col, Row, Grid} from 'react-native-easy-grid';
+import {Row, Grid} from 'react-native-easy-grid';
 import {Actions} from 'react-native-router-flux';
-import Geolocation from 'react-native-geolocation-service';
+import GeoLocation from 'react-native-geolocation-service';
+import {MyNavBar} from '../../components/UI';
 import {provinces} from '../../GQL';
 import ProvinceItem from './ProvinceItem';
-import style from './style';
+import ErrorMsg from "../../components/ErrorMsg";
 import I18n from "../../locale";
+import globalStyle from '../../assets/styles';
+import style from './style';
 
 class Home extends Component {
   state = {
     locating: false,
     locationError: null
   }
-  _provinceKeyExtractor(item, index) {
+
+  _keyExtractor(item, index) {
     return item._id;
   }
 
@@ -43,7 +47,7 @@ class Home extends Component {
         }
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        Geolocation.getCurrentPosition(
+        GeoLocation.getCurrentPosition(
           (position) => {
             this.setState({
               locating: false,
@@ -56,7 +60,6 @@ class Home extends Component {
             Actions.geoLocate({location: location});
           },
           (error) => {
-            console.log(error);
             this.setState({
               locating: false,
               locatingError: error
@@ -66,7 +69,7 @@ class Home extends Component {
         );
       }
     } else {
-      Geolocation.getCurrentPosition(
+      GeoLocation.getCurrentPosition(
         (position) => {
           this.setState({
             locating: false,
@@ -93,8 +96,9 @@ class Home extends Component {
   render() {
     return (
       <Grid>
+        <MyNavBar title="Candidates OnNepal" hideBackButton={true} />
         {this.props.data.loading &&
-          <View style={style.loading}>
+          <View style={globalStyle.loading}>
             <ActivityIndicator size="large" color="#036cae"/>
           </View>
         }
@@ -112,12 +116,12 @@ class Home extends Component {
         <Row size={70} style={style.provinceContainer}>
           <Text style={{alignSelf: 'center', fontSize: 20, fontWeight: 'bold', padding: 10}}>{I18n.t('provinces', {locale: this.props.locale})}</Text>
           {this.props.data.error &&
-            <Text>Something went wrong!</Text>
+            <ErrorMsg error={this.props.data.error} locale={this.props.locale}/>
           }
           {this.props.data.provinces &&
             <FlatList
               data={this.props.data.provinces}
-              keyExtractor={this._provinceKeyExtractor}
+              keyExtractor={this._keyExtractor}
               extraData={this.props.locale}
               renderItem={({item}) => {
                 return (

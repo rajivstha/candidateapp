@@ -3,10 +3,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import PropTypes from 'prop-types';
+import PoliticalPartyImage from './PoliticalPartyImage';
+import I18n from '../locale';
 import style from './UI/style';
-import {connect} from 'react-redux';
-import I18n from '../locale/index';
-import {PoliticalPartyImage} from './UI/index';
 
 class WardList extends Component {
   state = {

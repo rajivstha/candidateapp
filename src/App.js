@@ -24,10 +24,10 @@ class App extends Component {
       return Actions.pop();
     };
     return (
-      <Router backAndroidHandler={onBackAndroid} navigationBarStyle={globalStyle.UI.navBar}
-              titleStyle={globalStyle.UI.navTitle}>
+      <Router backAndroidHandler={onBackAndroid} navigationBarStyle={globalStyle.navBar}
+              titleStyle={globalStyle.navTitle}>
         <Stack key="root" navBar={MyNavBar}>
-          <Scene key="home" title="Candidates OnNepal" initial={true} component={Home}/>
+          <Scene key="home" hideNavBar={true} title="Candidates OnNepal" initial={true} component={Home}/>
           <Scene key="aboutUs" title={I18n.t('about_us', {locale: this.props.locale})} component={AboutUs}/>
           <Scene key="province" title={I18n.t('province', {locale: this.props.locale})} component={Province}/>
           <Scene key="candidate" title={I18n.t('candidate', {locale: this.props.locale})} component={Candidate}/>
@@ -38,30 +38,29 @@ class App extends Component {
             key="tabBar"
             swipeEnabled
             showLabel={false}
+            hideNavBar={true}
             tabBarPosition="bottom"
-            tabBarStyle={globalStyle.UI.tabBarStyle}
+            tabBarStyle={globalStyle.tabBarStyle}
           >
-            <Stack
+            <Scene
               key="localBodies"
+              hideNavBar={false}
               title={I18n.t('local_election', {locale: this.props.locale})}
-              icon={TabIcon}
-            >
-              <Scene hideNavBar={false} key="localBodies_Index" component={LocalBodies}/>
-            </Stack>
-            <Stack
+              icon={TabIcon} component={LocalBodies}
+            />
+            <Scene
               key="provincialAssembly"
+              hideNavBar={false}
               title={I18n.t('provincial_assembly', {locale: this.props.locale})}
               icon={TabIcon}
-            >
-              <Scene hideNavBar={false} key="provincialAssembly_index" component={ProvincialAssembly}/>
-            </Stack>
-            <Stack
+              component={ProvincialAssembly}
+            />
+            <Scene
               key="houseOfRepresentative"
+              hideNavBar={false}
               title={I18n.t('hor', {locale: this.props.locale})}
-              icon={TabIcon}
-            >
-              <Scene hideNavBar={false} key="houseOfRepresentative_index" component={HouseOfRepresentative}/>
-            </Stack>
+              icon={TabIcon} component={HouseOfRepresentative}
+            />
           </Tabs>
         </Stack>
       </Router>

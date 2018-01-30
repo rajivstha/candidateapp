@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {View, Text, TouchableOpacity, Image, TouchableHighlight, ScrollView} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import PropTypes from 'prop-types';
 import style from './UI/style';
 import {connect} from 'react-redux';
 import I18n from '../locale/index';
-import {PoliticalPartyImage} from './UI/index';
-
+import PoliticalPartyImage from './PoliticalPartyImage';
 
 class LocalBodyListItem extends Component {
   state = {

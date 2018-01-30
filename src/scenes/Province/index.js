@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import ProvinceImage from './ProvinceImage';
 import {activeDistrict} from './actions';
 import I18n from '../../locale';
+import globalStyle from '../../assets/styles';
 import style from './style';
 
 class Province extends Component {

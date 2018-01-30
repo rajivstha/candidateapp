@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import globalStyle, {theme} from '../../assets/styles';
+import {theme} from '../../assets/styles';
 
 export default StyleSheet.create({
   districtsContainer: {
@@ -23,7 +23,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: theme.UI.neutralColor,
     padding: 2
-
   },
   provinceText: {
     paddingTop: 5,
@@ -31,9 +30,7 @@ export default StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold'
-
   },
-
   districtsListContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -55,7 +52,4 @@ export default StyleSheet.create({
     color: theme.UI.neutralColor,
     fontSize: 20
   },
-  loading: globalStyle.loading
-
-
 });

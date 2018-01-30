@@ -3,7 +3,7 @@ import {Text} from 'react-native';
 import {Row, Grid} from 'react-native-easy-grid';
 import {connect} from 'react-redux';
 import ConstituencyList from '../../components/ConstituencyList';
-import style from './style';
+import globalStyle from '../../assets/styles';
 
 class HouseOfRepresentative extends Component {
   render() {
@@ -18,7 +18,7 @@ class HouseOfRepresentative extends Component {
     return (
       <Grid>
         <Row size={10}>
-          <Text style={style.title}>{provinceTitle} - {title}</Text>
+          <Text style={globalStyle.title}>{provinceTitle} - {title}</Text>
         </Row>
         <Row size={90}>
           <ConstituencyList locale={this.props.locale}

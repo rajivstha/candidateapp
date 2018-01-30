@@ -12,12 +12,14 @@ class MyNavBar extends Component {
     return (
       <View  style={style.customNavbarContainer}>
         <View style={style.customTopNavbarContainer}>
-          <View style={style.backIconContainer}>
-            <TouchableOpacity style={style.backIcon} onPress={() => Actions.pop()}>
-              <Icon name="ios-arrow-back" size={30} color="#FFFFFF"/>
-            </TouchableOpacity>
-          </View>
-          <View style={style.logoContainer}>
+          {!this.props.hideBackButton &&
+            <View style={style.backIconContainer}>
+              <TouchableOpacity style={style.backIcon} onPress={() => Actions.pop()}>
+                <Icon name="ios-arrow-back" size={30} color="#FFFFFF"/>
+              </TouchableOpacity>
+            </View>
+          }
+          <View style={[style.logoContainer, (this.props.hideBackButton?{paddingLeft: 20}:{})]}>
             <Text style={style.logo}>{ this.props.title }</Text>
           </View>
         </View>
@@ -27,6 +29,10 @@ class MyNavBar extends Component {
   }
 }
 
+MyNavBar.defaultProps = {
+  hideBackButton: false,
+  title: ''
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {

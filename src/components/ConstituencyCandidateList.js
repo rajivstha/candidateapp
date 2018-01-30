@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {View, Text, TouchableOpacity, Image, TouchableHighlight, ScrollView} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView, ActivityIndicator} from 'react-native';
 import {Actions} from 'react-native-router-flux';
-import PropTypes from 'prop-types';
-import style from './UI/style';
-import I18n from '../locale/index';
 import {graphql} from 'react-apollo';
-import apolloClient from '../setup/apolloClient';
-import {PAHORcandidates} from '../GQL/index';
-import {PoliticalPartyImage} from './UI/index';
+import PropTypes from 'prop-types';
+import I18n from '../locale';
+import {constituencyCandidates} from '../GQL';
+import PoliticalPartyImage from './PoliticalPartyImage';
+import ErrorMsg from './ErrorMsg';
+import style from './UI/style';
 
 class ConstituencyCandidateList extends Component {
   state = {
@@ -17,91 +17,94 @@ class ConstituencyCandidateList extends Component {
     iconName: false
   }
 
-  toggleClass() {
+  toggleDetails() {
     this.setState({
       showDetails: !this.state.showDetails,
       iconName: !this.state.iconName
     });
   };
 
-  componentDidMount() {
-    if (this.props.item) {
-      apolloClient.query({
-        query: PAHORcandidates,
-        variables: {
-          id: this.props.item._id
-        }
-      }).then((data) => {
-        this.setState({
-          candidates: this.props.candidateType === 'houseOfRepresentativeCandidates' ? data.data.constituency.houseOfRepresentativeCandidates : data.data.constituency.provinceAssemblyCandidates
-        })
-      }).catch((err) => {
-        console.log(err);
-      })
-    }
-  }
-
   render() {
-    let item = this.props.item ? this.props.item : '';
-    let title = item.label;
-    if (this.props.locale === 'np' && item.label) {
-      title = item.label ? item.label : item.enLabel
+    let constituency = this.props.constituency;
+    let title = constituency.label;
+    if (this.props.locale === 'np') {
+      title = constituency.label ? constituency.label : constituency.enLabel
     }
+
+    if(this.props.data.loading) {
+      return (
+        <View>
+          <ActivityIndicator size="large" color="#036cae" />
+        </View>
+      )
+    }
+
+    if(this.props.data.error) {
+      return (
+        <ErrorMsg error={this.props.data.error} locale={this.props.locale}/>
+      )
+    }
+
+    let candidates = (
+      this.props.candidateType === 'houseOfRepresentativeCandidates' ?
+        this.props.data.constituency.houseOfRepresentativeCandidates :
+        this.props.data.constituency.provinceAssemblyCandidates
+    );
     return (
       <View style={style.itemListContainer}>
-        <TouchableOpacity onPress={() => this.toggleClass()}>
-          <View onclick={this.toggleClass.bind(this)} style={style.listTitleContainer}>
+        <TouchableOpacity onPress={() => this.toggleDetails()}>
+          <View style={style.listTitleContainer}>
             <View style={style.itemIconContainer}>
-              <Text style={style.itemIcon}><Icon name={this.state.iconName === false ? 'expand' : 'compress'}
-                                                 size={16}/></Text>
+              <Text style={style.itemIcon}>
+                <Icon name={this.state.iconName === false ? 'expand' : 'compress'}
+                      size={16}/>
+              </Text>
             </View>
-            <View style={style.itemTextContainer}>
+            <View>
               <Text style={style.itemText}>{I18n.t('election_area', {locale: this.props.locale})} {title}</Text>
             </View>
           </View>
         </TouchableOpacity>
         {this.state.showDetails == true &&
-        <View>
-          <View style={style.listContentContainer}>
-            <ScrollView>
-              {this.state.candidates && this.state.candidates.length > 0 &&
-              this.state.candidates.map((candidate, index) => {
-                let candidateName = candidate.enLabel;
-                if (this.props.locale === 'np' && candidate.label) {
-                  candidateName = candidate.label ? candidate.label : candidate.enLabel
+          <View>
+            <View style={style.listContentContainer}>
+              <ScrollView>
+                {candidates && candidates.length > 0 &&
+                  candidates.map((candidate, index) => {
+                    let candidateName = candidate.enLabel;
+                    if (this.props.locale === 'np' && candidate.label) {
+                      candidateName = candidate.label ? candidate.label : candidate.enLabel
+                    }
+                    return (
+                      <TouchableOpacity key={index} onPress={() => Actions.candidate({candidate: candidate})}>
+                        <View style={style.listContent}>
+                          <View style={style.partyIcon}>
+                            <PoliticalPartyImage politicalPartyId={candidate.y_politicalPartyID}/>
+                          </View>
+                          <View>
+                            <Text style={style.name}>
+                              {candidateName}
+                            </Text>
+                            <Text style={style.designation}>
+                              {candidate.totalVotes} {I18n.t('votes', {locale: this.props.locale})}
+                            </Text>
+                            <Text style={style.designation}>
+                              {candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaNp !== null && I18n.t('election_area', {locale: this.props.locale})}
+
+                              {candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaNp !== null && " ("}
+                              {this.props.locale === 'en' && candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaEn}
+                              {this.props.locale === 'np' && candidate.constitutionalAreaNp !== null && candidate.constitutionalAreaNp}
+                              {candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaNp !== null && ")"}
+                            </Text>
+                          </View>
+                        </View>
+                      </TouchableOpacity>
+                    )
+                  })
                 }
-                return (
-                  <TouchableOpacity key={index} onPress={() => Actions.candidate({candidate: candidate})}>
-                    <View style={style.listContent}>
-                      <View style={style.partyIcon}>
-                        <PoliticalPartyImage politicalPartyId={candidate.y_politicalPartyID}/>
-                      </View>
-                      <View>
-                        <Text style={style.name}>
-                          {candidateName}
-                        </Text>
-                        <Text style={style.designation}>
-                          {candidate.totalVotes} {I18n.t('votes', {locale: this.props.locale})}
-                        </Text>
-                        <Text style={style.designation}>
-                          {candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaNp !== null && I18n.t('election_area', {locale: this.props.locale})}
-
-                          {candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaNp !== null && " ("}
-                          {this.props.locale === 'en' && candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaEn}
-                          {this.props.locale === 'np' && candidate.constitutionalAreaNp !== null && candidate.constitutionalAreaNp}
-                          {candidate.constitutionalAreaEn !== null && candidate.constitutionalAreaNp !== null && ")"}
-                        </Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                )
-              })
-              }
-
-            </ScrollView>
+              </ScrollView>
+            </View>
           </View>
-
-        </View>
         }
       </View>
     );
@@ -110,8 +113,16 @@ class ConstituencyCandidateList extends Component {
 
 ConstituencyCandidateList.propTypes = {
   locale: PropTypes.string,
-  item: PropTypes.object,
+  constituency: PropTypes.object,
   activeDistrict: PropTypes.string
 };
 
-export default ConstituencyCandidateList;
+const ConstituencyCandidateListWithData = graphql(constituencyCandidates, {
+  options: ({constituency}) => ({
+    variables: {
+      id: constituency._id
+    }
+  })
+})(ConstituencyCandidateList);
+
+export default ConstituencyCandidateListWithData;

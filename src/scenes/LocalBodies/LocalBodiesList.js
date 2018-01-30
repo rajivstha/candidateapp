@@ -5,7 +5,7 @@ import {graphql} from 'react-apollo';
 import ErrorMsg from "../../components/ErrorMsg";
 import LocalBodyListItem from '../../components/LocalBodyListItem';
 import {localBodies} from '../../GQL';
-import style from './style';
+import globalStyle from '../../assets/styles';
 
 class LocalBodiesList extends Component {
 
@@ -16,7 +16,7 @@ class LocalBodiesList extends Component {
   render() {
     if (this.props.data.loading) {
       return (
-        <View style={style.loading}>
+        <View style={globalStyle.loading}>
           <ActivityIndicator size="large" color="#036cae"/>
         </View>
       )

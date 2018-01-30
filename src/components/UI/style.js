@@ -20,15 +20,15 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   backIcon: {
-    padding: 20
+    padding: 20,
   },
   logoContainer: {
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   logo: {
     color: theme.UI.textColor,
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold'
   },
   languageContainer: {
