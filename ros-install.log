@@ -1,0 +1,27 @@
+/home/yalamber/.nvm/versions/node/v8.9.4/bin/ros -> /home/yalamber/.nvm/versions/node/v8.9.4/lib/node_modules/realm-object-server/dist/cli.js
+
+> lzma-native@3.0.4 install /home/yalamber/.nvm/versions/node/v8.9.4/lib/node_modules/realm-object-server/node_modules/lzma-native
+> node-pre-gyp install --fallback-to-build && node node_modules/rimraf/bin.js build
+
+[lzma-native] Success: "/home/yalamber/.nvm/versions/node/v8.9.4/lib/node_modules/realm-object-server/node_modules/lzma-native/binding-v3.0.4-node-v57-linux-x64/lzma_native.node" is installed via remote
+
+> realm@1.12.0 install /home/yalamber/.nvm/versions/node/v8.9.4/lib/node_modules/realm-object-server/node_modules/realm-one/node_modules/realm
+> node-pre-gyp install --fallback-to-build
+
+[realm] Success: "/home/yalamber/.nvm/versions/node/v8.9.4/lib/node_modules/realm-object-server/node_modules/realm-one/node_modules/realm/compiled/node-v57_linux_x64/realm.node" is installed via remote
+
+> bcrypt@1.0.3 install /home/yalamber/.nvm/versions/node/v8.9.4/lib/node_modules/realm-object-server/node_modules/bcrypt
+> node-pre-gyp install --fallback-to-build
+
+[bcrypt] Success: "/home/yalamber/.nvm/versions/node/v8.9.4/lib/node_modules/realm-object-server/node_modules/bcrypt/lib/binding/bcrypt_lib.node" is installed via remote
+
+> realm@2.1.1 install /home/yalamber/.nvm/versions/node/v8.9.4/lib/node_modules/realm-object-server/node_modules/realm
+> node-pre-gyp install --fallback-to-build
+
+[realm] Success: "/home/yalamber/.nvm/versions/node/v8.9.4/lib/node_modules/realm-object-server/node_modules/realm/compiled/node-v57_linux_x64/realm.node" is installed via remote
+
+> uws@8.14.1 install /home/yalamber/.nvm/versions/node/v8.9.4/lib/node_modules/realm-object-server/node_modules/uws
+> node-gyp rebuild > build_log.txt 2>&1 || exit 0
+
++ realm-object-server@2.6.2
+added 453 packages in 676.752s

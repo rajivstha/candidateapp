@@ -1,7 +1,7 @@
-import auth from '../components/Login/reducer';
+import auth from '../scenes/Login/reducer';
 import locale from '../locale/localeReducer';
-import activeDistrict from '../components/Province/reducer';
-import activeProvince from '../components/Home/provinceReducer';
+import activeDistrict from '../scenes/Province/reducer';
+import activeProvince from '../scenes/Home/provinceReducer';
 
 export default {
   auth,
