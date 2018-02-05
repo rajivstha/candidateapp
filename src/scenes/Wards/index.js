@@ -23,10 +23,10 @@ class Wards extends Component {
     }
     return (
       <Grid>
-        <Row size={7}>
+        <Row size={9}>
           <Text style={globalStyle.title}>{title}</Text>
         </Row>
-        <Row size={73}>
+        <Row size={71}>
           {this.props.data.loading &&
             <View style={globalStyle.loading}>
               <ActivityIndicator size="large" color="#036cae"/>

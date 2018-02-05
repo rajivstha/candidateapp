@@ -81,7 +81,7 @@ class ConstituencyCandidateList extends Component {
                           <View style={style.partyIcon}>
                             <PoliticalPartyImage politicalPartyId={candidate.y_politicalPartyID}/>
                           </View>
-                          <View>
+                          <View style={style.candidateDetails}>
                             <Text style={style.name}>
                               {candidateName}
                             </Text>

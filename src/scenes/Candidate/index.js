@@ -45,7 +45,6 @@ class Candidate extends Component {
     } else {
       candidateSex = '';
     }
-
     return (
       <Grid>
         <Row size={40}>
@@ -68,30 +67,61 @@ class Candidate extends Component {
                             <View><Text style={style.bioTitle}>About Me</Text></View>
                             <View><Text style={style.bio}>this is my boitext</Text></View>
                         </View> */}
+
             <View style={style.candidateDetailsRow}>
-              <View style={style.iconContainer}><Text style={style.icon}><Icon name="circle" size={12}/></Text></View>
-              <View style={style.textContainer}><Text style={style.text}><Text
-                style={style.label}>{I18n.t('total_votes', {locale: this.props.locale})}:</Text> {candidate.totalVotes}
-              </Text></View>
+              <View style={style.iconContainer}>
+                <Text style={style.icon}><Icon name="circle" size={12}/></Text>
+              </View>
+              <View style={style.textContainer}>
+                  <View>      
+                    <Text style={style.label}>{I18n.t('total_votes', {locale: this.props.locale})}: </Text> 
+                  </View>
+                  <View style={style.dataContainer}>
+                    <Text style={style.data}>{candidate.totalVotes}</Text>
+                  </View>  
+              </View>
             </View>
             {candidateParty != '' &&
             <View style={style.candidateDetailsRow}>
-              <View style={style.iconContainer}><Text style={style.icon}><Icon name="circle" size={12}/></Text></View>
-              <View style={style.textContainer}><Text style={style.text}><Text
-                style={style.label}>{I18n.t('political_party', {locale: this.props.locale})}:</Text> {candidateParty}
-              </Text></View>
+              <View style={style.iconContainer}>
+                <Text style={style.icon}><Icon name="circle" size={12}/></Text>
+              </View>
+              <View style={style.textContainer}>
+                  <View>      
+                    <Text style={style.label}>{I18n.t('political_party', {locale: this.props.locale})}: </Text> 
+                  </View>
+                  <View style={style.dataContainer}>
+                    <Text style={style.data}>{candidateParty}</Text>
+                  </View>  
+              </View>
             </View>
             }
             <View style={style.candidateDetailsRow}>
-              <View style={style.iconContainer}><Text style={style.icon}><Icon name="circle" size={12}/></Text></View>
-              <View style={style.textContainer}><Text style={style.text}><Text
-                style={style.label}>{I18n.t('age', {locale: this.props.locale})}:</Text> {candidate.age}</Text></View>
+              <View style={style.iconContainer}>
+                <Text style={style.icon}><Icon name="circle" size={12}/></Text>
+              </View>
+              <View style={style.textContainer}>
+                  <View>      
+                    <Text style={style.label}>{I18n.t('age', {locale: this.props.locale})}: </Text> 
+                  </View>
+                  <View style={style.dataContainer}>
+                    <Text style={style.data}>{candidate.age}</Text>
+                  </View>  
+              </View>
             </View>
             {candidateSex != '' &&
             <View style={style.candidateDetailsRow}>
-              <View style={style.iconContainer}><Text style={style.icon}><Icon name="circle" size={12}/></Text></View>
-              <View style={style.textContainer}><Text style={style.text}><Text
-                style={style.label}>{I18n.t('sex', {locale: this.props.locale})}:</Text> {candidateSex}</Text></View>
+              <View style={style.iconContainer}>
+                <Text style={style.icon}><Icon name="circle" size={12}/></Text>
+              </View>
+              <View style={style.textContainer}>
+                  <View>      
+                    <Text style={style.label}>{I18n.t('sex', {locale: this.props.locale})}: </Text> 
+                  </View>
+                  <View style={style.dataContainer}>
+                    <Text style={style.data}>{candidateSex}</Text>
+                  </View>  
+              </View>
             </View>
             }
 
