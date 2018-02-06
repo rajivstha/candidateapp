@@ -138,14 +138,14 @@ class Candidate extends Component {
                             <View style={style.iconContainer}><Text style={style.icon}><Icon name="twitter" size={12}/></Text></View>
                             <View style={style.textContainer}><Text style={style.text}>Follow Me On Twitter</Text></View>
                         </View> */}
-            <View style={style.addDetailsButtonContainer}>
+            {/* <View style={style.addDetailsButtonContainer}>
               <TouchableOpacity onPress={() => Actions.addDetails()}>
                 <View style={style.addDetailsButtonRow}>
                   <Text style={style.addDetailsIcon}><Icon name="plus" size={22}/></Text>
                   <Text style={style.addDetailsButtonText}>Add Details</Text>
                 </View>
               </TouchableOpacity>
-            </View>
+            </View> */}
           </View>
           
         </Row>
