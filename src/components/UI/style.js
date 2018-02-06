@@ -55,7 +55,8 @@ export default StyleSheet.create({
   },
   itemListContainer: {
     backgroundColor: '#ccc',
-    padding: 15,
+    paddingTop: 15,
+    paddingBottom: 15,
     marginBottom: 1
   },
   listTitleContainer: {
@@ -65,9 +66,14 @@ export default StyleSheet.create({
   itemIconContainer: {
     marginRight: 10,
     marginTop: 3,
+    paddingLeft: 15
   },
   itemIcon: {
     color: theme.UI.neutralColor
+  },
+  itemTitle: {
+    paddingRight: 15,
+    flex: 1
   },
   itemText: {
     color: theme.UI.neutralColor,
@@ -107,6 +113,10 @@ export default StyleSheet.create({
   partySingleImage: {
     width: 60,
     height: 60
+  },
+  candidateDetails: {
+    flex: 1,
+    flexWrap: 'wrap'
   },
   name: {
     color: theme.UI.neutralColor,

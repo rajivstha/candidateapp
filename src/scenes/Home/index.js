@@ -102,7 +102,7 @@ class Home extends Component {
             <ActivityIndicator size="large" color="#036cae"/>
           </View>
         }
-        <Row size={10}>
+        <Row size={12}>
           <View style={{padding: 15, flex: 1}}>
             <TouchableOpacity style={style.candidatesByLocationButton}
                               onPress={this.requestLocationPermission.bind(this)}>
@@ -113,7 +113,7 @@ class Home extends Component {
             {this.state.locatingError && <Text style={{alignSelf: 'center'}}>Unable to get location</Text>}
           </View>
         </Row>
-        <Row size={70} style={style.provinceContainer}>
+        <Row size={68} style={style.provinceContainer}>
           <Text style={{alignSelf: 'center', fontSize: 20, fontWeight: 'bold', padding: 10}}>{I18n.t('provinces', {locale: this.props.locale})}</Text>
           {this.props.data.error &&
             <ErrorMsg error={this.props.data.error} locale={this.props.locale}/>

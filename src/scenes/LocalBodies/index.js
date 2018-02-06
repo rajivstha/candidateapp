@@ -18,12 +18,12 @@ class LocalBodies extends Component {
 		}
 		return (
 			<Grid>
-				<Row size={10}>
+				<Row size={12}>
 					<View>
 						<Text style={globalStyle.title}>{provinceTitle} - {title}</Text>
 					</View>
 				</Row>
-				<Row size={90}>
+				<Row size={88}>
 					<LocalBodiesList locale={this.props.locale}
 													 activeDistrict={this.props.activeDistrict}
 													 activeProvince={this.props.activeProvince} />

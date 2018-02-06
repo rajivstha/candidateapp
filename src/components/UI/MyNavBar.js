@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 class MyNavBar extends Component {
   render() {
+    
     return (
       <View  style={style.customNavbarContainer}>
         <View style={style.customTopNavbarContainer}>

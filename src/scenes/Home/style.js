@@ -4,7 +4,10 @@ import globalStyle, {theme} from '../../assets/styles';
 export default StyleSheet.create({
   candidatesByLocationButton: {
     flexDirection: 'row',
-    padding: 12,
+    paddingTop: 12,
+    paddingBottom: 12,
+    paddingLeft: 30,
+    paddingRight: 30,
     justifyContent: 'center',
     backgroundColor: theme.UI.neutralColor,
     borderRadius: 5,

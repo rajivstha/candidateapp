@@ -35,7 +35,9 @@ class LocalBodyListItem extends Component {
               <Icon name={this.state.iconName === false ? 'expand' : 'compress'}
                                                  size={16} color={style.itemIcon.color}/>
             </View>
-            <Text style={style.itemText}>{title}</Text>
+            <View style={style.itemTitle}>
+              <Text style={style.itemText}>{title}</Text>
+            </View>
           </View>
         </TouchableOpacity>
         {this.state.showDetails == true &&
@@ -56,7 +58,7 @@ class LocalBodyListItem extends Component {
                       <View style={style.partyIcon}>
                         <PoliticalPartyImage politicalPartyId={candidate.y_politicalPartyID}/>
                       </View>
-                      <View>
+                      <View style={style.candidateDetails}>
                         <Text style={style.name}>{candidateName} </Text>
                         <Text
                           style={style.designation}>{candidate.totalVotes} {I18n.t('votes', {locale: this.props.locale})}</Text>

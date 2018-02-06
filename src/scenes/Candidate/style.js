@@ -38,7 +38,9 @@ export default StyleSheet.create({
     fontSize: 21,
     alignSelf: 'center',
     color: theme.UI.textColor,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   address: {
     fontSize: 16,
@@ -49,7 +51,8 @@ export default StyleSheet.create({
     backgroundColor: theme.UI.backgroundColor,
     flex: 1,
     marginTop: 10,
-    padding: 15
+    paddingTop: 15,
+    paddingBottom: 15
   },
   partyImageContainer: {
     position: 'absolute',
@@ -74,7 +77,7 @@ export default StyleSheet.create({
   },
   candidateDetailsRow: {
     flexDirection: 'row',
-    marginBottom: 2
+    marginBottom: 5
   },
   iconContainer: {
     backgroundColor: theme.UI.neutralColor,
@@ -83,38 +86,66 @@ export default StyleSheet.create({
     height: 25,
     marginRight: 5,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginLeft: 15
   },
   icon: {
     color: theme.UI.textColor
   },
   textContainer: {
-    alignItems: 'center',
-    justifyContent: 'center'
+    flexDirection: 'row',
+    paddingRight: 15,
+    flex: 1
   },
-  text: {
+  dataContainer: {
+    flexWrap: 'wrap',
+    flex: 1
+  },
+  data: {
     color: theme.UI.neutralColor,
-    fontSize: 14
   },
-  addDetailsContainer: {
+  addDetailsButtonContainer: {
+    backgroundColor: theme.UI.neutralColor,
+    position: 'absolute',
+    bottom: 0
+  },
+  addDetailsButtonRow: {
+    flexDirection: 'row',
+    padding: 15,
+    width: theme.screenWidth,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  addDetailsButtonText: {
+    color: theme.UI.textColor,
+    fontSize: 18
+  },
+  addDetailsIcon: {
+    color: theme.UI.textColor,
+    marginRight: 10
+  },
+  addDetails: {
+    flexDirection: 'column',
+    padding: 50
+  },
+  addDetailsContainer: {
     backgroundColor: theme.UI.neutralColor,
-    marginTop: 20,
-    padding: 15
+    marginTop: 20
   },
   addDetailsText: {
     color: theme.UI.textColor,
     fontSize: 18
   },
-
   addDetails: {
     flexDirection: 'column',
-    padding: 20
+
   },
   addDetailsRow: {
     flexDirection: 'row',
-    marginBottom: 7
+    padding: 15,
+    width: theme.screenWidth,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   title: {
     color: theme.UI.neutralColor,
@@ -137,6 +168,7 @@ export default StyleSheet.create({
     height: 30
   },
   label: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: theme.UI.neutralColor
   }
 });

@@ -57,7 +57,7 @@ class WardList extends Component {
                       <View style={style.partyIcon}>
                         <PoliticalPartyImage politicalPartyId={candidate.y_politicalPartyID}/>
                       </View>
-                      <View>
+                      <View style={style.candidateDetails}>
                         <Text style={style.name}>{candidateName} </Text>
                         <Text
                           style={style.designation}>{candidate.totalVotes} {I18n.t('votes', {locale: this.props.locale})}</Text>

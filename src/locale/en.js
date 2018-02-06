@@ -16,5 +16,7 @@ export default {
     candidate: 'Candidate',
     province: 'Province',
     provinces: 'Provinces',
-    geoLocateLabel: 'Elected Candidates by Geo Location'
+    geoLocateLabel: 'Elected Candidates by Geo Location',
+    geolocate: 'Geo Locate',
+    add_details: 'Add Details'
 };

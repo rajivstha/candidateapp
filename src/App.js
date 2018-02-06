@@ -31,9 +31,9 @@ class App extends Component {
           <Scene key="aboutUs" title={I18n.t('about_us', {locale: this.props.locale})} component={AboutUs}/>
           <Scene key="province" title={I18n.t('province', {locale: this.props.locale})} component={Province}/>
           <Scene key="candidate" title={I18n.t('candidate', {locale: this.props.locale})} component={Candidate}/>
-          <Scene key="addDetails" hideNavBar={false} component={AddDetails}/>
+          <Scene key="addDetails" title={I18n.t('add_details', {locale: this.props.locale})} hideNavBar={false} component={AddDetails}/>
           <Scene key="wards" title={I18n.t('wards', {locale: this.props.locale})} component={Wards}/>
-          <Scene key="geoLocate" title="Geo Locate" component={GEOLocate}/>
+          <Scene key="geoLocate" title={I18n.t('geolocate', {locale: this.props.locale})} component={GEOLocate}/>
           <Tabs
             key="tabBar"
             swipeEnabled

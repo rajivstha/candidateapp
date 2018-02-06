@@ -242,14 +242,22 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+<<<<<<< HEAD
 		841C38E0202985B20048DD38 /* PBXContainerItemProxy */ = {
+=======
+		841C38A6202333C70048DD38 /* PBXContainerItemProxy */ = {
+>>>>>>> fixes
 			isa = PBXContainerItemProxy;
 			containerPortal = 8725B78479124479A8A8C473 /* RNI18n.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNI18n;
 		};
+<<<<<<< HEAD
 		841C38E2202985B20048DD38 /* PBXContainerItemProxy */ = {
+=======
+		841C38A8202333C70048DD38 /* PBXContainerItemProxy */ = {
+>>>>>>> fixes
 			isa = PBXContainerItemProxy;
 			containerPortal = 8725B78479124479A8A8C473 /* RNI18n.xcodeproj */;
 			proxyType = 2;
@@ -640,11 +648,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		841C38DC202985B20048DD38 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				841C38E1202985B20048DD38 /* libRNI18n.a */,
 				841C38E3202985B20048DD38 /* libRNI18n-tvOS.a */,
+=======
+		841C387F202333C60048DD38 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				841C38A7202333C70048DD38 /* libRNI18n.a */,
+				841C38A9202333C70048DD38 /* libRNI18n-tvOS.a */,
+>>>>>>> fixes
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -839,7 +855,11 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
+<<<<<<< HEAD
 					ProductGroup = 841C38DC202985B20048DD38 /* Products */;
+=======
+					ProductGroup = 841C387F202333C60048DD38 /* Products */;
+>>>>>>> fixes
 					ProjectRef = 8725B78479124479A8A8C473 /* RNI18n.xcodeproj */;
 				},
 				{
@@ -1033,6 +1053,7 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+<<<<<<< HEAD
 		841C38E1202985B20048DD38 /* libRNI18n.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1045,6 +1066,20 @@
 			fileType = archive.ar;
 			path = "libRNI18n-tvOS.a";
 			remoteRef = 841C38E2202985B20048DD38 /* PBXContainerItemProxy */;
+=======
+		841C38A7202333C70048DD38 /* libRNI18n.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNI18n.a;
+			remoteRef = 841C38A6202333C70048DD38 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		841C38A9202333C70048DD38 /* libRNI18n-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRNI18n-tvOS.a";
+			remoteRef = 841C38A8202333C70048DD38 /* PBXContainerItemProxy */;
+>>>>>>> fixes
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8424C31520062B1B00E28F3B /* libRCTBlob-tvOS.a */ = {

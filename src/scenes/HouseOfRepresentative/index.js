@@ -17,10 +17,10 @@ class HouseOfRepresentative extends Component {
     }
     return (
       <Grid>
-        <Row size={10}>
+        <Row size={12}>
           <Text style={globalStyle.title}>{provinceTitle} - {title}</Text>
         </Row>
-        <Row size={90}>
+        <Row size={88}>
           <ConstituencyList locale={this.props.locale}
                             activeDistrict={this.props.activeDistrict}
                             activeProvince={this.props.activeProvince}
