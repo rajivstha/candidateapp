@@ -104,25 +104,48 @@ export default StyleSheet.create({
   data: {
     color: theme.UI.neutralColor,
   },
-  addDetailsContainer: {
+  addDetailsButtonContainer: {
+    backgroundColor: theme.UI.neutralColor,
+    position: 'absolute',
+    bottom: 0
+  },
+  addDetailsButtonRow: {
+    flexDirection: 'row',
+    padding: 15,
+    width: theme.screenWidth,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  addDetailsButtonText: {
+    color: theme.UI.textColor,
+    fontSize: 18
+  },
+  addDetailsIcon: {
+    color: theme.UI.textColor,
+    marginRight: 10
+  },
+  addDetails: {
+    flexDirection: 'column',
+    padding: 50
+  },
+  addDetailsContainer: {
     backgroundColor: theme.UI.neutralColor,
-    marginTop: 20,
-    padding: 15
+    marginTop: 20
   },
   addDetailsText: {
     color: theme.UI.textColor,
     fontSize: 18
   },
-
   addDetails: {
     flexDirection: 'column',
-    padding: 20
+
   },
   addDetailsRow: {
     flexDirection: 'row',
-    marginBottom: 7
+    padding: 15,
+    width: theme.screenWidth,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   title: {
     color: theme.UI.neutralColor,

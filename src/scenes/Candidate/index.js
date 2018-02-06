@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {View, Text, Image, ActivityIndicator} from 'react-native';
+import {View, Text, Image, ActivityIndicator, TouchableOpacity} from 'react-native';
 import {Row, Grid} from 'react-native-easy-grid';
+import {Actions} from 'react-native-router-flux';
 import style from './style';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {connect} from 'react-redux';
@@ -137,8 +138,16 @@ class Candidate extends Component {
                             <View style={style.iconContainer}><Text style={style.icon}><Icon name="twitter" size={12}/></Text></View>
                             <View style={style.textContainer}><Text style={style.text}>Follow Me On Twitter</Text></View>
                         </View> */}
-
+            <View style={style.addDetailsButtonContainer}>
+              <TouchableOpacity onPress={() => Actions.addDetails()}>
+                <View style={style.addDetailsButtonRow}>
+                  <Text style={style.addDetailsIcon}><Icon name="plus" size={22}/></Text>
+                  <Text style={style.addDetailsButtonText}>Add Details</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
+          
         </Row>
       </Grid>
     );

@@ -17,5 +17,6 @@ export default {
     province: 'प्रदेश',
     provinces: 'प्रदेशहरु',
     geoLocateLabel: 'लोकेसन अनुसार विजयी उम्मेदवारहरु',
-    geolocate: 'जिओ लोकेसन'
+    geolocate: 'जिओ लोकेसन',
+    add_details: 'Add Details'
 };
